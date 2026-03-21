@@ -1,0 +1,142 @@
+{
+  "slug": "corryhabbie-hills-circuit",
+  "title": "Corryhabbie Hills Circuit",
+  "area": "Glenfiddich / Moray",
+  "country": "Scotland",
+  "summary": "A suggested broad moorland round above Glenfiddich with a mix of open hill, estate track help, and several named tops. This is not a precision nav product — it’s a practical route idea to sanity-check on the drive up.",
+  "disclaimer": "Suggested route only. Built from map screenshots and rough grid-ref anchors. Not gospel, not a precision navigation product, and not a substitute for proper hill judgement on the day.",
+  "parkingNote": "Start / parking around NJ 27613 30622 near Ellivreid. Park considerately — don’t block gates, farm access, or anything that might need a tractor later.",
+  "routeType": "Suggested hill circuit",
+  "distanceKm": 24,
+  "ascentM": 1100,
+  "estimatedHours": 8,
+  "startGridRef": "NJ 27613 30622",
+  "finishGridRef": "NJ 27613 30622",
+  "anchorRefs": [
+    {
+      "label": "Start / parking",
+      "gridRef": "NJ 27613 30622",
+      "lat": 57.41325,
+      "lng": -3.31395
+    },
+    {
+      "label": "Broad ridge anchor",
+      "gridRef": "NJ 27155 27714",
+      "lat": 57.3882,
+      "lng": -3.3215
+    },
+    {
+      "label": "Bellandy / north return corridor",
+      "gridRef": "NJ 28575 32448",
+      "lat": 57.4325,
+      "lng": -3.282
+    },
+    {
+      "label": "East track zone / possible bailout",
+      "gridRef": "NJ 30661 29380",
+      "lat": 57.3998,
+      "lng": -3.252
+    },
+    {
+      "label": "Zig-zag descent decision point",
+      "gridRef": "NJ 28983 28035",
+      "lat": 57.3828,
+      "lng": -3.2912
+    }
+  ],
+  "routeOptions": [
+    {
+      "id": "option-a",
+      "name": "Full round",
+      "reason": "Better overall route shape and fuller day out.",
+      "suggestedLine": [
+        "Start / Parking — NJ 27613 30622",
+        "Hill of Achmore",
+        "Càrn a’ Bhodaich",
+        "Cairn Dregnie",
+        "Carn an t-Suidhe",
+        "Broad ridge ref — NJ 27155 27714",
+        "Muckle Lapprach",
+        "Corryhabbie Hill",
+        "Descent choice / zig-zag track ref — NJ 28983 28035",
+        "Central return corridor / Folds of Corhabbie side",
+        "Optional Bellandy corridor ref — NJ 28575 32448",
+        "Finish / Parking — NJ 27613 30622"
+      ],
+      "explanation": "Gets the awkward lower western ground done early, sweeps the main hill mass in a sensible order, and keeps the cleaner track-assisted return for later in the day. Better if the weather is decent and the group wants a proper full outing.",
+      "waypointFile": "waypoints-option-a.json",
+      "suggestedPolyline": [
+        { "lat": 57.41325, "lng": -3.31395 },
+        { "lat": 57.4185, "lng": -3.3088 },
+        { "lat": 57.4145, "lng": -3.298 },
+        { "lat": 57.4052, "lng": -3.2725 },
+        { "lat": 57.4078, "lng": -3.2665 },
+        { "lat": 57.4035, "lng": -3.2565 },
+        { "lat": 57.3965, "lng": -3.268 },
+        { "lat": 57.3882, "lng": -3.3215 },
+        { "lat": 57.3905, "lng": -3.308 },
+        { "lat": 57.392, "lng": -3.298 },
+        { "lat": 57.3855, "lng": -3.278 },
+        { "lat": 57.3785, "lng": -3.262 },
+        { "lat": 57.3828, "lng": -3.2912 },
+        { "lat": 57.3895, "lng": -3.297 },
+        { "lat": 57.3985, "lng": -3.304 },
+        { "lat": 57.412, "lng": -3.292 },
+        { "lat": 57.425, "lng": -3.286 },
+        { "lat": 57.4325, "lng": -3.282 },
+        { "lat": 57.422, "lng": -3.302 },
+        { "lat": 57.41325, "lng": -3.31395 }
+      ]
+    },
+    {
+      "id": "option-b",
+      "name": "Looser / easier day",
+      "reason": "Better if the vibe is more relaxed and social.",
+      "suggestedLine": [
+        "Start / Parking — NJ 27613 30622",
+        "Hill of Achmore",
+        "Muckle Lapprach",
+        "Corryhabbie Hill",
+        "Optional Tor of Suie",
+        "Descent choice / zig-zag track ref — NJ 28983 28035",
+        "Central return corridor",
+        "Finish / Parking — NJ 27613 30622"
+      ],
+      "explanation": "Hits the best-feeling tops without dragging every side lump into it. More flexible, easier to shorten, and more realistic for a late-start social hill day.",
+      "waypointFile": "waypoints-option-b.json",
+      "suggestedPolyline": [
+        { "lat": 57.41325, "lng": -3.31395 },
+        { "lat": 57.4185, "lng": -3.3088 },
+        { "lat": 57.4065, "lng": -3.295 },
+        { "lat": 57.392, "lng": -3.298 },
+        { "lat": 57.3785, "lng": -3.262 },
+        { "lat": 57.3842, "lng": -3.2685 },
+        { "lat": 57.3828, "lng": -3.2912 },
+        { "lat": 57.3935, "lng": -3.302 },
+        { "lat": 57.41325, "lng": -3.31395 }
+      ]
+    }
+  ],
+  "recommendation": [
+    "Option A is the better route.",
+    "Option B is probably the better hang."
+  ],
+  "goodStopSpots": [
+    "Corryhabbie Hill for the biggest-feeling perch.",
+    "Muckle Lapprach shoulder for a decent sit-down spot.",
+    "Track junction near NJ 28983 28035 as an easy regroup point."
+  ],
+  "terrainVibe": "Expect broad open hill, a few heathery and probably soggy bits, and enough track options to stop it turning into total nonsense. No real technical ground — just route choices and how much nonsense you want to voluntarily add.",
+  "wildlifeTexture": "Heather, blaeberry, bog moss, wetter peaty ground, likely red grouse, deer, meadow pipits, and maybe something decent overhead if luck is in.",
+  "mapCenter": { "lat": 57.405, "lng": -3.285 },
+  "mapZoom": 12,
+  "bounds": {
+    "south": 57.365,
+    "west": -3.34,
+    "north": 57.445,
+    "east": -3.23
+  },
+  "waypointFile": "waypoints.json",
+  "photoFolder": "photos",
+  "photos": []
+}

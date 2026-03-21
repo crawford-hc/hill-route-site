@@ -1,0 +1,103 @@
+[
+  {
+    "id": "a-1",
+    "name": "Start / Parking",
+    "lat": 57.41325,
+    "lng": -3.31395,
+    "gridRef": "NJ 27613 30622",
+    "type": "parking",
+    "order": 1
+  },
+  {
+    "id": "a-2",
+    "name": "Hill of Achmore",
+    "lat": 57.4185,
+    "lng": -3.3088,
+    "type": "summit",
+    "order": 2
+  },
+  {
+    "id": "a-3",
+    "name": "Càrn a’ Bhodaich",
+    "lat": 57.4052,
+    "lng": -3.2725,
+    "type": "summit",
+    "order": 3
+  },
+  {
+    "id": "a-4",
+    "name": "Cairn Dregnie",
+    "lat": 57.4075,
+    "lng": -3.266,
+    "type": "summit",
+    "order": 4
+  },
+  {
+    "id": "a-5",
+    "name": "Carn an t-Suidhe",
+    "lat": 57.4028,
+    "lng": -3.2565,
+    "type": "summit",
+    "order": 5
+  },
+  {
+    "id": "a-6",
+    "name": "Broad ridge ref",
+    "lat": 57.3882,
+    "lng": -3.3215,
+    "gridRef": "NJ 27155 27714",
+    "type": "anchor",
+    "order": 6
+  },
+  {
+    "id": "a-7",
+    "name": "Muckle Lapprach",
+    "lat": 57.392,
+    "lng": -3.298,
+    "type": "summit",
+    "order": 7
+  },
+  {
+    "id": "a-8",
+    "name": "Corryhabbie Hill",
+    "lat": 57.3785,
+    "lng": -3.262,
+    "type": "summit",
+    "order": 8
+  },
+  {
+    "id": "a-9",
+    "name": "Zig-zag track ref",
+    "lat": 57.3828,
+    "lng": -3.2912,
+    "gridRef": "NJ 28983 28035",
+    "type": "junction",
+    "order": 9
+  },
+  {
+    "id": "a-10",
+    "name": "Central return / Folds of Corhabbie side",
+    "lat": 57.396,
+    "lng": -3.302,
+    "type": "corridor",
+    "order": 10
+  },
+  {
+    "id": "a-11",
+    "name": "Optional Bellandy corridor",
+    "lat": 57.4325,
+    "lng": -3.282,
+    "gridRef": "NJ 28575 32448",
+    "type": "landmark",
+    "order": 11
+  },
+  {
+    "id": "a-12",
+    "name": "Finish / Parking",
+    "lat": 57.41325,
+    "lng": -3.31395,
+    "gridRef": "NJ 27613 30622",
+    "type": "parking",
+    "order": 12
+  }
+]

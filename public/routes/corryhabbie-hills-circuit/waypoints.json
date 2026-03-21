@@ -1,0 +1,113 @@
+[
+  {
+    "id": "parking-start",
+    "name": "Start / parking (Ellivreid)",
+    "lat": 57.41325,
+    "lng": -3.31395,
+    "gridRef": "NJ 27613 30622",
+    "type": "parking",
+    "description": "Suggested start — keep access clear.",
+    "order": 1
+  },
+  {
+    "id": "achmore",
+    "name": "Hill of Achmore",
+    "lat": 57.4185,
+    "lng": -3.3088,
+    "gridRef": "NJ 278 312",
+    "elevationM": 512,
+    "type": "summit",
+    "order": 2
+  },
+  {
+    "id": "bhodaich",
+    "name": "Càrn a’ Bhodaich",
+    "lat": 57.4052,
+    "lng": -3.2725,
+    "gridRef": "NJ 302 295",
+    "elevationM": 601,
+    "type": "summit",
+    "order": 3
+  },
+  {
+    "id": "cairn-dregnie",
+    "name": "Cairn Dregnie",
+    "lat": 57.4075,
+    "lng": -3.266,
+    "type": "summit",
+    "order": 4
+  },
+  {
+    "id": "carn-suidhe",
+    "name": "Carn an t-Suidhe",
+    "lat": 57.4028,
+    "lng": -3.2565,
+    "type": "summit",
+    "order": 5
+  },
+  {
+    "id": "broad-ridge",
+    "name": "Broad ridge anchor",
+    "lat": 57.3882,
+    "lng": -3.3215,
+    "gridRef": "NJ 27155 27714",
+    "type": "anchor",
+    "order": 6
+  },
+  {
+    "id": "muckle-lapprach",
+    "name": "Muckle Lapprach",
+    "lat": 57.392,
+    "lng": -3.298,
+    "gridRef": "NJ 285 278",
+    "elevationM": 480,
+    "type": "summit",
+    "order": 7
+  },
+  {
+    "id": "corryhabbie-hill",
+    "name": "Corryhabbie Hill",
+    "lat": 57.3785,
+    "lng": -3.262,
+    "gridRef": "NJ 308 262",
+    "elevationM": 558,
+    "type": "summit",
+    "order": 8
+  },
+  {
+    "id": "tor-suie",
+    "name": "Tor of Suie",
+    "lat": 57.3842,
+    "lng": -3.2685,
+    "type": "summit",
+    "description": "Optional on the looser day.",
+    "order": 9
+  },
+  {
+    "id": "zigzag",
+    "name": "Zig-zag descent decision",
+    "lat": 57.3828,
+    "lng": -3.2912,
+    "gridRef": "NJ 28983 28035",
+    "type": "junction",
+    "order": 10
+  },
+  {
+    "id": "east-bailout",
+    "name": "East track / bailout zone",
+    "lat": 57.3998,
+    "lng": -3.252,
+    "gridRef": "NJ 30661 29380",
+    "type": "junction",
+    "order": 11
+  },
+  {
+    "id": "bellandy",
+    "name": "Bellandy / north return",
+    "lat": 57.4325,
+    "lng": -3.282,
+    "gridRef": "NJ 28575 32448",
+    "type": "landmark",
+    "order": 12
+  }
+]

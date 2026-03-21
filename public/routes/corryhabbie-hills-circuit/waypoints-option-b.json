@@ -1,0 +1,69 @@
+[
+  {
+    "id": "b-1",
+    "name": "Start / Parking",
+    "lat": 57.41325,
+    "lng": -3.31395,
+    "gridRef": "NJ 27613 30622",
+    "type": "parking",
+    "order": 1
+  },
+  {
+    "id": "b-2",
+    "name": "Hill of Achmore",
+    "lat": 57.4185,
+    "lng": -3.3088,
+    "type": "summit",
+    "order": 2
+  },
+  {
+    "id": "b-3",
+    "name": "Muckle Lapprach",
+    "lat": 57.392,
+    "lng": -3.298,
+    "type": "summit",
+    "order": 3
+  },
+  {
+    "id": "b-4",
+    "name": "Corryhabbie Hill",
+    "lat": 57.3785,
+    "lng": -3.262,
+    "type": "summit",
+    "order": 4
+  },
+  {
+    "id": "b-5",
+    "name": "Optional Tor of Suie",
+    "lat": 57.3842,
+    "lng": -3.2685,
+    "type": "summit",
+    "order": 5
+  },
+  {
+    "id": "b-6",
+    "name": "Zig-zag track ref",
+    "lat": 57.3828,
+    "lng": -3.2912,
+    "gridRef": "NJ 28983 28035",
+    "type": "junction",
+    "order": 6
+  },
+  {
+    "id": "b-7",
+    "name": "Central return corridor",
+    "lat": 57.3935,
+    "lng": -3.302,
+    "type": "corridor",
+    "order": 7
+  },
+  {
+    "id": "b-8",
+    "name": "Finish / Parking",
+    "lat": 57.41325,
+    "lng": -3.31395,
+    "gridRef": "NJ 27613 30622",
+    "type": "parking",
+    "order": 8
+  }
+]
