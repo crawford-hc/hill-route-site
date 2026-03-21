@@ -1,7 +1,7 @@
 [
   {
     "id": "a-1",
-    "name": "Start / Parking",
+    "name": "Start / the parker",
     "lat": 57.41325,
     "lng": -3.31395,
     "gridRef": "NJ 27613 30622",
@@ -93,7 +93,7 @@
   },
   {
     "id": "a-12",
-    "name": "Finish / Parking",
+    "name": "Finish / the parker",
     "lat": 57.41325,
     "lng": -3.31395,
     "gridRef": "NJ 27613 30622",

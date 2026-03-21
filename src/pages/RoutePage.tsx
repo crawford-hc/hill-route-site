@@ -1,24 +1,37 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { AnchorRefsSection } from '../components/AnchorRefsSection'
 import { DownloadButtons } from '../components/DownloadButtons'
-import { GoodStopSpots } from '../components/GoodStopSpots'
 import { GridRefsBlock } from '../components/GridRefsBlock'
 import { LandmarkList } from '../components/LandmarkList'
 import { OrderedTops } from '../components/OrderedTops'
 import { PhotoGallery } from '../components/PhotoGallery'
-import { RouteDisclaimer } from '../components/RouteDisclaimer'
-import { RouteHero } from '../components/RouteHero'
 import { RouteMap } from '../components/RouteMap'
 import { RouteNotes } from '../components/RouteNotes'
-import { RouteOptionsSection } from '../components/RouteOptionsSection'
-import { RouteRecommendation } from '../components/RouteRecommendation'
 import { RouteStats } from '../components/RouteStats'
-import { TerrainAndWildlife } from '../components/TerrainAndWildlife'
 import { WaypointTable } from '../components/WaypointTable'
+import { AnchorRefsPanel } from '../components/planning/AnchorRefsPanel'
+import { DayFeelsLikeSection } from '../components/planning/DayFeelsLikeSection'
+import { GoodStopsPlanning } from '../components/planning/GoodStopsPlanning'
+import { HonestTakeBlock } from '../components/planning/HonestTakeBlock'
+import { LookoutGallery } from '../components/planning/LookoutGallery'
+import { ParkerSection } from '../components/planning/ParkerSection'
+import { QualityHillDayMeter } from '../components/planning/QualityHillDayMeter'
+import { RouteOptionsPlanning } from '../components/planning/RouteOptionsPlanning'
+import { RoutePlanningHero } from '../components/planning/RoutePlanningHero'
+import { TerrainWildlifePlanning } from '../components/planning/TerrainWildlifePlanning'
+import { TitledProseSection } from '../components/planning/TitledProseSection'
+import { WhyThisRouteSection } from '../components/planning/WhyThisRouteSection'
 import { useRouteBundle } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
-import type { RouteJson, WaypointJson } from '../types/route'
+import type { RecommendationBlock, RouteJson, WaypointJson } from '../types/route'
+
+function recommendationFromRoute(route: RouteJson): RecommendationBlock | null {
+  if (route.recommendationBlock) return route.recommendationBlock
+  if (route.recommendation?.length) {
+    return { title: 'Our honest take', lines: route.recommendation }
+  }
+  return null
+}
 
 function RoutePageLoaded({
   route,
@@ -43,70 +56,108 @@ function RoutePageLoaded({
     (route.orderedTops?.length ?? 0) > 0 && !(route.routeOptions?.length ?? 0)
 
   const routeOpts = route.routeOptions ?? []
+  const rec = recommendationFromRoute(route)
 
   return (
-    <article className="page-route">
-      <RouteHero route={route} />
-      {route.disclaimer ? <RouteDisclaimer text={route.disclaimer} /> : null}
+    <article className="page-route page-route--planning">
+      <RoutePlanningHero
+        route={route}
+        weather={route.weatherNote}
+        routeOptions={routeOpts}
+        activeOptionId={mapLineId}
+        onPickOption={setPickedLineId}
+      />
+
       <DownloadButtons route={route} />
 
-      <section className="prose-block" aria-labelledby="summary-heading">
-        <h2 id="summary-heading" className="section-title">
-          Summary
-        </h2>
-        <p className="prose">{route.summary}</p>
-      </section>
+      {route.qualityMeter ? <QualityHillDayMeter meter={route.qualityMeter} /> : null}
 
-      {route.parkingNote ? (
-        <section className="parking-block" aria-labelledby="parking-heading">
-          <h2 id="parking-heading" className="section-title">
-            Parking &amp; start
-          </h2>
-          <p className="prose">{route.parkingNote}</p>
-        </section>
+      {route.disclaimerSection ? (
+        <TitledProseSection
+          id="disclaimer-section-heading"
+          title={route.disclaimerSection.title ?? 'Suggested route only'}
+          body={route.disclaimerSection.body}
+          supporting={route.disclaimerSection.supporting}
+          className="planning-section--disclaimer"
+        />
       ) : null}
+
+      {route.whyThisRoute ? <WhyThisRouteSection content={route.whyThisRoute} /> : null}
+
+      {rec ? <HonestTakeBlock block={rec} /> : null}
+
+      <RouteOptionsPlanning options={routeOpts} optionWaypoints={optionWaypoints} />
+
+      <ParkerSection route={route} waypoints={waypoints} />
 
       <RouteStats route={route} />
 
-      <RouteOptionsSection options={routeOpts} optionWaypoints={optionWaypoints} />
-      <RouteRecommendation lines={route.recommendation ?? []} />
-
-      <AnchorRefsSection anchors={route.anchorRefs ?? []} />
+      <AnchorRefsPanel
+        title={route.anchorRefsTitle}
+        intro={route.anchorRefsIntro}
+        anchors={route.anchorRefs ?? []}
+      />
 
       {routeOpts.length > 0 ? (
-        <div className="map-line-picker" role="group" aria-label="Suggested line on map">
-          <span id="map-line-label" className="map-line-picker-label">
-            Line on map
-          </span>
-          <div className="map-line-picker-buttons" aria-labelledby="map-line-label">
-            {routeOpts.map((o) => (
-              <button
-                key={o.id}
-                type="button"
-                className={`map-line-btn ${mapLineId === o.id ? 'is-active' : ''}`}
-                onClick={() => setPickedLineId(o.id)}
-              >
-                {o.name}
-              </button>
-            ))}
+        <div className="planning-map-toolbar">
+          <div className="map-line-picker" role="group" aria-label="Suggested line on map">
+            <span id="map-line-label" className="map-line-picker-label">
+              Line on map
+            </span>
+            <div className="map-line-picker-buttons" aria-labelledby="map-line-label">
+              {routeOpts.map((o) => (
+                <button
+                  key={o.id}
+                  type="button"
+                  className={`map-line-btn ${mapLineId === o.id ? 'is-active' : ''}`}
+                  onClick={() => setPickedLineId(o.id)}
+                >
+                  {o.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       ) : null}
 
-      <RouteMap route={route} waypoints={waypoints} selectedOptionId={mapLineId} />
+      <div className="planning-map-wrap">
+        <RouteMap route={route} waypoints={waypoints} selectedOptionId={mapLineId} />
+      </div>
+
       <WaypointTable waypoints={waypoints} />
 
-      <GridRefsBlock route={route} waypoints={waypoints} />
+      <GridRefsBlock
+        route={route}
+        waypoints={waypoints}
+        title="All grid refs (full list)"
+        hint="Start, finish, anchors, and waypoint grids — copy into a mapping app or notes."
+      />
 
-      <GoodStopSpots spots={route.goodStopSpots ?? []} />
-      <TerrainAndWildlife
-        terrainVibe={route.terrainVibe}
-        wildlifeTexture={route.wildlifeTexture}
+      {route.goodStopsDetail ? <GoodStopsPlanning detail={route.goodStopsDetail} /> : null}
+
+      {route.whatDayFeelsLike ? (
+        <DayFeelsLikeSection content={route.whatDayFeelsLike} />
+      ) : null}
+
+      <TerrainWildlifePlanning
+        terrain={route.terrainDetail}
+        wildlifeIntro={route.wildlifeIntro}
+        wildlifeCards={route.wildlifeCards}
+      />
+
+      <LookoutGallery
+        slug={route.slug}
+        items={route.lookoutGallery ?? []}
+        intro={
+          route.lookoutGalleryIntro ??
+          'Not rare magic, just the sort of stuff that makes this hill feel like itself.'
+        }
       />
 
       {showLegacyTops ? <OrderedTops tops={route.orderedTops ?? []} /> : null}
 
       <PhotoGallery images={photos} />
+
       <RouteNotes notes={route.notes ?? []} />
       <LandmarkList
         id="landmarks-heading"
@@ -118,6 +169,10 @@ function RoutePageLoaded({
         title="Navigation & decisions"
         items={route.decisionPoints ?? []}
       />
+
+      {route.planningFooterNote ? (
+        <p className="route-planning-page-footer">{route.planningFooterNote}</p>
+      ) : null}
     </article>
   )
 }

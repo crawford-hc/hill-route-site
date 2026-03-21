@@ -8,7 +8,6 @@ export interface LatLng {
   lng: number
 }
 
-/** Optional map bounds in WGS84 (south, west, north, east). */
 export interface RouteBounds {
   south: number
   west: number
@@ -21,7 +20,6 @@ export interface Landmark {
   description: string
 }
 
-/** Key grid anchors; include lat/lng to show on the map. */
 export interface AnchorRef {
   label: string
   gridRef: string
@@ -29,22 +27,110 @@ export interface AnchorRef {
   lng?: number
 }
 
-/** A suggested line variant on the same hill day (not a separate slug). */
+/** Open-licensed or local image with full attribution (Geograph, Wikimedia, etc.). */
+export interface AttributedImage {
+  id: string
+  title: string
+  /** Relative to route folder, absolute URL, or omit for placeholder */
+  imageUrl?: string
+  caption: string
+  sourceName: string
+  sourceUrl?: string
+  attributionText: string
+  licenseName: string
+  licenseUrl?: string
+}
+
+export interface WeatherNote {
+  title?: string
+  body: string
+  supporting?: string
+  disclaimerLabel?: string
+}
+
+export interface StopSpotDetail {
+  title: string
+  description: string
+}
+
+export interface WildlifeCard {
+  title: string
+  body: string
+  whyItMatters: string
+}
+
+export interface TextBlock {
+  title?: string
+  body: string
+  supporting?: string
+}
+
+export interface WhyThisRouteContent {
+  title?: string
+  body: string
+  callouts?: string[]
+  supporting?: string
+}
+
+export interface RecommendationBlock {
+  title: string
+  lines: string[]
+  supporting?: string
+}
+
+export interface DayFeelsLikeContent {
+  title?: string
+  body: string
+  supporting?: string
+  summaryLines?: string[]
+}
+
+export interface GoodStopsDetail {
+  intro?: string
+  spots: StopSpotDetail[]
+}
+
+export type QualityFactorImpact = 'positive' | 'negative' | 'neutral'
+
+export interface QualityMeterFactor {
+  label: string
+  impact: QualityFactorImpact
+  note: string
+}
+
+export interface QualityMeterSubscore {
+  label: string
+  score: number
+  note: string
+}
+
+/** Informal “how’s the day looking” gauge for a route (optional per route). */
+export interface QualityMeter {
+  score: number
+  headline: string
+  verdict: string
+  lowLabel: string
+  highLabel: string
+  factors: QualityMeterFactor[]
+  subscores?: QualityMeterSubscore[]
+}
+
 export interface RouteOption {
   id: string
   name: string
-  /** Short “why this exists” */
-  reason: string
-  /** Human-readable steps (may include inline grid refs) */
-  suggestedLine: string[]
-  /** Extra colour / nuance */
-  explanation: string
-  /**
-   * Ordered WGS84 points for the hand-drawn suggested route line (primary map source).
-   * Typically a rough sketch — not a surveyed track.
-   */
+  /** Short “why this exists” / legacy */
+  reason?: string
+  /** Optional bullet-style steps */
+  suggestedLine?: string[]
+  /** Narrative suggested line (preferred for rich pages) */
+  lineDescription?: string
+  /** e.g. “Better route shape” */
+  tag?: string
+  /** Extra colour / legacy */
+  explanation?: string
+  whyPick?: string
+  tradeoff?: string
   suggestedPolyline?: LatLng[]
-  /** Optional ordered waypoints JSON for copy / GPX builders */
   waypointFile?: string
 }
 
@@ -53,9 +139,15 @@ export interface RouteJson {
   title: string
   area?: string
   country?: string
+  /** Main story / hero text */
   summary: string
-  /** Shown prominently under the title */
+  /** Short line for homepage cards if `summary` is long */
+  listingBlurb?: string
+  /** Badge next to title, e.g. “Suggested route only” */
+  suggestedRouteBadge?: string
   disclaimer?: string
+  /** Titled disclaimer block (rich planning pages) */
+  disclaimerSection?: TextBlock
   parkingNote?: string
   routeType?: string
   distanceKm?: number
@@ -65,21 +157,34 @@ export interface RouteJson {
   startGridRef?: string
   finishGridRef?: string
   anchorRefs?: AnchorRef[]
+  anchorRefsTitle?: string
+  anchorRefsIntro?: string
   routeOptions?: RouteOption[]
+  /** Legacy simple lines */
   recommendation?: string[]
+  recommendationBlock?: RecommendationBlock
+  whyThisRoute?: WhyThisRouteContent
+  /** Tongue-in-cheek day-quality summary (optional) */
+  qualityMeter?: QualityMeter
+  weatherNote?: WeatherNote
+  whatDayFeelsLike?: DayFeelsLikeContent
   goodStopSpots?: string[]
+  goodStopsDetail?: GoodStopsDetail
   terrainVibe?: string
+  terrainDetail?: TextBlock
   wildlifeTexture?: string
+  /** Intro paragraph above wildlife cards */
+  wildlifeIntro?: string
+  wildlifeCards?: WildlifeCard[]
+  lookoutGallery?: AttributedImage[]
+  lookoutGalleryIntro?: string
+  planningFooterNote?: string
   notes?: string[]
   landmarks?: Landmark[]
   decisionPoints?: Landmark[]
   mapCenter: MapCenter
   mapZoom?: number
   bounds?: RouteBounds
-  /**
-   * Optional recorded GPX for comparison overlay / download only.
-   * Omit, set to `null`, or `""` to disable — there is no implicit default filename.
-   */
   gpxFile?: string | null
   waypointFile?: string
   photoFolder?: string

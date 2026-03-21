@@ -11,7 +11,7 @@ export function collectGridRefs(
 ): GridRefLine[] {
   const lines: GridRefLine[] = []
   if (route.startGridRef?.trim()) {
-    lines.push({ label: 'Start', ref: route.startGridRef.trim() })
+    lines.push({ label: 'The parker', ref: route.startGridRef.trim() })
   }
   if (route.finishGridRef?.trim()) {
     lines.push({ label: 'Finish', ref: route.finishGridRef.trim() })

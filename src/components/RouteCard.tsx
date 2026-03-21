@@ -31,7 +31,9 @@ export function RouteCard({ route }: Props) {
               {[route.area, route.country].filter(Boolean).join(' · ')}
             </p>
           )}
-          <p className="route-card-summary">{route.summary}</p>
+          <p className="route-card-summary">
+            {route.listingBlurb ?? route.summary}
+          </p>
           <span className="route-card-cta">View route</span>
         </div>
       </Link>

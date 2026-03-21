@@ -43,7 +43,7 @@ export function RouteStats({ route }: Props) {
           />
         ) : null}
         {route.startGridRef ? (
-          <Stat label="Start" value={route.startGridRef} />
+          <Stat label="Parker" value={route.startGridRef} />
         ) : null}
         {route.finishGridRef ? (
           <Stat label="Finish" value={route.finishGridRef} />

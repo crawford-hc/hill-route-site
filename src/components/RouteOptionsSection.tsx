@@ -22,16 +22,27 @@ export function RouteOptionsSection({ options, optionWaypoints }: Props) {
         {options.map((opt) => (
           <article key={opt.id} className="route-option-card">
             <h3 className="route-option-name">{opt.name}</h3>
-            <p className="route-option-why">
-              <span className="route-option-label">Why bother</span> {opt.reason}
-            </p>
-            <h4 className="route-option-sub">Suggested line</h4>
-            <ol className="route-option-line">
-              {opt.suggestedLine.map((step, i) => (
-                <li key={i}>{step}</li>
-              ))}
-            </ol>
-            <p className="route-option-explain">{opt.explanation}</p>
+            {opt.reason ? (
+              <p className="route-option-why">
+                <span className="route-option-label">Why bother</span> {opt.reason}
+              </p>
+            ) : null}
+            {opt.suggestedLine?.length ? (
+              <>
+                <h4 className="route-option-sub">Suggested line</h4>
+                <ol className="route-option-line">
+                  {opt.suggestedLine.map((step, i) => (
+                    <li key={i}>{step}</li>
+                  ))}
+                </ol>
+              </>
+            ) : opt.lineDescription ? (
+              <>
+                <h4 className="route-option-sub">Suggested line</h4>
+                <p className="route-option-explain">{opt.lineDescription}</p>
+              </>
+            ) : null}
+            {opt.explanation ? <p className="route-option-explain">{opt.explanation}</p> : null}
             <OptionWaypointBlock
               waypoints={optionWaypoints[opt.id] ?? []}
               waypointFile={opt.waypointFile}

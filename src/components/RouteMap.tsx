@@ -208,7 +208,7 @@ export function RouteMap({ route, waypoints, selectedOptionId }: Props) {
   const hasOptions = (route.routeOptions?.length ?? 0) > 0
 
   return (
-    <section className="route-map-section" aria-labelledby="map-heading">
+    <section className="route-map-section planning-map-section" aria-labelledby="map-heading">
       <h2 id="map-heading" className="section-title">
         Map
       </h2>

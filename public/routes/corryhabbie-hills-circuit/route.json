@@ -3,18 +3,99 @@
   "title": "Corryhabbie Hills Circuit",
   "area": "Glenfiddich / Moray",
   "country": "Scotland",
-  "summary": "A suggested broad moorland round above Glenfiddich with a mix of open hill, estate track help, and several named tops. This is not a precision nav product — it’s a practical route idea to sanity-check on the drive up.",
-  "disclaimer": "Suggested route only. Built from map screenshots and rough grid-ref anchors. Not gospel, not a precision navigation product, and not a substitute for proper hill judgement on the day.",
-  "parkingNote": "Start / parking around NJ 27613 30622 near Ellivreid. Park considerately — don’t block gates, farm access, or anything that might need a tractor later.",
-  "routeType": "Suggested hill circuit",
+  "listingBlurb": "Broad moorland above Glenfiddich — track help, heathery nonsense, Option A for shape, Option B for the laugh.",
+  "summary": "Suggested route only. Broad moorland day above Glenfiddich with enough track help to keep it sensible and enough heathery nonsense to stop it feeling too tidy. Option A is the better actual route. Option B is probably the better laugh if the plan is just to get out, have a wander, stop for a puff, and not get precious about collecting every last bump.",
+  "suggestedRouteBadge": "",
+  "disclaimerSection": {
+    "title": "Suggested route only",
+    "body": "Built from map screenshots, anchor grid refs, and a best-effort read of the ground. It is not gospel, not a surveyed line, and not a substitute for using your own judgement on the hill. If the ground, weather, legs, or general mood says do something simpler, do something simpler."
+  },
+  "weatherNote": {
+    "title": "Weather note",
+    "body": "Dufftown-side forecast is looking more grey than glorious: cloudy through the morning and early afternoon, around 4°C early doors rising to about 12°C later on, with just a stray early shower showing.",
+    "supporting": "Fine for a moorland stomp, just don’t expect cinematic golden-hour miracles.",
+    "disclaimerLabel": "Short-term planning note, not a mountain-specific guarantee."
+  },
+  "whyThisRoute": {
+    "title": "Why this route?",
+    "body": "This hill group makes most sense when you treat it as a broad moorland circuit with options, not a rigid “must touch every contour bump” exercise. The western side gives you the bigger sweep of tops; Corryhabbie gives you the cleaner-feeling high point; and the track options on the return stop the last chunk turning into needless nonsense.",
+    "callouts": [
+      "Option A is the better actual route.",
+      "Option B is probably the better laugh."
+    ],
+    "supporting": "Both are valid. One is just a bit more “proper day out,” and the other is a bit more “let’s get up there, have a laugh, and not get weirdly precious about every lump on the map.”"
+  },
+  "recommendationBlock": {
+    "title": "Our honest take",
+    "lines": [
+      "Option A is the better actual route.",
+      "Option B is probably the better laugh."
+    ],
+    "supporting": "If the weather’s fine and everyone’s up for a proper moorland stomp, go Option A. If the day is more about getting out, stopping for a puff, and not turning it into a forced march, go Option B."
+  },
+  "qualityMeter": {
+    "score": 68,
+    "headline": "Decent chance of a good yin",
+    "verdict": "Broad open hill, decent route options, and very workable weather — but enough bog/heather tax and flat-light risk to stop it being an automatic classic.",
+    "lowLabel": "baw rank",
+    "highLabel": "a fuckin' stoater",
+    "factors": [
+      {
+        "label": "Flexible route choice",
+        "impact": "positive",
+        "note": "Two good route options means you can trim the nonsense if needed."
+      },
+      {
+        "label": "Weather is usable",
+        "impact": "positive",
+        "note": "Grey but workable usually beats dramatic but miserable."
+      },
+      {
+        "label": "Broad moorland ground",
+        "impact": "neutral",
+        "note": "Big open hill gives freedom, but can feel a bit featureless in flat light."
+      },
+      {
+        "label": "Bog / heather tax",
+        "impact": "negative",
+        "note": "Could be pure shite in places if the ground is holding water."
+      },
+      {
+        "label": "Social-day potential",
+        "impact": "positive",
+        "note": "Good kind of hill for a relaxed late start and a few sit-down stops."
+      }
+    ],
+    "subscores": [
+      {
+        "label": "Views potential",
+        "score": 72,
+        "note": "Big open hill and broad moorland positions should still give decent atmosphere, even if the light's not doing anything special."
+      },
+      {
+        "label": "Ground quality",
+        "score": 48,
+        "note": "This is where the day can get a bit suspect. Plenty of scope for bog/heather tax and false optimism."
+      },
+      {
+        "label": "General craic factor",
+        "score": 81,
+        "note": "Late-start, social, broad hill, flexible route choices, good wee puff spots — hard not to get something out of it."
+      }
+    ]
+  },
+  "parkingNote": "Start at the parker around NJ 27613 30622 near Ellivreid. Park considerately — don’t block gates, farm access, or anything that might need a tractor later.",
+  "routeType": "Moorland circuit",
   "distanceKm": 24,
   "ascentM": 1100,
   "estimatedHours": 8,
   "startGridRef": "NJ 27613 30622",
   "finishGridRef": "NJ 27613 30622",
+  "anchorRefsTitle": "Useful anchor refs",
+  "anchorRefsIntro": "These are there to help shape the day, not to pretend you’re following a perfect engineered line.",
   "anchorRefs": [
     {
-      "label": "Start / parking",
+      "label": "Start / the parker",
       "gridRef": "NJ 27613 30622",
       "lat": 57.41325,
       "lng": -3.31395
@@ -47,23 +128,12 @@
   "routeOptions": [
     {
       "id": "option-a",
-      "name": "Full round",
-      "reason": "Better overall route shape and fuller day out.",
-      "suggestedLine": [
-        "Start / Parking — NJ 27613 30622",
-        "Hill of Achmore",
-        "Càrn a’ Bhodaich",
-        "Cairn Dregnie",
-        "Carn an t-Suidhe",
-        "Broad ridge ref — NJ 27155 27714",
-        "Muckle Lapprach",
-        "Corryhabbie Hill",
-        "Descent choice / zig-zag track ref — NJ 28983 28035",
-        "Central return corridor / Folds of Corhabbie side",
-        "Optional Bellandy corridor ref — NJ 28575 32448",
-        "Finish / Parking — NJ 27613 30622"
-      ],
-      "explanation": "Gets the awkward lower western ground done early, sweeps the main hill mass in a sensible order, and keeps the cleaner track-assisted return for later in the day. Better if the weather is decent and the group wants a proper full outing.",
+      "name": "Option A — Full round",
+      "tag": "Better route shape",
+      "reason": "The one with proper circuit energy — awkward west done early, cleaner finish later.",
+      "lineDescription": "Start near Ellivreid, get Hill of Achmore out the way first, then sweep across Càrn a’ Bhodaich, Cairn Dregnie, Carn an t-Suidhe, curve back through the broad ridge ground toward Muckle Lapprach, then finish the main business on Corryhabbie Hill before using the tidier return lines back out.",
+      "whyPick": "Because it feels like a real circuit rather than a quick tag-and-bail. If the weather’s behaving and everyone’s in decent form, this is the one that makes the most sense.",
+      "tradeoff": "A bit more heathery linking, a bit more bog lottery, and a bit more commitment. Fine if the vibe is “proper day out,” less ideal if everyone’s half-cooked before you’ve even left the car.",
       "waypointFile": "waypoints-option-a.json",
       "suggestedPolyline": [
         { "lat": 57.41325, "lng": -3.31395 },
@@ -90,19 +160,12 @@
     },
     {
       "id": "option-b",
-      "name": "Looser / easier day",
-      "reason": "Better if the vibe is more relaxed and social.",
-      "suggestedLine": [
-        "Start / Parking — NJ 27613 30622",
-        "Hill of Achmore",
-        "Muckle Lapprach",
-        "Corryhabbie Hill",
-        "Optional Tor of Suie",
-        "Descent choice / zig-zag track ref — NJ 28983 28035",
-        "Central return corridor",
-        "Finish / Parking — NJ 27613 30622"
-      ],
-      "explanation": "Hits the best-feeling tops without dragging every side lump into it. More flexible, easier to shorten, and more realistic for a late-start social hill day.",
+      "name": "Option B — Looser / easier day",
+      "tag": "Better social version",
+      "reason": "Best bits without hoovering up every lump — easy enough to trim if everyone’s half-cooked.",
+      "lineDescription": "Start near Ellivreid, take Hill of Achmore, head up for Muckle Lapprach, carry on to Corryhabbie Hill, and then either call that good enough or tack on an extra bit if everyone still fancies it.",
+      "whyPick": "Because it gives you the best bits without hoovering up every lump on the map. Easier to shorten, easier to chat your way through, easier to bail out of if conditions or enthusiasm dip.",
+      "tradeoff": "It doesn’t feel as “complete” as the full round. If you like the satisfaction of a cleaner circuit, this is the slightly lazier version. Which, to be fair, may be exactly the point.",
       "waypointFile": "waypoints-option-b.json",
       "suggestedPolyline": [
         { "lat": 57.41325, "lng": -3.31395 },
@@ -117,17 +180,132 @@
       ]
     }
   ],
-  "recommendation": [
-    "Option A is the better route.",
-    "Option B is probably the better hang."
+  "goodStopsDetail": {
+    "intro": "Good wee spots to stop for a puff / regroup.",
+    "spots": [
+      {
+        "title": "Corryhabbie Hill",
+        "description": "Biggest-feeling perch of the lot. If you’re going to stop and stare at the world for five minutes, this is the obvious one."
+      },
+      {
+        "title": "Muckle Lapprach shoulder",
+        "description": "Good sit-down spot without feeling like you’ve dropped too low or wandered off the day."
+      },
+      {
+        "title": "Track junction near NJ 28983 28035",
+        "description": "Useful regroup point if folk want to decide whether they’re still keen, still mobile, or just pretending they know where the clean finish is."
+      }
+    ]
+  },
+  "whatDayFeelsLike": {
+    "title": "What this day probably feels like",
+    "body": "Broad open hill. No real technical drama. Plenty of space to make your own decisions. Enough track help to keep it civilised, enough peat and heather to remind you you’re still in Scotland.",
+    "supporting": "At its best, this is the sort of day where you’re just moving through big open ground, stopping where it looks good, and not overthinking it. At its worst, it’s a lot of “that bit looked drier from over there” followed by a wet foot and a bit of swearing.",
+    "summaryLines": [
+      "not technical",
+      "not polished",
+      "could be boggy nonsense in places",
+      "still a decent social hill day"
+    ]
+  },
+  "terrainDetail": {
+    "title": "Terrain & vibe",
+    "body": "Expect broad open hill, heathery ground, and a decent chance of at least some boggy nonsense. Nothing especially technical, just the usual question of how much shite you want to voluntarily add to your own day.",
+    "supporting": "The better bits should feel open and easy-going. The worse bits will probably be the classic Scottish upland combo of peat, tufty grass, and false confidence. There’s enough track help in the wider area to keep the day sensible though, which is why this hill group works well for a relaxed team day rather than a hyper-serious mission."
+  },
+  "wildlifeIntro": "Closer look at what you’re sharing the hill with — and what the ground’s trying to tell you.",
+  "wildlifeCards": [
+    {
+      "title": "Red grouse",
+      "body": "Very on-brand for this sort of heather moorland. If you see one explode out the heather and nearly take your head off, that’s about right.",
+      "whyItMatters": "Tells you you’re in proper moorland country."
+    },
+    {
+      "title": "Meadow pipit",
+      "body": "Small, brown, streaky, and easy to miss until one flutters up and gives itself away.",
+      "whyItMatters": "One of the most likely birds you’ll actually notice if you’re paying attention."
+    },
+    {
+      "title": "Red deer",
+      "body": "Always a realistic shout in Scottish upland country if you actually look up once in a while.",
+      "whyItMatters": "Makes the whole place feel bigger and a bit wilder when you spot one."
+    },
+    {
+      "title": "Heather / blaeberry / bog moss / cottongrass",
+      "body": "This is the proper texture of the hill. Lovely to look at, and sometimes a decent clue that the next few metres deserve suspicion.",
+      "whyItMatters": "Helps you read the ground and explains why some bits feel great and some bits feel like a trap."
+    }
   ],
-  "goodStopSpots": [
-    "Corryhabbie Hill for the biggest-feeling perch.",
-    "Muckle Lapprach shoulder for a decent sit-down spot.",
-    "Track junction near NJ 28983 28035 as an easy regroup point."
+  "lookoutGalleryIntro": "Red grouse if the heather’s lively, meadow pipits doing their wee fluttery thing, and maybe red deer if you’re actually looking up now and then. On the ground, it’s all heather, blaeberry, peaty bits and cottongrass in the wetter hollows — which is lovely until your foot goes through it.",
+  "lookoutGallery": [
+    {
+      "id": "moor-ridge",
+      "title": "Broad moorland ridge",
+      "imageUrl": "photos/cairn-mortons-way-corryhabbie.jpg",
+      "caption": "Cairn beside Morton's Way on Corryhabbie — big open ground, Ben Rinnes across the glen, and that ‘proper hill day’ sweep.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cairn_near_Morton%27s_Way_on_Corryhabbie_Hill_-_geograph.org.uk_-_665277.jpg",
+      "attributionText": "© Iain Macaulay. Geograph Britain and Ireland, image ID 665277; mirrored on Wikimedia Commons with photographer credit.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "heather-ground",
+      "title": "Heather and blaeberry ground",
+      "imageUrl": "photos/corryhabbie-hill-open-moor.jpg",
+      "caption": "Open moor on Corryhabbie itself — the heathery, peaty texture you’re signing up for, just with more sky than your boots will thank you for.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corryhabbie_Hill_-_geograph.org.uk_-_7256421.jpg",
+      "attributionText": "© Anne Burgess. Geograph Britain and Ireland, image ID 7256421; mirrored on Wikimedia Commons with photographer credit.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "cottongrass",
+      "title": "Cottongrass / bog indicator",
+      "imageUrl": "photos/common-cottongrass-hermaness.jpg",
+      "caption": "Same fluffy bog clue you get in wet hollows here — this one’s Hermaness on Unst, not Corryhabbie, but the ‘aye, that’s soft’ energy is identical.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Cotton-grass_(Eriophorum_angustifolium),_Hermaness_-_geograph.org.uk_-_6548063.jpg",
+      "attributionText": "© Mike Pennington. Geograph Britain and Ireland, image ID 6548063; mirrored on Wikimedia Commons with photographer credit.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "grouse-lookout",
+      "title": "Red grouse",
+      "imageUrl": "photos/red-grouse-heather.jpg",
+      "caption": "Peak moorland behaviour: hiding badly, then launching itself out the heather like it’s been personally offended.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_Grouse_(2954268645).jpg",
+      "attributionText": "© Alastair Rae (London, UK). Uploaded from Flickr; reviewed on Wikimedia Commons.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "pipit-lookout",
+      "title": "Meadow pipit",
+      "imageUrl": "photos/meadow-pipit-geograph.jpg",
+      "caption": "Tiny brown upland regular — same species as here; this photo’s from the Western Isles (Geograph 1341367), showing the hind-claw giveaway on a fence post.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meadow_Pipit_(Anthus_pratensis)_-_geograph.org.uk_-_1341367.jpg",
+      "attributionText": "© Anne Burgess. Geograph Britain and Ireland, image ID 1341367; mirrored on Wikimedia Commons with photographer credit. On-site image is a scaled derivative from the Commons file (same licence).",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "deer-lookout",
+      "title": "Red deer",
+      "imageUrl": "photos/red-deer-stag-scotland.jpg",
+      "caption": "Not guaranteed on the day, but always worth a scan — red deer in velvet, Glen Torridon (same species, different glen).",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_deer_stag.jpg",
+      "attributionText": "© Mehmet Karatay. Own work; uploaded to Wikimedia Commons. On-site image is a scaled derivative from the Commons file (same licence).",
+      "licenseName": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    }
   ],
-  "terrainVibe": "Expect broad open hill, a few heathery and probably soggy bits, and enough track options to stop it turning into total nonsense. No real technical ground — just route choices and how much nonsense you want to voluntarily add.",
-  "wildlifeTexture": "Heather, blaeberry, bog moss, wetter peaty ground, likely red grouse, deer, meadow pipits, and maybe something decent overhead if luck is in.",
+  "planningFooterNote": "For planning only — check weather, ground, access, and your own willingness to tolerate boggy nonsense on the day.",
   "mapCenter": { "lat": 57.405, "lng": -3.285 },
   "mapZoom": 12,
   "bounds": {

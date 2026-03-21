@@ -1,5 +1,6 @@
 import type { RouteJson, WaypointJson } from '../types/route'
 import { collectGridRefs, gridRefsPlainText, waypointsToCopyText } from '../lib/gridRefs'
+import { getParkerDestination, googleMapsDirectionsUrl } from '../lib/parkerDestination'
 
 interface Props {
   route: RouteJson
@@ -17,6 +18,15 @@ function sortWaypoints(rows: WaypointJson[]) {
 }
 
 export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
+  const parkerDest = getParkerDestination(route, waypoints)
+  const parkerGrid =
+    parkerDest?.gridRef?.trim() ||
+    route.startGridRef?.trim() ||
+    (parkerDest
+      ? `${parkerDest.lat.toFixed(5)}, ${parkerDest.lng.toFixed(5)}`
+      : '')
+  const parkerMapsUrl = parkerDest ? googleMapsDirectionsUrl(parkerDest.lat, parkerDest.lng) : null
+
   const gridLines = collectGridRefs(route, waypoints)
   const gridText = gridRefsPlainText(gridLines)
 
@@ -33,9 +43,18 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
   const showLegacyTops =
     (route.orderedTops?.length ?? 0) > 0 && !(route.routeOptions?.length ?? 0)
 
+  const recBlock =
+    route.recommendationBlock ??
+    (route.recommendation?.length
+      ? { title: 'Our honest take', lines: route.recommendation }
+      : null)
+
   return (
     <article className="print-card">
       <header className="print-card-header">
+        {route.suggestedRouteBadge ? (
+          <p className="print-badge">{route.suggestedRouteBadge}</p>
+        ) : null}
         <h1 className="print-card-title">{route.title}</h1>
         {(route.area || route.country) && (
           <p className="print-card-meta">
@@ -45,10 +64,89 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
         <p className="print-card-summary">{route.summary}</p>
       </header>
 
-      {route.disclaimer ? (
+      {route.weatherNote ? (
+        <section className="print-block">
+          <h2 className="print-block-title">{route.weatherNote.title ?? 'Weather at a glance'}</h2>
+          <p className="print-prose">{route.weatherNote.body}</p>
+          {route.weatherNote.supporting ? (
+            <p className="print-prose">{route.weatherNote.supporting}</p>
+          ) : null}
+          {route.weatherNote.disclaimerLabel ? (
+            <p className="print-small">{route.weatherNote.disclaimerLabel}</p>
+          ) : null}
+        </section>
+      ) : null}
+
+      {route.qualityMeter ? (
+        <section className="print-block print-qhm">
+          <h2 className="print-block-title">Quality Hill Day Meter</h2>
+          <p className="print-prose print-qhm-scoreline">
+            <strong>{route.qualityMeter.score}%</strong> — {route.qualityMeter.headline}
+          </p>
+          <p className="print-prose">{route.qualityMeter.verdict}</p>
+          <p className="print-small">
+            Scale: {route.qualityMeter.lowLabel} → {route.qualityMeter.highLabel}
+          </p>
+          {route.qualityMeter.factors.length > 0 ? (
+            <>
+              <h3 className="print-subhead">Factors</h3>
+              <ul className="print-ul">
+                {route.qualityMeter.factors.map((f, i) => (
+                  <li key={i}>
+                    <strong>{f.label}</strong> ({f.impact}): {f.note}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {route.qualityMeter.subscores?.length ? (
+            <>
+              <h3 className="print-subhead">Sub-scores</h3>
+              <ul className="print-ul">
+                {route.qualityMeter.subscores.map((s, i) => (
+                  <li key={i}>
+                    <strong>{s.label}:</strong> {s.score}% — {s.note}
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+        </section>
+      ) : null}
+
+      {route.disclaimerSection ? (
         <section className="print-block print-disclaimer">
-          <h2 className="print-block-title">Disclaimer</h2>
-          <p className="print-prose">{route.disclaimer}</p>
+          <h2 className="print-block-title">{route.disclaimerSection.title ?? 'Disclaimer'}</h2>
+          <p className="print-prose">{route.disclaimerSection.body}</p>
+        </section>
+      ) : null}
+
+      {route.whyThisRoute ? (
+        <section className="print-block">
+          <h2 className="print-block-title">{route.whyThisRoute.title ?? 'Why this route?'}</h2>
+          <p className="print-prose">{route.whyThisRoute.body}</p>
+          {route.whyThisRoute.callouts?.length ? (
+            <ul className="print-ul">
+              {route.whyThisRoute.callouts.map((c, i) => (
+                <li key={i}>{c}</li>
+              ))}
+            </ul>
+          ) : null}
+          {route.whyThisRoute.supporting ? (
+            <p className="print-prose">{route.whyThisRoute.supporting}</p>
+          ) : null}
+        </section>
+      ) : null}
+
+      {recBlock ? (
+        <section className="print-block">
+          <h2 className="print-block-title">{recBlock.title}</h2>
+          <ul className="print-ul">
+            {recBlock.lines.map((l, i) => (
+              <li key={i}>{l}</li>
+            ))}
+          </ul>
+          {recBlock.supporting ? <p className="print-prose">{recBlock.supporting}</p> : null}
         </section>
       ) : null}
 
@@ -56,9 +154,8 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
         <section className="print-block">
           <h2 className="print-block-title">Map</h2>
           <p className="print-prose">
-            On the website, the green line is a hand-drawn suggested trace only (not surveyed). If
-            you add a GPX file later, it can appear as an optional dashed overlay for comparison —
-            it is not the primary route source.
+            On the website, the green line is a hand-drawn suggested trace only (not surveyed). GPX,
+            if added, is an optional dashed overlay for comparison — not the primary route source.
           </p>
         </section>
       ) : null}
@@ -66,16 +163,38 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
       {(route.routeOptions ?? []).map((opt) => (
         <section key={opt.id} className="print-block">
           <h2 className="print-block-title">{opt.name}</h2>
-          <p className="print-prose">
-            <strong>Why:</strong> {opt.reason}
-          </p>
-          <h3 className="print-subhead">Suggested line</h3>
-          <ol className="print-ol">
-            {opt.suggestedLine.map((step, i) => (
-              <li key={i}>{step}</li>
-            ))}
-          </ol>
-          <p className="print-prose">{opt.explanation}</p>
+          {opt.tag ? <p className="print-tag">{opt.tag}</p> : null}
+          {opt.reason ? <p className="print-prose">{opt.reason}</p> : null}
+          {opt.lineDescription ? (
+            <>
+              <h3 className="print-subhead">Suggested line</h3>
+              <p className="print-prose">{opt.lineDescription}</p>
+            </>
+          ) : opt.suggestedLine?.length ? (
+            <>
+              <h3 className="print-subhead">Suggested line</h3>
+              <ol className="print-ol">
+                {opt.suggestedLine.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ol>
+            </>
+          ) : null}
+          {opt.whyPick ? (
+            <>
+              <h3 className="print-subhead">Why pick this one</h3>
+              <p className="print-prose">{opt.whyPick}</p>
+            </>
+          ) : null}
+          {opt.tradeoff ? (
+            <>
+              <h3 className="print-subhead">Tradeoff</h3>
+              <p className="print-prose">{opt.tradeoff}</p>
+            </>
+          ) : null}
+          {opt.explanation && !opt.whyPick ? (
+            <p className="print-prose">{opt.explanation}</p>
+          ) : null}
           {opt.waypointFile && (optionWaypoints[opt.id]?.length ?? 0) > 0 ? (
             <>
               <h3 className="print-subhead">Waypoints ({opt.waypointFile})</h3>
@@ -85,20 +204,42 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
         </section>
       ))}
 
-      {(route.recommendation ?? []).length > 0 ? (
+      {route.parkingNote?.trim() || parkerDest ? (
         <section className="print-block">
-          <h2 className="print-block-title">Verdict</h2>
-          <ul className="print-ul">
-            {(route.recommendation ?? []).map((line, i) => (
-              <li key={i}>{line}</li>
-            ))}
-          </ul>
+          <h2 className="print-block-title">The parker &amp; start</h2>
+          {route.parkingNote?.trim() ? (
+            <p className="print-prose">{route.parkingNote}</p>
+          ) : null}
+          {parkerGrid ? (
+            <p className="print-prose print-parker-grid">
+              <strong>Parker:</strong> {parkerGrid}
+            </p>
+          ) : null}
+          {parkerMapsUrl ? (
+            <p className="print-prose print-small">
+              Drive to the parker (Google Maps): {parkerMapsUrl}
+            </p>
+          ) : null}
         </section>
       ) : null}
 
+      <section className="print-block">
+        <h2 className="print-block-title">Stats</h2>
+        <ul className="print-stats">
+          {route.distanceKm != null ? <li>Distance: {route.distanceKm} km</li> : null}
+          {route.ascentM != null ? <li>Ascent: {route.ascentM} m</li> : null}
+          {route.estimatedHours != null ? (
+            <li>Time (estimate): ~{route.estimatedHours} h</li>
+          ) : null}
+          {route.startGridRef ? <li>Parker: {route.startGridRef}</li> : null}
+          {route.finishGridRef ? <li>Finish: {route.finishGridRef}</li> : null}
+        </ul>
+      </section>
+
       {(route.anchorRefs ?? []).length > 0 ? (
         <section className="print-block">
-          <h2 className="print-block-title">Anchor refs</h2>
+          <h2 className="print-block-title">{route.anchorRefsTitle ?? 'Anchor refs'}</h2>
+          {route.anchorRefsIntro ? <p className="print-prose">{route.anchorRefsIntro}</p> : null}
           <table className="print-table">
             <thead>
               <tr>
@@ -117,20 +258,6 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
           </table>
         </section>
       ) : null}
-
-      <section className="print-block">
-        <h2 className="print-block-title">Stats</h2>
-        <ul className="print-stats">
-          {route.distanceKm != null ? <li>Distance: {route.distanceKm} km</li> : null}
-          {route.ascentM != null ? <li>Ascent: {route.ascentM} m</li> : null}
-          {route.estimatedHours != null ? (
-            <li>Time (estimate): ~{route.estimatedHours} h</li>
-          ) : null}
-          {route.startGridRef ? <li>Start: {route.startGridRef}</li> : null}
-          {route.finishGridRef ? <li>Finish: {route.finishGridRef}</li> : null}
-          {route.parkingNote ? <li>Parking: {route.parkingNote}</li> : null}
-        </ul>
-      </section>
 
       {showLegacyTops ? (
         <section className="print-block">
@@ -173,12 +300,26 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
 
       {gridText ? (
         <section className="print-block">
-          <h2 className="print-block-title">Grid refs (copy block)</h2>
+          <h2 className="print-block-title">Grid refs (full list)</h2>
           <pre className="print-pre">{gridText}</pre>
         </section>
       ) : null}
 
-      {(route.goodStopSpots ?? []).length > 0 ? (
+      {route.goodStopsDetail?.spots.length ? (
+        <section className="print-block">
+          <h2 className="print-block-title">Good stop spots</h2>
+          {route.goodStopsDetail.intro ? (
+            <p className="print-prose">{route.goodStopsDetail.intro}</p>
+          ) : null}
+          <ul className="print-ul">
+            {route.goodStopsDetail.spots.map((s, i) => (
+              <li key={i}>
+                <strong>{s.title}:</strong> {s.description}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : (route.goodStopSpots ?? []).length > 0 ? (
         <section className="print-block">
           <h2 className="print-block-title">Good stop spots</h2>
           <ul className="print-ul">
@@ -189,17 +330,75 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
         </section>
       ) : null}
 
-      {route.terrainVibe ? (
+      {route.whatDayFeelsLike ? (
+        <section className="print-block">
+          <h2 className="print-block-title">
+            {route.whatDayFeelsLike.title ?? 'What this day probably feels like'}
+          </h2>
+          <p className="print-prose">{route.whatDayFeelsLike.body}</p>
+          {route.whatDayFeelsLike.supporting ? (
+            <p className="print-prose">{route.whatDayFeelsLike.supporting}</p>
+          ) : null}
+          {route.whatDayFeelsLike.summaryLines?.length ? (
+            <ul className="print-ul">
+              {route.whatDayFeelsLike.summaryLines.map((l, i) => (
+                <li key={i}>{l}</li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+      ) : null}
+
+      {route.terrainDetail ? (
+        <section className="print-block">
+          <h2 className="print-block-title">{route.terrainDetail.title ?? 'Terrain & vibe'}</h2>
+          <p className="print-prose">{route.terrainDetail.body}</p>
+          {route.terrainDetail.supporting ? (
+            <p className="print-prose">{route.terrainDetail.supporting}</p>
+          ) : null}
+        </section>
+      ) : route.terrainVibe ? (
         <section className="print-block">
           <h2 className="print-block-title">Terrain &amp; vibe</h2>
           <p className="print-prose">{route.terrainVibe}</p>
         </section>
       ) : null}
 
-      {route.wildlifeTexture ? (
+      {route.wildlifeIntro || (route.wildlifeCards?.length ?? 0) > 0 ? (
+        <section className="print-block">
+          <h2 className="print-block-title">Wildlife &amp; hill texture</h2>
+          {route.wildlifeIntro ? <p className="print-prose">{route.wildlifeIntro}</p> : null}
+          <ul className="print-ul">
+            {(route.wildlifeCards ?? []).map((w, i) => (
+              <li key={i}>
+                <strong>{w.title}:</strong> {w.body} <em>Why it matters:</em> {w.whyItMatters}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : route.wildlifeTexture ? (
         <section className="print-block">
           <h2 className="print-block-title">Wildlife &amp; hill texture</h2>
           <p className="print-prose">{route.wildlifeTexture}</p>
+        </section>
+      ) : null}
+
+      {(route.lookoutGallery ?? []).length > 0 ? (
+        <section className="print-block">
+          <h2 className="print-block-title">What to look out for</h2>
+          {route.lookoutGalleryIntro ? (
+            <p className="print-prose">{route.lookoutGalleryIntro}</p>
+          ) : null}
+          <ul className="print-ul">
+            {(route.lookoutGallery ?? []).map((item) => (
+              <li key={item.id}>
+                <strong>{item.title}:</strong> {item.caption}{' '}
+                <span className="print-small">
+                  ({item.attributionText}; {item.licenseName}; {item.sourceName})
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 
@@ -237,7 +436,10 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
       ) : null}
 
       <footer className="print-footer">
-        <p>Printed from Hill routes — suggested route only; check conditions on the day.</p>
+        <p>
+          {route.planningFooterNote ??
+            'Printed from Hill routes — suggested route only; check conditions on the day.'}
+        </p>
       </footer>
     </article>
   )

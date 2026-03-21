@@ -8,3 +8,10 @@ export function publicUrl(path: string): string {
 export function routeFolderUrl(slug: string): string {
   return publicUrl(`routes/${slug}/`)
 }
+
+/** Local file under the route folder or absolute http(s) URL. */
+export function routeMediaUrl(slug: string, path: string): string {
+  const p = path.trim()
+  if (p.startsWith('http://') || p.startsWith('https://')) return p
+  return `${routeFolderUrl(slug)}${p.replace(/^\//, '')}`
+}

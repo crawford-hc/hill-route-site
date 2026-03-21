@@ -15,7 +15,7 @@ Each route is a **suggested idea**, not a surveyed track.
    - **`suggestedPolyline[]`** — ordered `{ "lat", "lng" }` points for the map (primary line)
    - optional `waypointFile` — JSON list for “GPX-ready” copy per option
 2. **`anchorRefs[]`** — label + `gridRef`; add **`lat` / `lng`** to show gold anchor markers on the map.
-3. **`waypoints.json`** (optional) — extra markers + table rows (summits, parking, etc.).
+3. **`waypoints.json`** (optional) — extra markers + table rows (summits, the parker, etc.).
 4. **GPX** — **opt-in only.** Set `"gpxFile": "something.gpx"` when you have a file. There is **no** default `route.gpx`. On the map, GPX is a **dashed purple overlay** (checkbox) for comparison, not the main line.
 
 ## Folder layout
@@ -31,6 +31,10 @@ public/routes/<slug>/
 ```
 
 Types: `src/types/route.ts`.
+
+### Rich planning page (optional)
+
+Routes can use extra fields for a **planning-style** layout (see Corryhabbie): `listingBlurb`, `suggestedRouteBadge`, `weatherNote`, `disclaimerSection`, `whyThisRoute`, `recommendationBlock`, `goodStopsDetail`, `whatDayFeelsLike`, `terrainDetail`, `wildlifeIntro`, `wildlifeCards`, `lookoutGallery` (with attribution per item), `anchorRefsTitle` / `anchorRefsIntro`, `planningFooterNote`, and richer `routeOptions` (`tag`, `lineDescription`, `whyPick`, `tradeoff`). Image entries use `AttributedImage`: `title`, optional `imageUrl`, `caption`, `sourceName`, `sourceUrl`, `attributionText`, `licenseName`, optional `licenseUrl`. Use **only** open-licensed or local images; fill attribution when you add files.
 
 ## Add a route
 
