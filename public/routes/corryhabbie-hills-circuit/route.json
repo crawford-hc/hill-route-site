@@ -85,6 +85,8 @@
     ]
   },
   "parkingNote": "Start at the parker around NJ 27613 30622 near Ellivreid. Park considerately — don’t block gates, farm access, or anything that might need a tractor later.",
+  "parkerWaypointId": "parking-start",
+  "allowInferredParkerFromPolylineOrMapCenter": false,
   "routeType": "Moorland circuit",
   "distanceKm": 24,
   "ascentM": 1100,

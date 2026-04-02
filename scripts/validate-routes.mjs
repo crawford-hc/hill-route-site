@@ -155,6 +155,83 @@ function validateRouteCoordinates(slug, data) {
 
 /**
  * @param {string} slug
+ * @param {string} folder
+ * @param {Record<string, unknown>} data
+ */
+function validateParkerBinding(slug, folder, data) {
+  const base = `Slug "${slug}"`;
+  const inferFlag = data.allowInferredParkerFromPolylineOrMapCenter;
+  const strictNoInfer = inferFlag === false;
+
+  const rawId = data.parkerWaypointId;
+  let boundId = "";
+  if (rawId !== undefined && rawId !== null) {
+    if (typeof rawId !== "string" || !rawId.trim()) {
+      addError(`${base}: parkerWaypointId must be a non-empty string when set`);
+      return;
+    }
+    boundId = rawId.trim();
+  }
+
+  if (strictNoInfer && !boundId) {
+    addError(
+      `${base}: allowInferredParkerFromPolylineOrMapCenter is false but parkerWaypointId is missing — explicit parking binding is required`,
+    );
+  }
+
+  if (!boundId) return;
+
+  const wpFile =
+    typeof data.waypointFile === "string" && data.waypointFile.trim()
+      ? data.waypointFile.trim()
+      : "waypoints.json";
+
+  const wpPath = path.join(folder, wpFile);
+  let rawWp;
+  try {
+    rawWp = fs.readFileSync(wpPath, "utf8");
+  } catch {
+    addError(
+      `${base}: parkerWaypointId set but cannot read waypoint file ${path.relative(root, wpPath)}`,
+    );
+    return;
+  }
+
+  let wps;
+  try {
+    wps = JSON.parse(rawWp);
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e);
+    addError(
+      `${base} ${path.relative(root, wpPath)}: JSON parse error — ${msg}`,
+    );
+    return;
+  }
+
+  if (!Array.isArray(wps)) {
+    addError(`${base}: ${path.relative(root, wpPath)}: expected a JSON array`);
+    return;
+  }
+
+  const wp = wps.find(
+    (w) => w && typeof w === "object" && !Array.isArray(w) && w.id === boundId,
+  );
+  if (!wp) {
+    addError(
+      `${base}: parkerWaypointId "${boundId}" not found in ${path.relative(root, wpPath)}`,
+    );
+    return;
+  }
+
+  if (wp.type !== "parking") {
+    addError(
+      `${base}: parkerWaypointId "${boundId}" must have type "parking" (got ${JSON.stringify(wp.type)})`,
+    );
+  }
+}
+
+/**
+ * @param {string} slug
  */
 function isSafeSlug(slug) {
   if (!slug || typeof slug !== "string") return false;
@@ -251,7 +328,9 @@ function main() {
       continue;
     }
 
-    validateRouteCoordinates(slug, /** @type {Record<string, unknown>} */ (data));
+    const rec = /** @type {Record<string, unknown>} */ (data);
+    validateRouteCoordinates(slug, rec);
+    validateParkerBinding(slug, folder, rec);
   }
 
   if (errors.length > 0) {

@@ -8,12 +8,36 @@ export interface ParkerDestination {
 }
 
 /**
- * Best WGS84 point for “the parker” — parking waypoint, start anchor, first polyline point, or map centre.
+ * Best WGS84 point for “the parker” — explicit parking waypoint id, first parking waypoint, start anchor,
+ * and optionally first polyline point or map centre (legacy fallbacks).
  */
 export function getParkerDestination(
   route: RouteJson,
   waypoints: WaypointJson[],
 ): ParkerDestination | null {
+  const allowWeakFallbacks =
+    route.allowInferredParkerFromPolylineOrMapCenter !== false
+
+  const boundId = route.parkerWaypointId?.trim()
+  if (boundId) {
+    const wp = waypoints.find((w) => w.id === boundId)
+    if (
+      wp &&
+      wp.type === 'parking' &&
+      wp.lat != null &&
+      wp.lng != null &&
+      Number.isFinite(wp.lat) &&
+      Number.isFinite(wp.lng)
+    ) {
+      return {
+        lat: wp.lat,
+        lng: wp.lng,
+        gridRef: wp.gridRef?.trim() || undefined,
+      }
+    }
+    return null
+  }
+
   const parkingWp = waypoints.find((w) => w.type === 'parking' && w.lat != null && w.lng != null)
   if (parkingWp && parkingWp.lat != null && parkingWp.lng != null) {
     return {
@@ -32,6 +56,10 @@ export function getParkerDestination(
       lng: startAnchor.lng,
       gridRef: startAnchor.gridRef?.trim() || undefined,
     }
+  }
+
+  if (!allowWeakFallbacks) {
+    return null
   }
 
   const poly0 = route.routeOptions?.[0]?.suggestedPolyline?.[0]

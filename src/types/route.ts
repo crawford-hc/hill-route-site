@@ -149,6 +149,10 @@ export interface RouteJson {
   /** Titled disclaimer block (rich planning pages) */
   disclaimerSection?: TextBlock
   parkingNote?: string
+  /** Main waypoint file must contain this id with type "parking"; overrides other parker resolution. */
+  parkerWaypointId?: string
+  /** If false, skip polyline[0] and mapCenter. Omitted keeps legacy fallbacks. */
+  allowInferredParkerFromPolylineOrMapCenter?: boolean
   routeType?: string
   distanceKm?: number
   ascentM?: number
