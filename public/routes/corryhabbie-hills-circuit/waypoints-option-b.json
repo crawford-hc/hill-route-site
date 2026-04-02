@@ -2,9 +2,9 @@
   {
     "id": "b-1",
     "name": "Start / the parker",
-    "lat": 57.41325,
-    "lng": -3.31395,
-    "gridRef": "NJ 27613 30622",
+    "lat": 57.37598,
+    "lng": -3.21716,
+    "gridRef": "NJ 26906 32380",
     "type": "parking",
     "order": 1
   },
@@ -60,9 +60,9 @@
   {
     "id": "b-8",
     "name": "Finish / the parker",
-    "lat": 57.41325,
-    "lng": -3.31395,
-    "gridRef": "NJ 27613 30622",
+    "lat": 57.37598,
+    "lng": -3.21716,
+    "gridRef": "NJ 26906 32380",
     "type": "parking",
     "order": 8
   }
