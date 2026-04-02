@@ -104,7 +104,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [gpxOverlay, setGpxOverlay] = useState(false)
   const [gpxNote, setGpxNote] = useState<string | null>(null)
-  const gpxUrl = routeGpxUrl(route.slug, route)
+  const gpxUrl = routeGpxUrl(route)
 
   const opt = selectedOption(route.routeOptions, selectedOptionId)
   const polyline: LatLng[] = opt?.suggestedPolyline ?? NO_LINE
@@ -267,11 +267,11 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           </p>
         ) : hasOptions ? (
           <p className="map-note map-note-soft">
-            Verified suggested line not added yet. Anchors and waypoints still show.
+            Suggested line not in the data yet — anchors and waypoints still show if we’ve got them.
           </p>
         ) : (
           <p className="map-note map-note-soft">
-            No suggested line in data — showing anchors / waypoints / centre only.
+            No drawn line in the data — you’re looking at anchors, any waypoints, and where the map’s centred.
           </p>
         )}
 

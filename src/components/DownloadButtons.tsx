@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function DownloadButtons({ route }: Props) {
-  const gpx = routeGpxUrl(route.slug, route)
+  const gpx = routeGpxUrl(route)
 
   return (
     <div className="action-bar">
@@ -20,7 +20,14 @@ export function DownloadButtons({ route }: Props) {
           GPX not available
         </span>
       )}
-      <Link className="btn btn-secondary" to={`/print/${route.slug}`}>
+      <Link
+        className="btn btn-secondary"
+        to={
+          route.parentAreaSlug
+            ? `/print/${route.parentAreaSlug}/${route.slug}`
+            : `/print/${route.slug}`
+        }
+      >
         Printable card
       </Link>
     </div>

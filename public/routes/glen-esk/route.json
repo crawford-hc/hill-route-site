@@ -3,18 +3,18 @@
   "title": "Glen Esk",
   "area": "Angus",
   "country": "Scotland",
-  "listingBlurb": "Three hill-day flavours in one glen — ridge loop, long plateau day, or a flexible explorer’s link-up.",
-  "summary": "Glen Esk is less about one drawn line and more about picking the day that matches legs, weather, and headspace. Use the cards below to compare three solid hill-day shapes — none of them is a fixed route on a map here.",
+  "listingBlurb": "Three different days in one glen — ridge pair, long plateau trundle, or make-it-up-as-you-go linking.",
+  "summary": "Pick the day that fits legs, weather, and patience. Cards below compare parker, rough shape, and vibe — none of this is a traced route on the site.",
   "suggestedRouteBadge": "Area guide",
   "gpxFile": null,
   "dayCards": [
     {
       "id": "mayar-driesh",
       "name": "Mayar + Driesh loop",
-      "subtitle": "The safe banger",
+      "subtitle": "The easy-read pair",
       "parker": "Glenshee ski centre",
-      "description": "wide ridge, steady climb, winter-friendly",
-      "vibe": "Big, clean, no drama",
+      "description": "broad ridge, steady grunt up, behaves in winter",
+      "vibe": "Big open ground, usually obvious",
       "goodFor": ["bad weather", "late start", "easy nav"]
     },
     {

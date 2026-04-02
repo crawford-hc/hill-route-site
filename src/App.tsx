@@ -10,8 +10,10 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="routes/:areaSlug/:dayId" element={<RoutePage />} />
           <Route path="routes/:slug" element={<RoutePage />} />
         </Route>
+        <Route path="print/:areaSlug/:dayId" element={<PrintPage />} />
         <Route path="print/:slug" element={<PrintPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

@@ -1,14 +1,14 @@
-import type { AttributedImage } from '../../types/route'
+import type { AttributedImage, RouteJson } from '../../types/route'
 import { routeMediaUrl } from '../../lib/publicUrl'
 
 interface Props {
-  slug: string
+  route: RouteJson
   title?: string
   intro?: string
   items: AttributedImage[]
 }
 
-export function LookoutGallery({ slug, title, intro, items }: Props) {
+export function LookoutGallery({ route, title, intro, items }: Props) {
   if (!items.length) return null
 
   const h = 'lookout-gallery-heading'
@@ -24,7 +24,7 @@ export function LookoutGallery({ slug, title, intro, items }: Props) {
             <div className="planning-figure-frame">
               {item.imageUrl ? (
                 <img
-                  src={routeMediaUrl(slug, item.imageUrl)}
+                  src={routeMediaUrl(route, item.imageUrl)}
                   alt={item.title}
                   className="planning-figure-img"
                   loading="lazy"

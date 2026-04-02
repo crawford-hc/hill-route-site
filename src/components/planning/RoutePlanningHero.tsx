@@ -19,7 +19,7 @@ export function RoutePlanningHero({
   const badge = (route.suggestedRouteBadge ?? 'Suggested route only').trim()
   const heroImg =
     route.heroImage != null && route.heroImage !== ''
-      ? routeMediaUrl(route.slug, route.heroImage)
+      ? routeMediaUrl(route, route.heroImage)
       : null
 
   return (

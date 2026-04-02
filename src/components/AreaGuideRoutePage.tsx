@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DownloadButtons } from './DownloadButtons'
 import { RoutePlanningHero } from './planning/RoutePlanningHero'
 import type { RouteJson } from '../types/route'
@@ -9,6 +10,13 @@ const GLEN_ESK_DAY_PICKS = [
   { label: 'Want a proper full day?', cardId: 'mount-keen' },
   { label: 'Happy to figure it out on the hill?', cardId: 'explorer' },
 ] as const
+
+/** Day IDs that have a `routes/glen-esk/days/{id}/` detail page (expand as you add JSON). */
+const GLEN_ESK_DAY_DETAIL_IDS = new Set<string>(['mayar-driesh'])
+
+function glenEskDayDetailHref(cardId: string): string | null {
+  return GLEN_ESK_DAY_DETAIL_IDS.has(cardId) ? `/routes/glen-esk/${cardId}` : null
+}
 
 interface Props {
   route: RouteJson
@@ -31,7 +39,7 @@ export function AreaGuideRoutePage({ route }: Props) {
       />
 
       <p className="area-guide-label" role="note">
-        This is an area guide, not a fixed route
+        Area guide — not one fixed line on a map
       </p>
 
       <DownloadButtons route={route} />
@@ -41,8 +49,8 @@ export function AreaGuideRoutePage({ route }: Props) {
           Hill day options
         </h2>
         <p className="area-guide-section-lead">
-          Tap a card to highlight it — compare parkers, vibe, and when each day
-          tends to make sense.
+          Tap a card to highlight it. Same idea as holding three day plans up
+          beside each other — parker, vibe, when it’s a decent shout.
         </p>
         {route.slug === 'glen-esk' ? (
           <div
@@ -50,7 +58,7 @@ export function AreaGuideRoutePage({ route }: Props) {
             aria-labelledby="area-guide-pick-heading"
           >
             <h3 id="area-guide-pick-heading" className="area-guide-pick-title">
-              Pick your day
+              Quick picks
             </h3>
             <div
               className="area-guide-pick-buttons"
@@ -61,6 +69,18 @@ export function AreaGuideRoutePage({ route }: Props) {
                 const exists = cards.some((c) => c.id === cardId)
                 if (!exists) return null
                 const isOn = selectedId === cardId
+                const detailHref = glenEskDayDetailHref(cardId)
+                if (detailHref) {
+                  return (
+                    <Link
+                      key={cardId}
+                      to={detailHref}
+                      className={`area-guide-pick-btn ${isOn ? 'is-selected' : ''}`}
+                    >
+                      {label}
+                    </Link>
+                  )
+                }
                 return (
                   <button
                     key={cardId}
@@ -79,14 +99,11 @@ export function AreaGuideRoutePage({ route }: Props) {
         <div className="area-guide-cards">
           {cards.map((card) => {
             const isOn = selectedId === card.id
-            return (
-              <button
-                key={card.id}
-                type="button"
-                className={`area-guide-card ${isOn ? 'is-selected' : ''}`}
-                onClick={() => setSelectedId(card.id)}
-                aria-pressed={isOn}
-              >
+            const detailHref =
+              route.slug === 'glen-esk' ? glenEskDayDetailHref(card.id) : null
+            const className = `area-guide-card ${isOn ? 'is-selected' : ''}`
+            const body = (
+              <>
                 <span className="area-guide-card-name">{card.name}</span>
                 <span className="area-guide-card-subtitle">{card.subtitle}</span>
                 <dl className="area-guide-card-dl">
@@ -110,6 +127,24 @@ export function AreaGuideRoutePage({ route }: Props) {
                     ))}
                   </ul>
                 ) : null}
+              </>
+            )
+            if (detailHref) {
+              return (
+                <Link key={card.id} to={detailHref} className={className}>
+                  {body}
+                </Link>
+              )
+            }
+            return (
+              <button
+                key={card.id}
+                type="button"
+                className={className}
+                onClick={() => setSelectedId(card.id)}
+                aria-pressed={isOn}
+              >
+                {body}
               </button>
             )
           })}

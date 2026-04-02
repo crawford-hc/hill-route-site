@@ -241,6 +241,89 @@ function isSafeSlug(slug) {
   return true;
 }
 
+/**
+ * `public/routes/{area}/days/{dayId}/route.json` — not listed in index.json.
+ * @returns {number} number of day route.json files validated
+ */
+function validateAreaDayRoutes() {
+  let areaEntries;
+  try {
+    areaEntries = fs.readdirSync(routesDir, { withFileTypes: true });
+  } catch {
+    return 0;
+  }
+
+  let count = 0;
+  for (const ent of areaEntries) {
+    if (!ent.isDirectory()) continue;
+    const areaSlug = ent.name;
+    if (!isSafeSlug(areaSlug)) continue;
+
+    const daysDir = path.join(routesDir, areaSlug, "days");
+    let dayEntries;
+    try {
+      dayEntries = fs.readdirSync(daysDir, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+
+    for (const dayEnt of dayEntries) {
+      if (!dayEnt.isDirectory()) continue;
+      const dayId = dayEnt.name;
+      if (!isSafeSlug(dayId)) {
+        addError(
+          `Area "${areaSlug}" days: invalid folder name ${JSON.stringify(dayId)}`,
+        );
+        continue;
+      }
+
+      const folder = path.join(daysDir, dayId);
+      const routePath = path.join(folder, "route.json");
+      const label = `${areaSlug}/days/${dayId}`;
+
+      let rawRoute;
+      try {
+        rawRoute = fs.readFileSync(routePath, "utf8");
+      } catch {
+        addError(`"${label}": missing ${path.relative(root, routePath)}`);
+        continue;
+      }
+
+      let data;
+      try {
+        data = JSON.parse(rawRoute);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        addError(
+          `"${label}" ${path.relative(root, routePath)}: JSON parse error — ${msg}`,
+        );
+        continue;
+      }
+
+      if (!data || typeof data !== "object" || Array.isArray(data)) {
+        addError(
+          `"${label}" ${path.relative(root, routePath)}: root must be a JSON object`,
+        );
+        continue;
+      }
+
+      const rec = /** @type {Record<string, unknown>} */ (data);
+      validateRouteCoordinates(label, rec);
+      validateParkerBinding(label, folder, rec);
+
+      const fileSlug = rec.slug;
+      if (typeof fileSlug !== "string" || fileSlug !== dayId) {
+        addError(
+          `"${label}": route.json "slug" must equal folder name "${dayId}" (got ${JSON.stringify(fileSlug)})`,
+        );
+      }
+
+      count += 1;
+    }
+  }
+  return count;
+}
+
 function main() {
   console.log("Validating routes (index, folders, route.json, coordinates)…");
 
@@ -333,6 +416,8 @@ function main() {
     validateParkerBinding(slug, folder, rec);
   }
 
+  const dayRouteCount = validateAreaDayRoutes();
+
   if (errors.length > 0) {
     console.error("FAIL: route validation found issues:\n");
     for (const line of errors) {
@@ -342,7 +427,9 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`PASS: ${routes.length} route(s) validated.`);
+  console.log(
+    `PASS: ${routes.length} route(s) and ${dayRouteCount} area day route(s) validated.`,
+  );
 }
 
 main();

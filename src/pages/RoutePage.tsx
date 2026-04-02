@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { DownloadButtons } from '../components/DownloadButtons'
 import { GridRefsBlock } from '../components/GridRefsBlock'
@@ -22,7 +22,7 @@ import { TerrainWildlifePlanning } from '../components/planning/TerrainWildlifeP
 import { TitledProseSection } from '../components/planning/TitledProseSection'
 import { WhyThisRouteSection } from '../components/planning/WhyThisRouteSection'
 import { AreaGuideRoutePage } from '../components/AreaGuideRoutePage'
-import { useRouteBundle } from '../hooks/useRouteBundle'
+import { useRouteBundle, type RouteBundleKey } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
 import { recommendationFromRoute } from '../lib/recommendationFromRoute'
 import type { RouteJson, WaypointJson } from '../types/route'
@@ -42,7 +42,7 @@ function RoutePageLoaded({
 
   const photos =
     route.photos?.map((f) => ({
-      src: routePhotoUrl(route.slug, route, f),
+      src: routePhotoUrl(route, f),
       alt: f.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '),
     })) ?? []
 
@@ -140,7 +140,7 @@ function RoutePageLoaded({
       />
 
       <LookoutGallery
-        slug={route.slug}
+        route={route}
         items={route.lookoutGallery ?? []}
         intro={
           route.lookoutGalleryIntro ??
@@ -172,10 +172,20 @@ function RoutePageLoaded({
 }
 
 export function RoutePage() {
-  const { slug } = useParams<{ slug: string }>()
-  const { route, waypoints, optionWaypoints, error } = useRouteBundle(slug)
+  const { slug, areaSlug, dayId } = useParams<{
+    slug?: string
+    areaSlug?: string
+    dayId?: string
+  }>()
+  const bundleKey = useMemo((): RouteBundleKey | null => {
+    if (areaSlug && dayId) return { kind: 'areaDay', areaSlug, dayId }
+    if (slug) return { kind: 'route', slug }
+    return null
+  }, [areaSlug, dayId, slug])
 
-  if (!slug) {
+  const { route, waypoints, optionWaypoints, error } = useRouteBundle(bundleKey)
+
+  if (!bundleKey) {
     return <p className="status status-error">Missing route.</p>
   }
 
@@ -188,11 +198,15 @@ export function RoutePage() {
   }
 
   if (route === null) {
+    const dataPath =
+      bundleKey.kind === 'areaDay'
+        ? `routes/${bundleKey.areaSlug}/days/${bundleKey.dayId}/route.json`
+        : `routes/${bundleKey.slug}/route.json`
     return (
       <div className="not-found">
         <h1 className="page-title">Route not found</h1>
         <p>
-          No data at <code className="inline-code">routes/{slug}/route.json</code>.
+          No data at <code className="inline-code">{dataPath}</code>.
         </p>
         <Link to="/" className="btn btn-secondary">
           Back home
@@ -202,12 +216,16 @@ export function RoutePage() {
   }
 
   const isAreaGuide = (route.dayCards?.length ?? 0) > 0
+  const pageKey =
+    bundleKey.kind === 'areaDay'
+      ? `${bundleKey.areaSlug}/${bundleKey.dayId}`
+      : bundleKey.slug
 
   return isAreaGuide ? (
-    <AreaGuideRoutePage key={slug} route={route} />
+    <AreaGuideRoutePage key={pageKey} route={route} />
   ) : (
     <RoutePageLoaded
-      key={slug}
+      key={pageKey}
       route={route}
       waypoints={waypoints}
       optionWaypoints={optionWaypoints}

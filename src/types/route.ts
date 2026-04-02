@@ -147,6 +147,8 @@ export interface RouteOption {
 
 export interface RouteJson {
   slug: string
+  /** When this file lives under `routes/{area}/days/{slug}/`, set for correct links and asset URLs. */
+  parentAreaSlug?: string
   title: string
   area?: string
   country?: string

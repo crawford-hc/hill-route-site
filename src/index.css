@@ -1289,6 +1289,13 @@ a:hover {
     var(--shadow);
 }
 
+a.area-guide-pick-btn {
+  text-decoration: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
 .area-guide-cards {
   display: grid;
   gap: 1rem;
@@ -1332,6 +1339,12 @@ a:hover {
   box-shadow:
     0 0 0 1px var(--accent),
     var(--shadow);
+}
+
+a.area-guide-card {
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
 
 .area-guide-card-name {

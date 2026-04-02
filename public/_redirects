@@ -1,3 +1,10 @@
 # Cloudflare Pages: SPA fallback — serve the app shell for client-side routes.
-# Static files (assets, /routes/*/route.json, etc.) are still matched first.
+# Static files (e.g. routes/**/route.json, assets) are matched first; these rules
+# only apply when no file exists for the URL.
+#
+# Covers:
+#   /routes/:slug, /routes/:areaSlug/:dayId
+#   /print/:slug, /print/:areaSlug/:dayId
+/routes/* /index.html 200
+/print/* /index.html 200
 /* /index.html 200

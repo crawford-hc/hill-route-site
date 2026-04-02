@@ -1,12 +1,23 @@
+import { useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { PrintRouteCard } from '../components/PrintRouteCard'
-import { useRouteBundle } from '../hooks/useRouteBundle'
+import { useRouteBundle, type RouteBundleKey } from '../hooks/useRouteBundle'
 
 export function PrintPage() {
-  const { slug } = useParams<{ slug: string }>()
-  const { route, waypoints, optionWaypoints, error } = useRouteBundle(slug)
+  const { slug, areaSlug, dayId } = useParams<{
+    slug?: string
+    areaSlug?: string
+    dayId?: string
+  }>()
+  const bundleKey = useMemo((): RouteBundleKey | null => {
+    if (areaSlug && dayId) return { kind: 'areaDay', areaSlug, dayId }
+    if (slug) return { kind: 'route', slug }
+    return null
+  }, [areaSlug, dayId, slug])
 
-  if (!slug) {
+  const { route, waypoints, optionWaypoints, error } = useRouteBundle(bundleKey)
+
+  if (!bundleKey) {
     return <p className="status status-error">Missing route.</p>
   }
 
@@ -32,7 +43,14 @@ export function PrintPage() {
   return (
     <div className="print-shell">
       <div className="print-toolbar no-print">
-        <Link to={`/routes/${slug}`} className="btn btn-secondary">
+        <Link
+          to={
+            route.parentAreaSlug
+              ? `/routes/${route.parentAreaSlug}/${route.slug}`
+              : `/routes/${slug ?? route.slug}`
+          }
+          className="btn btn-secondary"
+        >
           ← Route page
         </Link>
         <button type="button" className="btn btn-primary" onClick={() => window.print()}>

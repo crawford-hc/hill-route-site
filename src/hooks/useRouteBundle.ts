@@ -1,8 +1,17 @@
 import { useEffect, useState } from 'react'
-import { loadRoute, loadWaypoints } from '../lib/loadRoutes'
+import {
+  loadAreaDayRoute,
+  loadAreaDayWaypoints,
+  loadRoute,
+  loadWaypoints,
+} from '../lib/loadRoutes'
 import type { RouteJson, WaypointJson } from '../types/route'
 
-export function useRouteBundle(slug: string | undefined) {
+export type RouteBundleKey =
+  | { kind: 'route'; slug: string }
+  | { kind: 'areaDay'; areaSlug: string; dayId: string }
+
+export function useRouteBundle(key: RouteBundleKey | null) {
   const [route, setRoute] = useState<RouteJson | null | undefined>(undefined)
   const [waypoints, setWaypoints] = useState<WaypointJson[]>([])
   const [optionWaypoints, setOptionWaypoints] = useState<
@@ -11,11 +20,14 @@ export function useRouteBundle(slug: string | undefined) {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!slug) return
+    if (!key) return
     let cancelled = false
     ;(async () => {
       try {
-        const r = await loadRoute(slug)
+        const r =
+          key.kind === 'areaDay'
+            ? await loadAreaDayRoute(key.areaSlug, key.dayId)
+            : await loadRoute(key.slug)
         if (cancelled) return
         if (!r) {
           setRoute(null)
@@ -25,7 +37,10 @@ export function useRouteBundle(slug: string | undefined) {
         }
         setRoute(r)
         const wpFile = r.waypointFile ?? 'waypoints.json'
-        const wp = await loadWaypoints(slug, wpFile)
+        const wp =
+          key.kind === 'areaDay'
+            ? await loadAreaDayWaypoints(key.areaSlug, key.dayId, wpFile)
+            : await loadWaypoints(key.slug, wpFile)
         if (cancelled) return
         setWaypoints(wp)
 
@@ -33,7 +48,14 @@ export function useRouteBundle(slug: string | undefined) {
         const entries = await Promise.all(
           opts.map(async (opt) => {
             if (!opt.waypointFile) return [opt.id, []] as const
-            const w = await loadWaypoints(slug, opt.waypointFile)
+            const w =
+              key.kind === 'areaDay'
+                ? await loadAreaDayWaypoints(
+                    key.areaSlug,
+                    key.dayId,
+                    opt.waypointFile,
+                  )
+                : await loadWaypoints(key.slug, opt.waypointFile)
             return [opt.id, w] as const
           }),
         )
@@ -45,7 +67,7 @@ export function useRouteBundle(slug: string | undefined) {
     return () => {
       cancelled = true
     }
-  }, [slug])
+  }, [key])
 
   return { route, waypoints, optionWaypoints, error }
 }
