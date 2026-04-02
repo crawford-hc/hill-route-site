@@ -23,15 +23,8 @@ import { TitledProseSection } from '../components/planning/TitledProseSection'
 import { WhyThisRouteSection } from '../components/planning/WhyThisRouteSection'
 import { useRouteBundle } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
-import type { RecommendationBlock, RouteJson, WaypointJson } from '../types/route'
-
-function recommendationFromRoute(route: RouteJson): RecommendationBlock | null {
-  if (route.recommendationBlock) return route.recommendationBlock
-  if (route.recommendation?.length) {
-    return { title: 'Our honest take', lines: route.recommendation }
-  }
-  return null
-}
+import { recommendationFromRoute } from '../lib/recommendationFromRoute'
+import type { RouteJson, WaypointJson } from '../types/route'
 
 function RoutePageLoaded({
   route,

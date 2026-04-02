@@ -1,5 +1,6 @@
 import type { RouteJson, WaypointJson } from '../types/route'
 import { collectGridRefs, gridRefsPlainText, waypointsToCopyText } from '../lib/gridRefs'
+import { recommendationFromRoute } from '../lib/recommendationFromRoute'
 import { getParkerDestination, googleMapsDirectionsUrl } from '../lib/parkerDestination'
 
 interface Props {
@@ -43,11 +44,7 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
   const showLegacyTops =
     (route.orderedTops?.length ?? 0) > 0 && !(route.routeOptions?.length ?? 0)
 
-  const recBlock =
-    route.recommendationBlock ??
-    (route.recommendation?.length
-      ? { title: 'Our honest take', lines: route.recommendation }
-      : null)
+  const recBlock = recommendationFromRoute(route)
 
   return (
     <article className="print-card">
