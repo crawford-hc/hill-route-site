@@ -81,11 +81,26 @@ export function RouteMap({ route, waypoints, selectedOptionId }: Props) {
       zoomControl: true,
     })
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 19,
-    }).addTo(map)
+    const osKey = import.meta.env.VITE_OS_MAPS_API_KEY
+    if (osKey) {
+      L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${encodeURIComponent(osKey)}`,
+        {
+          attribution:
+            'Contains OS data &copy; Crown copyright and database right ' +
+            String(new Date().getFullYear()) +
+            '. <a href="https://www.ordnancesurvey.co.uk/">Terms</a>',
+          maxZoom: 20,
+          minZoom: 7,
+        },
+      ).addTo(map)
+    } else {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19,
+      }).addTo(map)
+    }
 
     const layers = L.layerGroup().addTo(map)
     const zoom = route.mapZoom ?? 12
