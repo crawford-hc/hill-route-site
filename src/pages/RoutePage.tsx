@@ -21,6 +21,7 @@ import { RoutePlanningHero } from '../components/planning/RoutePlanningHero'
 import { TerrainWildlifePlanning } from '../components/planning/TerrainWildlifePlanning'
 import { TitledProseSection } from '../components/planning/TitledProseSection'
 import { WhyThisRouteSection } from '../components/planning/WhyThisRouteSection'
+import { AreaGuideRoutePage } from '../components/AreaGuideRoutePage'
 import { useRouteBundle } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
 import { recommendationFromRoute } from '../lib/recommendationFromRoute'
@@ -200,7 +201,11 @@ export function RoutePage() {
     )
   }
 
-  return (
+  const isAreaGuide = (route.dayCards?.length ?? 0) > 0
+
+  return isAreaGuide ? (
+    <AreaGuideRoutePage key={slug} route={route} />
+  ) : (
     <RoutePageLoaded
       key={slug}
       route={route}

@@ -113,6 +113,9 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
     const el = containerRef.current
     if (!el) return
 
+    const mc = route.mapCenter
+    if (!mc) return
+
     const crs = osLeisure27700Crs()
     const map = L.map(el, {
       crs,
@@ -139,7 +142,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
 
     const layers = L.layerGroup().addTo(map)
     const zoom = Math.min(route.mapZoom ?? 12, LEISURE_27700_MAX_ZOOM)
-    map.setView([route.mapCenter.lat, route.mapCenter.lng], zoom)
+    map.setView([mc.lat, mc.lng], zoom)
 
     let cancelled = false
 
@@ -264,7 +267,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           </p>
         ) : hasOptions ? (
           <p className="map-note map-note-soft">
-            This option has no polyline in data yet — anchors and waypoints still show.
+            Verified suggested line not added yet. Anchors and waypoints still show.
           </p>
         ) : (
           <p className="map-note map-note-soft">

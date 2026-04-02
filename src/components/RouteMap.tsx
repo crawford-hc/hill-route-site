@@ -65,6 +65,13 @@ function selectedOption(
 }
 
 export function RouteMap(props: Props) {
+  if (!props.route.mapCenter) {
+    return (
+      <div className="planning-map planning-map--empty" role="status">
+        Map not available for this page.
+      </div>
+    )
+  }
   const osKey = import.meta.env.VITE_OS_MAPS_API_KEY
   if (osKey) {
     return <RouteMap27700 {...props} />
@@ -85,6 +92,9 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
     const el = containerRef.current
     if (!el) return
 
+    const mc = route.mapCenter
+    if (!mc) return
+
     const map = L.map(el, {
       scrollWheelZoom: true,
       zoomControl: true,
@@ -98,7 +108,7 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
 
     const layers = L.layerGroup().addTo(map)
     const zoom = route.mapZoom ?? 12
-    map.setView([route.mapCenter.lat, route.mapCenter.lng], zoom)
+    map.setView([mc.lat, mc.lng], zoom)
 
     let cancelled = false
 
@@ -230,7 +240,7 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
           </p>
         ) : hasOptions ? (
           <p className="map-note map-note-soft">
-            This option has no polyline in data yet — anchors and waypoints still show.
+            Verified suggested line not added yet. Anchors and waypoints still show.
           </p>
         ) : (
           <p className="map-note map-note-soft">

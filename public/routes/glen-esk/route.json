@@ -1,0 +1,39 @@
+{
+  "slug": "glen-esk",
+  "title": "Glen Esk",
+  "area": "Angus",
+  "country": "Scotland",
+  "listingBlurb": "Three hill-day flavours in one glen — ridge loop, long plateau day, or a flexible explorer’s link-up.",
+  "summary": "Glen Esk is less about one drawn line and more about picking the day that matches legs, weather, and headspace. Use the cards below to compare three solid hill-day shapes — none of them is a fixed route on a map here.",
+  "suggestedRouteBadge": "Area guide",
+  "gpxFile": null,
+  "dayCards": [
+    {
+      "id": "mayar-driesh",
+      "name": "Mayar + Driesh loop",
+      "subtitle": "The safe banger",
+      "parker": "Glenshee ski centre",
+      "description": "wide ridge, steady climb, winter-friendly",
+      "vibe": "Big, clean, no drama",
+      "goodFor": ["bad weather", "late start", "easy nav"]
+    },
+    {
+      "id": "mount-keen",
+      "name": "Mount Keen from Glen Esk",
+      "subtitle": "The proper day",
+      "parker": "Invermark / Glen Esk",
+      "description": "long approach, plateau summit, steady day",
+      "vibe": "Quiet, steady, meditative",
+      "goodFor": ["good weather", "long day", "headspace"]
+    },
+    {
+      "id": "explorer",
+      "name": "Glen Esk explorer",
+      "subtitle": "Pick your own chaos",
+      "parker": "Glen Esk roadside",
+      "description": "flexible ridge linking, navigation dependent",
+      "vibe": "Controlled chaos",
+      "goodFor": ["mixed weather", "flexible plan", "experience"]
+    }
+  ]
+}

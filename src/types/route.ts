@@ -115,6 +115,17 @@ export interface QualityMeter {
   subscores?: QualityMeterSubscore[]
 }
 
+/** One selectable hill-day option on an area-style page (no map line). */
+export interface DayCard {
+  id: string
+  name: string
+  subtitle: string
+  parker: string
+  description: string
+  vibe: string
+  goodFor: string[]
+}
+
 export interface RouteOption {
   id: string
   name: string
@@ -186,7 +197,6 @@ export interface RouteJson {
   notes?: string[]
   landmarks?: Landmark[]
   decisionPoints?: Landmark[]
-  mapCenter: MapCenter
   mapZoom?: number
   bounds?: RouteBounds
   gpxFile?: string | null
@@ -194,6 +204,10 @@ export interface RouteJson {
   photoFolder?: string
   photos?: string[]
   heroImage?: string
+  /** Area-style pages: selectable day cards, no suggested polylines. */
+  dayCards?: DayCard[]
+  /** Required for map routes; omit on area-only pages. */
+  mapCenter?: MapCenter
 }
 
 export type WaypointType =
