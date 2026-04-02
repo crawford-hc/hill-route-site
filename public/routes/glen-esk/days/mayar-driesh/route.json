@@ -5,9 +5,9 @@
   "area": "Angus",
   "country": "Scotland",
   "listingBlurb": "Two Munros from the ski centre — big ridges, obvious shape, not a puzzle.",
-  "summary": "Two-Munro round from Glenshee: onto open ground, along the broad ridge to Mayar and Driesh, back. Straightforward in clear weather. No polyline or GPX here — map’s centred near the car park for context only.",
-  "suggestedRouteBadge": "Hill day (no drawn line here)",
-  "gpxFile": null,
+  "summary": "Two-Munro round from Glenshee: onto open ground, along the broad ridge to Mayar and Driesh, back. Straightforward in clear weather. No hand-drawn polyline — a pilot GPX file is attached for download; the map only draws a line from it when the track has enough points.",
+  "suggestedRouteBadge": "Hill day (pilot GPX file)",
+  "gpxFile": "mayar-driesh_glenshee_pilot_gpx-guide.gpx",
   "mapCenter": { "lat": 56.8826, "lng": -3.421 },
   "mapZoom": 12,
   "routeType": "Two Munros (ridge day)",
@@ -16,10 +16,10 @@
   "estimatedHours": 6.5,
   "orderedTops": ["Mayar", "Driesh"],
   "startGridRef": "NO 115 792",
-  "parkingNote": "Glenshee ski centre — mind charges, busy ski days, and where you’re allowed to park. Don’t block gates. Into open hill from there; still no traced line on this site.",
+  "parkingNote": "Glenshee ski centre — mind charges, busy ski days, and where you’re allowed to park. Don’t block gates. Into open hill from there; any on-map GPX line needs a dense enough track — otherwise use the download and your own map.",
   "disclaimerSection": {
-    "title": "No line on this page",
-    "body": "No polyline, GPX, or waypoint list here — you get parker, rough shape, terrain, and usual feel. Where you walk is your map, the ground, and a proper mountain forecast. Bring both and use them."
+    "title": "GPX on this page",
+    "body": "There’s a pilot GPX file (see its embedded description) and no hand-drawn polyline. The map draws from it only when the track has enough points to be meaningful; otherwise use the download in your own tools. You still need your map, the ground, and a proper mountain forecast."
   },
   "weatherNote": {
     "title": "Before you go",
@@ -67,9 +67,9 @@
         "note": "Busy and a bit utilitarian, but the start’s obvious for most folk."
       },
       {
-        "label": "No traced line on this page",
+        "label": "Pilot GPX file",
         "impact": "neutral",
-        "note": "We’re not drawing your line — that’s still you and the map."
+        "note": "Attached GPX is for testing the site; the map draws from it only when the track is dense enough — your line is still you and the map."
       }
     ]
   },
@@ -111,7 +111,8 @@
     "Suits rough-but-readable weather, sensible late starts, ridge nav when you can see — not clag heroics.",
     "Ski centre ops, events, and parking change — read the signs.",
     "Busy in good weather; go early or late if crowds annoy you.",
-    "Maps link uses the centre near the ski centre — check against your own map before you drive."
+    "Maps link uses the centre near the ski centre — check against your own map before you drive.",
+    "Pilot GPX on this page is for testing the site — read its embedded description; it’s sparse reference data, not a full recorded track."
   ],
   "planningFooterNote": "Glen Esk area guide. Planning blurb only — line, time, and turn-back are yours."
 }

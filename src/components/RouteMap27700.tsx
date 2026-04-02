@@ -3,6 +3,11 @@ import L from 'leaflet'
 import { useEffect, useRef, useState } from 'react'
 import type { FeatureCollection } from 'geojson'
 import type { AnchorRef, LatLng, RouteJson, RouteOption, WaypointJson } from '../types/route'
+import {
+  countLineVerticesInFeatureCollection,
+  GPX_MIN_VERTICES_FOR_LINE,
+  GPX_TOO_SPARSE_FOR_MAP_LINE,
+} from '../lib/gpxLineVertexCount'
 import { routeGpxUrl } from '../lib/loadRoutes'
 
 import 'leaflet/dist/leaflet.css'
@@ -108,6 +113,8 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
 
   const opt = selectedOption(route.routeOptions, selectedOptionId)
   const polyline: LatLng[] = opt?.suggestedPolyline ?? NO_LINE
+  const hasHandDrawnLine = polyline.length >= 2
+  const gpxAsPrimary = Boolean(gpxUrl) && !hasHandDrawnLine
 
   useEffect(() => {
     const el = containerRef.current
@@ -140,7 +147,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
       ).addTo(map)
     }
 
-    const layers = L.layerGroup().addTo(map)
+    const layers = L.featureGroup().addTo(map)
     const zoom = Math.min(route.mapZoom ?? 12, LEISURE_27700_MAX_ZOOM)
     map.setView([mc.lat, mc.lng], zoom)
 
@@ -165,14 +172,16 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
       }
     }
 
-    if (polyline.length >= 2) {
+    const primaryLineStyle = {
+      color: '#1a4d2e',
+      weight: 5,
+      opacity: 0.92,
+      lineJoin: 'round' as const,
+    }
+
+    if (hasHandDrawnLine) {
       const latlngs = polyline.map((p) => L.latLng(p.lat, p.lng))
-      L.polyline(latlngs, {
-        color: '#1a4d2e',
-        weight: 5,
-        opacity: 0.92,
-        lineJoin: 'round',
-      }).addTo(layers)
+      L.polyline(latlngs, primaryLineStyle).addTo(layers)
     }
 
     for (const a of route.anchorRefs ?? []) {
@@ -208,9 +217,20 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
 
     fitAll()
 
-    const loadGpx = () => {
-      if (!gpxUrl || !gpxOverlay) return
+    const refitFromLayers = () => {
+      const bb = layers.getBounds()
+      if (bb?.isValid()) map.fitBounds(bb.pad(0.1))
+    }
 
+    const overlayLineStyle = {
+      color: '#6d28d9',
+      weight: 3,
+      opacity: 0.85,
+      dashArray: '8 12',
+      lineCap: 'round' as const,
+    }
+
+    if (gpxAsPrimary && gpxUrl) {
       fetch(gpxUrl)
         .then((r) => {
           if (!r.ok) throw new Error('missing')
@@ -226,31 +246,69 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
             setGpxNote('That GPX had no track in it.')
             return
           }
-          const gj = L.geoJSON(fc, {
-            style: {
-              color: '#6d28d9',
-              weight: 3,
-              opacity: 0.85,
-              dashArray: '8 12',
-              lineCap: 'round',
-            },
-          })
-          gj.addTo(layers)
+          const lineVertices = countLineVerticesInFeatureCollection(fc)
+          if (lineVertices < GPX_MIN_VERTICES_FOR_LINE) {
+            setGpxNote(GPX_TOO_SPARSE_FOR_MAP_LINE)
+            return
+          }
+          L.geoJSON(fc, { style: primaryLineStyle }).addTo(layers)
+          refitFromLayers()
         })
         .catch(() => {
-          if (!cancelled) setGpxNote('Couldn’t load the GPX overlay.')
+          if (!cancelled) setGpxNote('Couldn’t load the GPX guide.')
         })
-    }
+    } else {
+      const loadGpxOverlay = () => {
+        if (!gpxUrl || !gpxOverlay) return
 
-    loadGpx()
+        fetch(gpxUrl)
+          .then((r) => {
+            if (!r.ok) throw new Error('missing')
+            return r.text()
+          })
+          .then((text) => {
+            if (cancelled) return
+            setGpxNote(null)
+            const doc = new DOMParser().parseFromString(text, 'text/xml')
+            if (doc.querySelector('parsererror')) throw new Error('parse')
+            const fc = gpx(doc) as FeatureCollection
+            if (!fc.features.length) {
+              setGpxNote('That GPX had no track in it.')
+              return
+            }
+            const lineVertices = countLineVerticesInFeatureCollection(fc)
+            if (lineVertices < GPX_MIN_VERTICES_FOR_LINE) {
+              setGpxNote(GPX_TOO_SPARSE_FOR_MAP_LINE)
+              return
+            }
+            const gj = L.geoJSON(fc, {
+              style: overlayLineStyle,
+            })
+            gj.addTo(layers)
+          })
+          .catch(() => {
+            if (!cancelled) setGpxNote('Couldn’t load the GPX overlay.')
+          })
+      }
+
+      loadGpxOverlay()
+    }
 
     return () => {
       cancelled = true
       map.remove()
     }
-  }, [route, waypoints, polyline, gpxUrl, gpxOverlay, selectedOptionId])
+  }, [
+    route,
+    waypoints,
+    polyline,
+    hasHandDrawnLine,
+    gpxUrl,
+    gpxOverlay,
+    gpxAsPrimary,
+    selectedOptionId,
+  ])
 
-  const hasPolyline = polyline.length >= 2
   const hasOptions = (route.routeOptions?.length ?? 0) > 0
 
   return (
@@ -260,10 +318,16 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
       </h2>
 
       <div className="map-legend-stack">
-        {hasPolyline ? (
+        {hasHandDrawnLine ? (
           <p className="map-legend map-legend-primary">
             <span className="map-swatch map-swatch-line" aria-hidden />
             Green solid = hand-drawn suggested line, not a surveyed path.
+          </p>
+        ) : gpxAsPrimary && !gpxNote ? (
+          <p className="map-legend map-legend-primary">
+            <span className="map-swatch map-swatch-line" aria-hidden />
+            Green solid = GPX track used as the on-map guide for this day (no hand-drawn line in the
+            data).
           </p>
         ) : hasOptions ? (
           <p className="map-note map-note-soft">
@@ -275,7 +339,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           </p>
         )}
 
-        {gpxUrl ? (
+        {gpxUrl && !gpxAsPrimary ? (
           <label className="map-gpx-toggle">
             <input
               type="checkbox"
@@ -290,8 +354,8 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           </label>
         ) : null}
 
-        {gpxOverlay && gpxNote ? <p className="map-note">{gpxNote}</p> : null}
-        {gpxOverlay && gpxUrl && !gpxNote ? (
+        {(gpxAsPrimary || gpxOverlay) && gpxNote ? <p className="map-note">{gpxNote}</p> : null}
+        {!gpxAsPrimary && gpxOverlay && gpxUrl && !gpxNote ? (
           <p className="map-legend map-legend-gpx">
             <span className="map-swatch map-swatch-gpx" aria-hidden />
             Purple dashed = recorded GPX if it loads — for a second opinion, not gospel.
