@@ -4,11 +4,46 @@ import { useEffect, useRef, useState } from 'react'
 import type { FeatureCollection } from 'geojson'
 import type { AnchorRef, LatLng, RouteJson, RouteOption, WaypointJson } from '../types/route'
 import { routeGpxUrl } from '../lib/loadRoutes'
-import { RouteMap27700 } from './RouteMap27700'
 
 import 'leaflet/dist/leaflet.css'
+import 'proj4leaflet'
 
 const NO_LINE: LatLng[] = []
+
+/** OS Maps API ZXY grid for EPSG:27700 raster layers (incl. Leisure_27700). */
+const EPSG27700_DEF =
+  '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.206,0.15,0.247,0.842,-20.489 +units=m +no_defs'
+
+const OS_27700_RESOLUTIONS = Array.from({ length: 14 }, (_, z) => 896 / 2 ** z)
+
+/**
+ * Leisure_27700: zoom 0–9 on Premium, 0–5 on OS OpenData — cap here matches Premium;
+ * lower plans will 404 at high zooms.
+ */
+const LEISURE_27700_MAX_ZOOM = 9
+
+type LeafletWithProj = typeof L & {
+  Proj: {
+    CRS: new (
+      code: string,
+      def: string,
+      options: {
+        resolutions: number[]
+        origin: [number, number]
+        bounds: L.Bounds
+      },
+    ) => L.CRS
+  }
+}
+
+function osLeisure27700Crs(): L.CRS {
+  const LW = L as unknown as LeafletWithProj
+  return new LW.Proj.CRS('EPSG:27700', EPSG27700_DEF, {
+    resolutions: OS_27700_RESOLUTIONS,
+    origin: [-238375.0, 1376256.0],
+    bounds: L.bounds(L.point(-238375.0, 0.0), L.point(900000.0, 1376256.0)),
+  })
+}
 
 interface Props {
   route: RouteJson
@@ -64,15 +99,8 @@ function selectedOption(
   return options.find((o) => o.id === id) ?? null
 }
 
-export function RouteMap(props: Props) {
-  const osKey = import.meta.env.VITE_OS_MAPS_API_KEY
-  if (osKey) {
-    return <RouteMap27700 {...props} />
-  }
-  return <RouteMapOpenStreetMap {...props} />
-}
-
-function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
+/** OS Leisure_27700 (EPSG:27700) basemap; caller should only mount when `VITE_OS_MAPS_API_KEY` is set. */
+export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [gpxOverlay, setGpxOverlay] = useState(false)
   const [gpxNote, setGpxNote] = useState<string | null>(null)
@@ -85,19 +113,32 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
     const el = containerRef.current
     if (!el) return
 
+    const crs = osLeisure27700Crs()
     const map = L.map(el, {
+      crs,
       scrollWheelZoom: true,
       zoomControl: true,
+      minZoom: 0,
+      maxZoom: LEISURE_27700_MAX_ZOOM,
     })
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 19,
-    }).addTo(map)
+    const osKey = import.meta.env.VITE_OS_MAPS_API_KEY
+    if (osKey) {
+      L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Leisure_27700/{z}/{x}/{y}.png?key=${encodeURIComponent(osKey)}`,
+        {
+          attribution:
+            'Contains OS data &copy; Crown copyright and database right ' +
+            String(new Date().getFullYear()) +
+            '. Leisure_27700 (EPSG:27700). <a href="https://www.ordnancesurvey.co.uk/">Terms</a>',
+          maxZoom: LEISURE_27700_MAX_ZOOM,
+          minZoom: 0,
+        },
+      ).addTo(map)
+    }
 
     const layers = L.layerGroup().addTo(map)
-    const zoom = route.mapZoom ?? 12
+    const zoom = Math.min(route.mapZoom ?? 12, LEISURE_27700_MAX_ZOOM)
     map.setView([route.mapCenter.lat, route.mapCenter.lng], zoom)
 
     let cancelled = false
@@ -204,14 +245,7 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
       cancelled = true
       map.remove()
     }
-  }, [
-    route,
-    waypoints,
-    polyline,
-    gpxUrl,
-    gpxOverlay,
-    selectedOptionId,
-  ])
+  }, [route, waypoints, polyline, gpxUrl, gpxOverlay, selectedOptionId])
 
   const hasPolyline = polyline.length >= 2
   const hasOptions = (route.routeOptions?.length ?? 0) > 0
