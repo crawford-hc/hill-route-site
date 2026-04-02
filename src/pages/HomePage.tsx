@@ -62,8 +62,8 @@ export function HomePage() {
       <header className="page-header">
         <h1 className="page-title">Shared hill routes</h1>
         <p className="page-lead">
-          Walking and hill days with friends — route cards, maps, GPX, and print-friendly
-          summaries. Add new routes by dropping JSON and files under{' '}
+          Mates’ hill days in one place — cards, maps, GPX where we’ve got it, and a print
+          sheet for the glovebox. New walk? Drop JSON and files under{' '}
           <code className="inline-code">public/routes/</code>.
         </p>
       </header>

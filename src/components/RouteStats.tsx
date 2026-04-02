@@ -27,7 +27,7 @@ export function RouteStats({ route }: Props) {
   return (
     <section className="route-stats" aria-labelledby="stats-heading">
       <h2 id="stats-heading" className="section-title">
-        At a glance
+        Stats
       </h2>
       <dl className="stats-grid">
         {route.distanceKm != null ? (

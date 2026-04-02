@@ -223,7 +223,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           if (doc.querySelector('parsererror')) throw new Error('parse')
           const fc = gpx(doc) as FeatureCollection
           if (!fc.features.length) {
-            setGpxNote('GPX had no track geometry.')
+            setGpxNote('That GPX had no track in it.')
             return
           }
           const gj = L.geoJSON(fc, {
@@ -238,7 +238,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
           gj.addTo(layers)
         })
         .catch(() => {
-          if (!cancelled) setGpxNote('Could not load GPX overlay.')
+          if (!cancelled) setGpxNote('Couldn’t load the GPX overlay.')
         })
     }
 
@@ -263,15 +263,15 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
         {hasPolyline ? (
           <p className="map-legend map-legend-primary">
             <span className="map-swatch map-swatch-line" aria-hidden />
-            Solid green line = suggested hand-drawn route (not a surveyed track).
+            Green solid = hand-drawn suggested line, not a surveyed path.
           </p>
         ) : hasOptions ? (
           <p className="map-note map-note-soft">
-            Suggested line not in the data yet — anchors and waypoints still show if we’ve got them.
+            No drawn line in the data yet — anchors and waypoints still show where we have them.
           </p>
         ) : (
           <p className="map-note map-note-soft">
-            No drawn line in the data — you’re looking at anchors, any waypoints, and where the map’s centred.
+            No line drawn — you get anchors, any waypoints, and wherever we centred the map.
           </p>
         )}
 
@@ -286,7 +286,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
                 if (!on) setGpxNote(null)
               }}
             />
-            <span>Show recorded GPX overlay (comparison only)</span>
+            <span>Overlay recorded GPX (compare only — don’t treat it as the route)</span>
           </label>
         ) : null}
 
@@ -294,7 +294,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
         {gpxOverlay && gpxUrl && !gpxNote ? (
           <p className="map-legend map-legend-gpx">
             <span className="map-swatch map-swatch-gpx" aria-hidden />
-            Purple dashed = optional GPX recording, if it loads.
+            Purple dashed = recorded GPX if it loads — for a second opinion, not gospel.
           </p>
         ) : null}
       </div>

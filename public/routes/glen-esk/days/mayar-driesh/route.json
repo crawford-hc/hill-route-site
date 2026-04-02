@@ -4,9 +4,9 @@
   "title": "Mayar and Driesh from Glenshee",
   "area": "Angus",
   "country": "Scotland",
-  "listingBlurb": "Two Munros off the ski centre — big ridges, obvious shape, not a puzzle day.",
-  "summary": "Proper two-Munro round from Glenshee: up onto open ground, out along the broad ridge to Mayar and Driesh, then back. Simple enough in clear weather. No line on this page — no polyline, no GPX. The map’s just centred near the car park so you’ve got context.",
-  "suggestedRouteBadge": "Hill day (no drawn line on this site)",
+  "listingBlurb": "Two Munros from the ski centre — big ridges, obvious shape, not a puzzle.",
+  "summary": "Two-Munro round from Glenshee: onto open ground, along the broad ridge to Mayar and Driesh, back. Straightforward in clear weather. No polyline or GPX here — map’s centred near the car park for context only.",
+  "suggestedRouteBadge": "Hill day (no drawn line here)",
   "gpxFile": null,
   "mapCenter": { "lat": 56.8826, "lng": -3.421 },
   "mapZoom": 12,
@@ -16,46 +16,45 @@
   "estimatedHours": 6.5,
   "orderedTops": ["Mayar", "Driesh"],
   "startGridRef": "NO 115 792",
-  "parkingNote": "Glenshee ski centre car park — watch seasonal charges, ski-day chaos, and where you’re actually allowed to leave the motor. Park like a normal human: don’t block gates or turn it into a rally stage. From there you’re into open hill; there’s no traced route on this site.",
+  "parkingNote": "Glenshee ski centre — mind charges, busy ski days, and where you’re allowed to park. Don’t block gates. Into open hill from there; still no traced line on this site.",
   "disclaimerSection": {
     "title": "No line on this page",
-    "body": "We’re not publishing a polyline, GPX, or waypoint list for this day. You still get parker, rough shape of the day, terrain, and how it usually feels — where you actually walk is your map and what it looks like on the ground.",
-    "supporting": "Bring a map and use your brain. Check a mountain forecast. Don’t treat this page as a substitute for either."
+    "body": "No polyline, GPX, or waypoint list here — you get parker, rough shape, terrain, and usual feel. Where you walk is your map, the ground, and a proper mountain forecast. Bring both and use them."
   },
   "weatherNote": {
     "title": "Before you go",
-    "body": "Mountain forecast for the bit of hill you’re on, not just the nearest town. Wind on these ridges can be a pain even when the glen looks fine.",
-    "supporting": "Static blurb on a website, not a live readout.",
-    "disclaimerLabel": "Always verify conditions on the day."
+    "body": "Use a mountain forecast for the ground you’re on, not just the town. Ridges can howl when the glen looks calm.",
+    "supporting": "This page doesn’t update — check live conditions.",
+    "disclaimerLabel": "Verify on the day."
   },
   "whyThisRoute": {
     "title": "Why pick this day?",
-    "body": "Decent shout if the weather’s rough or you don’t fancy a nav exam. You get height, air, and a ridge that mostly makes sense — less ‘where the hell’s the line?’ than some of the other Glen Esk days.",
+    "body": "Decent shout when the weather’s rough or you don’t want a nav exam. Height, air, ridge that mostly reads itself — less head-scratching than the fiddlier Glen Esk days.",
     "callouts": [
-      "Clear two-Munro shape; ridge logic is usually obvious.",
-      "Often fine when you want big hill without inventing a new hobby."
+      "Two Munros, obvious ridge logic in decent vis.",
+      "Big hill day without inventing new hobbies."
     ],
-    "supporting": "Still a full day if the weather’s being a bastard — tired legs, wind, clag. Nav just tends to be kinder than the fiddly link-ups."
+    "supporting": "Nasty weather it’s still a slog — wind, clag, tired legs. Nav’s just usually kinder than the loose link-ups."
   },
   "recommendationBlock": {
     "title": "Rough take",
     "lines": [
-      "One of the easier days in the glen to hold in your head — big open ground, not much mystery in decent visibility.",
-      "Save the clever linking for another time unless you actually want more map work."
+      "Easy day in the glen to picture — big open ground, not much mystery if you can see.",
+      "Leave the clever linking for another day unless you want extra map work."
     ],
-    "supporting": "Late starts work here more often than on tight-window days — within reason. Don’t ignore sunset or winter daylight."
+    "supporting": "Late starts work more here than on tight days — still mind sunset and winter light."
   },
   "qualityMeter": {
     "score": 78,
     "headline": "Solid day out with a readable shape",
-    "verdict": "Big and open; nav’s usually straightforward. Still a proper hill day, not a stroll.",
+    "verdict": "Big and open, nav usually fine in clear weather. Still a hill day, not a wander round Asda.",
     "lowLabel": "nae bothered",
     "highLabel": "chef’s kiss",
     "factors": [
       {
         "label": "Ridge clarity",
         "impact": "positive",
-        "note": "The day usually sorts itself into a simple arc before you’ve left the car park."
+        "note": "Shape’s obvious early — simple arc before you’ve locked the car."
       },
       {
         "label": "Weather exposure",
@@ -70,14 +69,14 @@
       {
         "label": "No traced line on this page",
         "impact": "neutral",
-        "note": "We’re not drawing your line for you — bring map skills."
+        "note": "We’re not drawing your line — that’s still you and the map."
       }
     ]
   },
   "whatDayFeelsLike": {
     "title": "What it feels like",
-    "body": "Big sky, proper hill underfoot, mostly straightforward ground. You find a pace, eat somewhere out of the wind if you’re lucky, and you’ve still earned your tea.",
-    "supporting": "Rough weather and clag can make it feel serious fast — it’s wind and tiredness, not circus tricks. Worth knowing how you’d shorten the day before you need to.",
+    "body": "Big sky, solid hill underfoot, mostly straightforward. Find a pace, lunch out of the wind if you can, still earn your tea.",
+    "supporting": "Clag and wind turn it serious quick — no tricks, just exposure and legs. Know how you’d shorten it before you need to.",
     "summaryLines": [
       "Steady climb and open ridges.",
       "Headspace for chat or silence — your call."
@@ -85,11 +84,11 @@
   },
   "terrainDetail": {
     "title": "Terrain & vibe",
-    "body": "Grassy and heathery slopes opening onto cleaner ridge walking. Normal Scottish hill: some wet bits, some draggy bits, some genuinely nice bits if the light’s on your side.",
-    "supporting": "Winter changes the game — ice, windslab, short days; same rules as everywhere else."
+    "body": "Grass and heather low down, cleaner ridge higher. Normal Scottish mix: wet bits, draggy bits, nice bits if the light plays ball.",
+    "supporting": "Winter’s a different job — ice, slab, short days; same respect as any Munro day."
   },
   "goodStopsDetail": {
-    "intro": "Spots that often work for a break — not waypoints, just what usually helps.",
+    "intro": "Break spots that usually work — not waypoints, just habit.",
     "spots": [
       {
         "title": "Somewhere out of the worst wind",
@@ -102,17 +101,17 @@
     ]
   },
   "anchorRefsTitle": "Rough grid anchors (not a route)",
-  "anchorRefsIntro": "Labels for nattering and map-checking — not an order to follow.",
+  "anchorRefsIntro": "Labels for chat and map checks — not a sequence to march.",
   "anchorRefs": [
     { "label": "Glenshee ski centre (parker zone)", "gridRef": "NO 115 792" },
     { "label": "Mayar (summit area)", "gridRef": "NO 240 737" },
     { "label": "Driesh (summit area)", "gridRef": "NO 271 735" }
   ],
   "notes": [
-    "Good for: rough-but-readable weather, sensible late starts, straightforward ridge nav when you can see — not for zero-visibility heroics.",
-    "Ski-centre ops, events, and parking rules change — read what’s posted on the day.",
-    "Busy pair in good weather; early or late if crowds wind you up.",
-    "‘Drive to the parker’ uses the map centre near the ski centre — eyeball it against your own map before you drive."
+    "Suits rough-but-readable weather, sensible late starts, ridge nav when you can see — not clag heroics.",
+    "Ski centre ops, events, and parking change — read the signs.",
+    "Busy in good weather; go early or late if crowds annoy you.",
+    "Maps link uses the centre near the ski centre — check against your own map before you drive."
   ],
-  "planningFooterNote": "From the Glen Esk area guide. Planning copy only — your line, your timing, your call."
+  "planningFooterNote": "Glen Esk area guide. Planning blurb only — line, time, and turn-back are yours."
 }

@@ -6,9 +6,9 @@ import type { RouteJson } from '../types/route'
 
 /** Glen Esk quick picks — IDs match `public/routes/glen-esk/route.json` dayCards. */
 const GLEN_ESK_DAY_PICKS = [
-  { label: 'Weather a bit rough?', cardId: 'mayar-driesh' },
-  { label: 'Want a proper full day?', cardId: 'mount-keen' },
-  { label: 'Happy to figure it out on the hill?', cardId: 'explorer' },
+  { label: 'Weather’s a bit crap?', cardId: 'mayar-driesh' },
+  { label: 'After a big day?', cardId: 'mount-keen' },
+  { label: 'Happy winging it?', cardId: 'explorer' },
 ] as const
 
 /** Day IDs that have a `routes/glen-esk/days/{id}/` detail page (expand as you add JSON). */
@@ -39,7 +39,7 @@ export function AreaGuideRoutePage({ route }: Props) {
       />
 
       <p className="area-guide-label" role="note">
-        Area guide — not one fixed line on a map
+        Area guide — several days, not one traced line
       </p>
 
       <DownloadButtons route={route} />
@@ -49,8 +49,8 @@ export function AreaGuideRoutePage({ route }: Props) {
           Hill day options
         </h2>
         <p className="area-guide-section-lead">
-          Tap a card to highlight it. Same idea as holding three day plans up
-          beside each other — parker, vibe, when it’s a decent shout.
+          Tap a card to highlight it. Three rough plans side by side — parker, shape, when it’s a
+          decent shout.
         </p>
         {route.slug === 'glen-esk' ? (
           <div

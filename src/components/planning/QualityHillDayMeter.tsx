@@ -18,7 +18,7 @@ export function QualityHillDayMeter({ meter }: Props) {
         <h2 id={id} className="qhm-title">
           Quality Hill Day Meter
         </h2>
-        <p className="qhm-sub">Unscientific, mate-vetted, take it with a pinch of salt.</p>
+        <p className="qhm-sub">Not science — mates’ scores. Salt encouraged.</p>
 
         <div className="qhm-main">
           <div
@@ -52,7 +52,7 @@ export function QualityHillDayMeter({ meter }: Props) {
 
         {meter.factors.length > 0 ? (
           <div className="qhm-factors">
-            <h3 className="qhm-factors-title">What’s doing the lifting (or dragging)</h3>
+            <h3 className="qhm-factors-title">What’s helping and what’s not</h3>
             <ul className="qhm-factor-list">
               {meter.factors.map((f, i) => (
                 <li

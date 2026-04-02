@@ -31,7 +31,7 @@ export function TerrainWildlifePlanning({
       {hasWildlife ? (
         <section className="planning-section" aria-labelledby="wildlife-heading">
           <h2 id="wildlife-heading" className="planning-section-title">
-            Wildlife & hill texture
+            Wildlife & what’s underfoot
           </h2>
           {wildlifeIntro ? <p className="planning-prose">{wildlifeIntro}</p> : null}
           {wildlifeCards?.length ? (
@@ -41,7 +41,7 @@ export function TerrainWildlifePlanning({
                   <h3 className="planning-wildlife-title">{w.title}</h3>
                   <p className="planning-wildlife-body">{w.body}</p>
                   <p className="planning-wildlife-why">
-                    <strong>Why it matters:</strong> {w.whyItMatters}
+                    <strong>Worth knowing:</strong> {w.whyItMatters}
                   </p>
                 </li>
               ))}

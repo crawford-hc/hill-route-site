@@ -31,8 +31,8 @@ export function LookoutGallery({ route, title, intro, items }: Props) {
                 />
               ) : (
                 <div className="planning-figure-placeholder">
-                  <span>Image slot</span>
-                  <small>Add an open-licensed file under this route folder and set imageUrl</small>
+                  <span>No image yet</span>
+                  <small>Drop an open-licensed file in the route folder and point imageUrl at it</small>
                 </div>
               )}
             </div>

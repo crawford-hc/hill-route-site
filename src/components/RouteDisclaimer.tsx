@@ -4,7 +4,7 @@ interface Props {
   text: string
 }
 
-export function RouteDisclaimer({ title = 'Suggested route only', text }: Props) {
+export function RouteDisclaimer({ title = 'Suggested line only', text }: Props) {
   if (!text.trim()) return null
 
   return (

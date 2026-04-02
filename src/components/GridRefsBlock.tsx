@@ -34,7 +34,7 @@ export function GridRefsBlock({ route, waypoints, title, hint }: Props) {
       </h2>
       <p className="gridrefs-hint">
         {hint ??
-          'Copy into your mapping app or paper map. Lines include start, finish, anchors, and any waypoint with a grid ref.'}
+          'Paste into phone or paper. Lines are start, finish, anchors, and any waypoint with a grid.'}
       </p>
       <div className="gridrefs-block">
         <pre className="gridrefs-pre" tabIndex={0}>

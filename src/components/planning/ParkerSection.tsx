@@ -21,7 +21,7 @@ export function ParkerSection({ route, waypoints }: Props) {
   return (
     <section className="planning-section planning-parker" aria-labelledby="parker-heading">
       <h2 id="parker-heading" className="planning-section-title">
-        The parker &amp; start
+        Parker &amp; start
       </h2>
       {note ? <p className="planning-prose">{note}</p> : null}
       {gridLine ? (
@@ -37,11 +37,11 @@ export function ParkerSection({ route, waypoints }: Props) {
             href={mapsUrl}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Directions to the parker in Google Maps"
+            aria-label="Google Maps directions to the parker"
           >
-            Drive to the parker
+            Drive there (Maps)
           </a>
-          <span className="planning-parker-maps-hint">Opens Google Maps</span>
+          <span className="planning-parker-maps-hint">Opens in Google Maps</span>
         </p>
       ) : null}
     </section>

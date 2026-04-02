@@ -2,8 +2,8 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <p className="footer-note">
-        For planning only — check weather, ground, access, and your own willingness to tolerate
-        boggy nonsense on the day.
+        Planning only. Check the forecast, the ground, whether the gate’s actually open, and how
+        much wet heather you’re up for.
       </p>
     </footer>
   )

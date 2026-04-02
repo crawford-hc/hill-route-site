@@ -24,7 +24,7 @@ export function AnchorRefsPanel({ title, intro, anchors }: Props) {
 
   if (!anchors.length) return null
 
-  const heading = title ?? 'Useful anchor refs'
+  const heading = title ?? 'Handy grid anchors'
   const id = 'anchor-refs-heading'
 
   return (

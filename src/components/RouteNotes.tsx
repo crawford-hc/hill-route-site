@@ -8,7 +8,7 @@ export function RouteNotes({ notes }: Props) {
   return (
     <section className="notes-section" aria-labelledby="notes-heading">
       <h2 id="notes-heading" className="section-title">
-        Route notes
+        Notes
       </h2>
       <ul className="notes-list">
         {notes.map((note) => (

@@ -3,8 +3,8 @@
   "title": "Glen Esk",
   "area": "Angus",
   "country": "Scotland",
-  "listingBlurb": "Three different days in one glen — ridge pair, long plateau trundle, or make-it-up-as-you-go linking.",
-  "summary": "Pick the day that fits legs, weather, and patience. Cards below compare parker, rough shape, and vibe — none of this is a traced route on the site.",
+  "listingBlurb": "Three days in one glen — Munro pair, long Keen day, or make it up as you go.",
+  "summary": "Pick what fits legs, weather, and patience. Cards are parker, rough shape, vibe — not a traced line on here.",
   "suggestedRouteBadge": "Area guide",
   "gpxFile": null,
   "dayCards": [
@@ -13,7 +13,7 @@
       "name": "Mayar + Driesh loop",
       "subtitle": "The easy-read pair",
       "parker": "Glenshee ski centre",
-      "description": "broad ridge, steady grunt up, behaves in winter",
+      "description": "Broad ridge, steady pull up, behaves in winter",
       "vibe": "Big open ground, usually obvious",
       "goodFor": ["bad weather", "late start", "easy nav"]
     },
@@ -22,7 +22,7 @@
       "name": "Mount Keen from Glen Esk",
       "subtitle": "The proper day",
       "parker": "Invermark / Glen Esk",
-      "description": "long approach, plateau summit, steady day",
+      "description": "Long walk in, plateau top, full day",
       "vibe": "Quiet, steady, meditative",
       "goodFor": ["good weather", "long day", "headspace"]
     },
@@ -31,8 +31,8 @@
       "name": "Glen Esk explorer",
       "subtitle": "Pick your own chaos",
       "parker": "Glen Esk roadside",
-      "description": "flexible ridge linking, navigation dependent",
-      "vibe": "Controlled chaos",
+      "description": "Flexible ridges — nav depends on you",
+      "vibe": "Sorted chaos",
       "goodFor": ["mixed weather", "flexible plan", "experience"]
     }
   ]

@@ -34,7 +34,7 @@ export function RouteCard({ route }: Props) {
           <p className="route-card-summary">
             {route.listingBlurb ?? route.summary}
           </p>
-          <span className="route-card-cta">View route</span>
+          <span className="route-card-cta">Open route</span>
         </div>
       </Link>
     </article>

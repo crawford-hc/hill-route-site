@@ -27,17 +27,17 @@ export function OptionWaypointBlock({ waypoints, waypointFile }: Props) {
   if (waypoints.length === 0) {
     return (
       <p className="option-wp-missing">
-        Waypoint list <code className="inline-code">{waypointFile}</code> missing or empty — add
-        it when you wire up GPX.
+        Waypoint file <code className="inline-code">{waypointFile}</code> missing or empty — add
+        it when you hook up GPX.
       </p>
     )
   }
 
   return (
     <div className="option-wp-block">
-      <h4 className="route-option-sub">GPX-ready waypoints</h4>
+      <h4 className="route-option-sub">Waypoints for GPX</h4>
       <p className="option-wp-hint">
-        Ordered for this option — names + grid refs for pasting into a GPS app or GPX builder.
+        In order for this option — names and grids for the GPS app or GPX tool.
       </p>
       <div className="table-scroll">
         <table className="waypoint-table">
@@ -67,7 +67,7 @@ export function OptionWaypointBlock({ waypoints, waypointFile }: Props) {
         </table>
       </div>
       <button type="button" className="btn btn-secondary option-wp-copy" onClick={copy}>
-        {copied ? 'Copied' : 'Copy waypoint list'}
+        {copied ? 'Copied' : 'Copy waypoints'}
       </button>
     </div>
   )

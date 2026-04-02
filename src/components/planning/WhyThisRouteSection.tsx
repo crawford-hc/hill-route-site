@@ -6,7 +6,7 @@ interface Props {
 
 export function WhyThisRouteSection({ content }: Props) {
   const id = 'why-this-route-heading'
-  const title = content.title ?? 'Why this route?'
+  const title = content.title ?? 'Why this walk?'
 
   return (
     <section className="planning-section planning-section--why" aria-labelledby={id}>

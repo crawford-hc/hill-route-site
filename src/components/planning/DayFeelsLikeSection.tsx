@@ -6,7 +6,7 @@ interface Props {
 
 export function DayFeelsLikeSection({ content }: Props) {
   const id = 'day-feels-heading'
-  const title = content.title ?? 'What this day probably feels like'
+  const title = content.title ?? 'What the day’s like'
 
   return (
     <section className="planning-section planning-section--feels" aria-labelledby={id}>

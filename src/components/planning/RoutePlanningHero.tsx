@@ -16,7 +16,7 @@ export function RoutePlanningHero({
   activeOptionId,
   onPickOption,
 }: Props) {
-  const badge = (route.suggestedRouteBadge ?? 'Suggested route only').trim()
+  const badge = (route.suggestedRouteBadge ?? 'Suggested line only').trim()
   const heroImg =
     route.heroImage != null && route.heroImage !== ''
       ? routeMediaUrl(route, route.heroImage)
@@ -48,7 +48,7 @@ export function RoutePlanningHero({
         {weather ? (
           <div className="planning-weather" aria-labelledby="weather-glance-title">
             <h2 id="weather-glance-title" className="planning-weather-title">
-              {weather.title ?? 'Weather at a glance'}
+              {weather.title ?? 'Weather'}
             </h2>
             <p className="planning-weather-body">{weather.body}</p>
             {weather.supporting ? (
@@ -62,7 +62,7 @@ export function RoutePlanningHero({
 
         {routeOptions.length > 0 ? (
           <div className="planning-hero-options" aria-label="Quick route options">
-            <p className="planning-hero-options-label">Pick a line</p>
+            <p className="planning-hero-options-label">Which line?</p>
             <div className="planning-hero-option-cards">
               {routeOptions.map((opt) => (
                 <button

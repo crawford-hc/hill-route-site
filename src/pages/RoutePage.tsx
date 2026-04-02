@@ -69,7 +69,7 @@ function RoutePageLoaded({
       {route.disclaimerSection ? (
         <TitledProseSection
           id="disclaimer-section-heading"
-          title={route.disclaimerSection.title ?? 'Suggested route only'}
+          title={route.disclaimerSection.title ?? 'Suggested line only'}
           body={route.disclaimerSection.body}
           supporting={route.disclaimerSection.supporting}
           className="planning-section--disclaimer"
@@ -94,9 +94,9 @@ function RoutePageLoaded({
 
       {routeOpts.length > 0 ? (
         <div className="planning-map-toolbar">
-          <div className="map-line-picker" role="group" aria-label="Suggested line on map">
+          <div className="map-line-picker" role="group" aria-label="Which line on the map">
             <span id="map-line-label" className="map-line-picker-label">
-              Line on map
+              Map line
             </span>
             <div className="map-line-picker-buttons" aria-labelledby="map-line-label">
               {routeOpts.map((o) => (
@@ -124,7 +124,7 @@ function RoutePageLoaded({
         route={route}
         waypoints={waypoints}
         title="All grid refs (full list)"
-        hint="Start, finish, anchors, and waypoint grids — copy into a mapping app or notes."
+        hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
       />
 
       {route.goodStopsDetail ? <GoodStopsPlanning detail={route.goodStopsDetail} /> : null}
@@ -144,7 +144,7 @@ function RoutePageLoaded({
         items={route.lookoutGallery ?? []}
         intro={
           route.lookoutGalleryIntro ??
-          'Not rare magic, just the sort of stuff that makes this hill feel like itself.'
+          'Stuff you might actually see or step in — nothing curated for Instagram.'
         }
       />
 
@@ -160,7 +160,7 @@ function RoutePageLoaded({
       />
       <LandmarkList
         id="decisions-heading"
-        title="Navigation & decisions"
+        title="Nav calls"
         items={route.decisionPoints ?? []}
       />
 

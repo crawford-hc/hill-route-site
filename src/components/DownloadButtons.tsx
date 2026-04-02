@@ -28,7 +28,7 @@ export function DownloadButtons({ route }: Props) {
             : `/print/${route.slug}`
         }
       >
-        Printable card
+        Print card
       </Link>
     </div>
   )
