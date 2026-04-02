@@ -1229,6 +1229,66 @@ a:hover {
   line-height: 1.5;
 }
 
+.area-guide-pick {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.area-guide-pick-title {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.area-guide-pick-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .area-guide-pick-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.area-guide-pick-btn {
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: inherit;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.area-guide-pick-btn:hover {
+  border-color: var(--accent);
+}
+
+.area-guide-pick-btn.is-selected {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent),
+    var(--shadow);
+}
+
 .area-guide-cards {
   display: grid;
   gap: 1rem;

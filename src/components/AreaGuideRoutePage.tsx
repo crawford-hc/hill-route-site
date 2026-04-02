@@ -3,6 +3,13 @@ import { DownloadButtons } from './DownloadButtons'
 import { RoutePlanningHero } from './planning/RoutePlanningHero'
 import type { RouteJson } from '../types/route'
 
+/** Glen Esk quick picks — IDs match `public/routes/glen-esk/route.json` dayCards. */
+const GLEN_ESK_DAY_PICKS = [
+  { label: 'Weather a bit rough?', cardId: 'mayar-driesh' },
+  { label: 'Want a proper full day?', cardId: 'mount-keen' },
+  { label: 'Happy to figure it out on the hill?', cardId: 'explorer' },
+] as const
+
 interface Props {
   route: RouteJson
 }
@@ -37,6 +44,38 @@ export function AreaGuideRoutePage({ route }: Props) {
           Tap a card to highlight it — compare parkers, vibe, and when each day
           tends to make sense.
         </p>
+        {route.slug === 'glen-esk' ? (
+          <div
+            className="area-guide-pick"
+            aria-labelledby="area-guide-pick-heading"
+          >
+            <h3 id="area-guide-pick-heading" className="area-guide-pick-title">
+              Pick your day
+            </h3>
+            <div
+              className="area-guide-pick-buttons"
+              role="group"
+              aria-label="Quick day suggestions"
+            >
+              {GLEN_ESK_DAY_PICKS.map(({ label, cardId }) => {
+                const exists = cards.some((c) => c.id === cardId)
+                if (!exists) return null
+                const isOn = selectedId === cardId
+                return (
+                  <button
+                    key={cardId}
+                    type="button"
+                    className={`area-guide-pick-btn ${isOn ? 'is-selected' : ''}`}
+                    onClick={() => setSelectedId(cardId)}
+                    aria-pressed={isOn}
+                  >
+                    {label}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        ) : null}
         <div className="area-guide-cards">
           {cards.map((card) => {
             const isOn = selectedId === card.id
