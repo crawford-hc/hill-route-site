@@ -12,7 +12,7 @@ const GLEN_ESK_DAY_PICKS = [
 ] as const
 
 /** Day IDs that have a `routes/glen-esk/days/{id}/` detail page (expand as you add JSON). */
-const GLEN_ESK_DAY_DETAIL_IDS = new Set<string>(['mayar-driesh'])
+const GLEN_ESK_DAY_DETAIL_IDS = new Set<string>(['mayar-driesh', 'mount-keen'])
 
 function glenEskDayDetailHref(cardId: string): string | null {
   return GLEN_ESK_DAY_DETAIL_IDS.has(cardId) ? `/routes/glen-esk/${cardId}` : null

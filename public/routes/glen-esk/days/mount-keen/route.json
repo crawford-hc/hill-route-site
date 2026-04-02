@@ -1,0 +1,117 @@
+{
+  "slug": "mount-keen",
+  "parentAreaSlug": "glen-esk",
+  "title": "Mount Keen from Glen Esk",
+  "area": "Angus",
+  "country": "Scotland",
+  "listingBlurb": "Long Glen Esk approach, steady climb, broad summit — a proper full day without a traced line on this site.",
+  "summary": "The classic Glen Esk day to Mount Keen: a longer walk in from Invermark, steady uphill, then open plateau and summit. Simple story in good visibility; still a big outing. No line on this page — no polyline, no GPX. The map’s centred near the glen so you’ve got hill context, not a drawn path.",
+  "suggestedRouteBadge": "Hill day (no drawn line on this site)",
+  "gpxFile": null,
+  "mapCenter": { "lat": 56.949, "lng": -2.98 },
+  "mapZoom": 12,
+  "routeType": "Single Munro (long approach)",
+  "distanceKm": 27,
+  "ascentM": 950,
+  "estimatedHours": 8,
+  "orderedTops": ["Mount Keen"],
+  "startGridRef": "NO 431 805",
+  "parkingNote": "Invermark / Glen Esk side — estate access, gates, and where you’re allowed to leave the car change with signs and seasons. Read what’s posted, don’t block passing places or working tracks, and park like you’re not the main character. From there it’s a long walk in; there’s no traced route on this site.",
+  "disclaimerSection": {
+    "title": "No line on this page",
+    "body": "We’re not publishing a polyline, GPX, or waypoint list for this day. You still get parker, rough shape of the day, terrain, and how it usually feels — where you actually walk is your map and what it looks like on the ground.",
+    "supporting": "Bring a map and use your brain. Check a mountain forecast. Don’t treat this page as a substitute for either."
+  },
+  "weatherNote": {
+    "title": "Before you go",
+    "body": "Mountain forecast for the ground you’re on, not just the nearest town. A decent weather window matters more here — it’s a longer day and you’re exposed on the plateau in a blow.",
+    "supporting": "Static blurb on a website, not a live readout.",
+    "disclaimerLabel": "Always verify conditions on the day."
+  },
+  "whyThisRoute": {
+    "title": "Why pick this day?",
+    "body": "When you want a proper Glen Esk day — legs, headspace, and a summit that feels earned. It’s steady rather than acrobatic: long approach, climb, broad top. Good if you’ve got time and a reasonable forecast, not a tight two-hour window.",
+    "callouts": [
+      "Quiet, linear rhythm once you’re moving — meditative if you like that sort of thing.",
+      "Broad summit and plateau feel — big sky, not a puzzle-box ridge."
+    ],
+    "supporting": "Still a serious day in wind, clag, or winter — distance and tiredness bite. Shortening or turning back is a skill, not a failure."
+  },
+  "recommendationBlock": {
+    "title": "Rough take",
+    "lines": [
+      "Treat it as a bigger day out: food, water, and a clear idea of daylight — especially outside summer.",
+      "Fine for a headspace walk in decent conditions; less fun if you’re racing darkness or ignoring the forecast."
+    ],
+    "supporting": "The shape’s honest — long in, up, out — but your line and timing are still yours."
+  },
+  "qualityMeter": {
+    "score": 76,
+    "headline": "A full Glen Esk day with a steady pulse",
+    "verdict": "Long and satisfying when the weather plays ball; plain hard work when it doesn’t.",
+    "lowLabel": "nae bothered",
+    "highLabel": "chef’s kiss",
+    "factors": [
+      {
+        "label": "Day length",
+        "impact": "neutral",
+        "note": "Bigger than a half-day poke — plan like you mean it."
+      },
+      {
+        "label": "Summit character",
+        "impact": "positive",
+        "note": "Broad, open top — room to breathe if visibility’s decent."
+      },
+      {
+        "label": "Weather exposure",
+        "impact": "neutral",
+        "note": "Plateau and height catch wind and clag like anywhere else."
+      },
+      {
+        "label": "No traced line on this page",
+        "impact": "neutral",
+        "note": "We’re not drawing your line — map skills still yours."
+      }
+    ]
+  },
+  "whatDayFeelsLike": {
+    "title": "What it feels like",
+    "body": "A long settle-in along the glen, then a steady pull onto open ground. The day stretches out — not frantic, just persistent. On a good day it’s quiet and a bit meditative; on a rough one it’s miles and weather.",
+    "supporting": "Legs know they’ve done something by the end. Worth having a bail-out story in your head before you need it.",
+    "summaryLines": [
+      "Long approach, steady climb, broad summit feel.",
+      "Headspace day if you’ve got the window for it."
+    ]
+  },
+  "terrainDetail": {
+    "title": "Terrain & vibe",
+    "body": "Landrover-track and path bits lower down, then typical Scottish hill: heather, grass, wet patches, and open higher ground. Nothing fancy — just distance and height adding up. Winter is a different job: ice, snow, short days; same respect as any Munro day.",
+    "supporting": "Estate tracks and signs matter — stick to what’s allowed and don’t treat access as automatic."
+  },
+  "goodStopsDetail": {
+    "intro": "Spots that often work for a break — not waypoints, just what usually helps.",
+    "spots": [
+      {
+        "title": "Before the climb bites",
+        "description": "If you’re already rushed or low on water, fix that in the glen — not halfway up when you’re committed."
+      },
+      {
+        "title": "Somewhere out of the worst wind",
+        "description": "On open ground, a slight lee or dip beats lunch on the highest exposed lump."
+      }
+    ]
+  },
+  "anchorRefsTitle": "Rough grid anchors (not a route)",
+  "anchorRefsIntro": "Labels for nattering and map-checking — not an order to follow.",
+  "anchorRefs": [
+    { "label": "Invermark / Glen Esk (parker zone)", "gridRef": "NO 431 805" },
+    { "label": "Mount Keen (summit area)", "gridRef": "NO 396 869" }
+  ],
+  "notes": [
+    "Good for: a decent weather window, a bigger day out, and space in your head — not for squeezing in after a late lunch without checking daylight.",
+    "Access, gates, and parking rules can change — read signs on the day.",
+    "‘Drive to the parker’ uses the map centre near Invermark / the glen — eyeball it against your own map before you drive.",
+    "No GPX or polyline here — we’re not implying a traced path exists on this site."
+  ],
+  "planningFooterNote": "From the Glen Esk area guide. Planning copy only — your line, your timing, your call."
+}
