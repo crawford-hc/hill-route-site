@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "validate-routes": "node scripts/validate-routes.mjs",
+    "build": "npm run validate-routes && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
