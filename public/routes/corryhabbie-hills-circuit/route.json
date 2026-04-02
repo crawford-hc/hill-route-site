@@ -136,29 +136,7 @@
       "lineDescription": "Start from the parker (NJ 26906 32380), get Hill of Achmore out the way first, then sweep across Càrn a’ Bhodaich, Cairn Dregnie, Carn an t-Suidhe, curve back through the broad ridge ground toward Muckle Lapprach, then finish the main business on Corryhabbie Hill before using the tidier return lines back out.",
       "whyPick": "Because it feels like a real circuit rather than a quick tag-and-bail. If the weather’s behaving and everyone’s in decent form, this is the one that makes the most sense.",
       "tradeoff": "A bit more heathery linking, a bit more bog lottery, and a bit more commitment. Fine if the vibe is “proper day out,” less ideal if everyone’s half-cooked before you’ve even left the car.",
-      "waypointFile": "waypoints-option-a.json",
-      "suggestedPolyline": [
-        { "lat": 57.37598, "lng": -3.21716 },
-        { "lat": 57.4185, "lng": -3.3088 },
-        { "lat": 57.4145, "lng": -3.298 },
-        { "lat": 57.4052, "lng": -3.2725 },
-        { "lat": 57.4078, "lng": -3.2665 },
-        { "lat": 57.4035, "lng": -3.2565 },
-        { "lat": 57.3965, "lng": -3.268 },
-        { "lat": 57.3882, "lng": -3.3215 },
-        { "lat": 57.3905, "lng": -3.308 },
-        { "lat": 57.392, "lng": -3.298 },
-        { "lat": 57.3855, "lng": -3.278 },
-        { "lat": 57.3785, "lng": -3.262 },
-        { "lat": 57.3828, "lng": -3.2912 },
-        { "lat": 57.3895, "lng": -3.297 },
-        { "lat": 57.3985, "lng": -3.304 },
-        { "lat": 57.412, "lng": -3.292 },
-        { "lat": 57.425, "lng": -3.286 },
-        { "lat": 57.4325, "lng": -3.282 },
-        { "lat": 57.422, "lng": -3.302 },
-        { "lat": 57.37598, "lng": -3.21716 }
-      ]
+      "waypointFile": "waypoints-option-a.json"
     },
     {
       "id": "option-b",
@@ -168,18 +146,7 @@
       "lineDescription": "Start from the parker (NJ 26906 32380), take Hill of Achmore, head up for Muckle Lapprach, carry on to Corryhabbie Hill, and then either call that good enough or tack on an extra bit if everyone still fancies it.",
       "whyPick": "Because it gives you the best bits without hoovering up every lump on the map. Easier to shorten, easier to chat your way through, easier to bail out of if conditions or enthusiasm dip.",
       "tradeoff": "It doesn’t feel as “complete” as the full round. If you like the satisfaction of a cleaner circuit, this is the slightly lazier version. Which, to be fair, may be exactly the point.",
-      "waypointFile": "waypoints-option-b.json",
-      "suggestedPolyline": [
-        { "lat": 57.37598, "lng": -3.21716 },
-        { "lat": 57.4185, "lng": -3.3088 },
-        { "lat": 57.4065, "lng": -3.295 },
-        { "lat": 57.392, "lng": -3.298 },
-        { "lat": 57.3785, "lng": -3.262 },
-        { "lat": 57.3842, "lng": -3.2685 },
-        { "lat": 57.3828, "lng": -3.2912 },
-        { "lat": 57.3935, "lng": -3.302 },
-        { "lat": 57.37598, "lng": -3.21716 }
-      ]
+      "waypointFile": "waypoints-option-b.json"
     }
   ],
   "goodStopsDetail": {
