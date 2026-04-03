@@ -14,7 +14,6 @@
   "distanceKm": 17,
   "ascentM": 920,
   "estimatedHours": 6.5,
-  "orderedTops": ["Mayar", "Driesh"],
   "parkingNote": "Glen Doll car park (charge), Glen Clova. Straightforward start point; check local parking signs and charges before setting off.",
   "parkerWaypointId": "parking-glen-doll",
   "allowInferredParkerFromPolylineOrMapCenter": false,
