@@ -1,13 +1,13 @@
 [
   {
-    "id": "parking-glenshee",
-    "name": "Glenshee Ski Centre (the parker)",
-    "lat": 56.883333,
-    "lng": -3.416667,
-    "gridRef": "NO 13978 78099",
-    "elevationM": 650,
+    "id": "parking-glen-doll",
+    "name": "Glen Doll car park (charge), Glen Clova",
+    "lat": 56.8704,
+    "lng": -3.1758,
+    "gridRef": "NO284760",
+    "elevationM": 260,
     "type": "parking",
-    "description": "Main ski-centre parking area.",
+    "description": "Main Glen Doll parking area.",
     "order": 1
   },
   {

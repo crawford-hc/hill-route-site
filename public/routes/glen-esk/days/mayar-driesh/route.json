@@ -15,16 +15,19 @@
   "ascentM": 920,
   "estimatedHours": 6.5,
   "orderedTops": ["Mayar", "Driesh"],
-  "parkingNote": "Glenshee ski centre is the beauty here. Big obvious start, easy to find, and no pointless warm-up just locating the car park. Still check signs and don’t park like a knob.",
-  "parkerWaypointId": "parking-glenshee",
+  "parkingNote": "Glen Doll car park (charge), Glen Clova. Straightforward start point; check local parking signs and charges before setting off.",
+  "parkerWaypointId": "parking-glen-doll",
   "allowInferredParkerFromPolylineOrMapCenter": false,
   "waypointFile": "waypoints.json",
-  "startGridRef": "NO 13978 78099",
-  "finishGridRef": "NO 13978 78099",
+  "startName": "Glen Doll car park (charge), Glen Clova",
+  "startGridRef": "NO284760",
+  "startLat": 56.8704,
+  "startLng": -3.1758,
+  "finishGridRef": "NO284760",
   "anchorRefsTitle": "Useful anchor refs",
   "anchorRefsIntro": "Quick map checks for key points, kept compact.",
   "anchorRefs": [
-    { "label": "Start / the parker (Glenshee)", "gridRef": "NO 13978 78099" },
+    { "label": "Start / the parker (Glen Doll car park, Glen Clova)", "gridRef": "NO284760" },
     { "label": "Mayar summit", "gridRef": "NO 24107 73760" },
     { "label": "Driesh summit", "gridRef": "NO 27100 73600" }
   ],
@@ -46,9 +49,9 @@
         "note": "Open slopes and ridges. Wind and clag can turn an easy day into a slog."
       },
       {
-        "label": "Glenshee start",
+        "label": "Glen Doll start",
         "impact": "positive",
-        "note": "Big obvious parker, easy enough to get moving, less pissing about than some Esk starts."
+        "note": "Reliable Glen Clova start point with straightforward access onto the day."
       },
       {
         "label": "Two-top payoff",
@@ -89,12 +92,12 @@
     "Spring shoulder-season mix: dry-ish lower path can turn to old snow and icy patches higher up, so don’t assume one setup works all day.",
     "Clag on the broad tops: even on this readable day, visibility can flatten fast and make easy bearings feel vague.",
     "Cornice leftovers and loaded edges in colder spells: give crest lines a wider berth if the snowpack looks uncertain.",
-    "Busy Glenshee parking on decent forecasts: early start helps, and not blocking access keeps everyone happy."
+    "Busy Glen Doll parking on decent forecasts: early start helps, and not blocking access keeps everyone happy."
   ],
   "recommendationBlock": {
     "title": "Route shape / day flow",
     "lines": [
-      "Start at Glenshee and get the steady climb underway without much mystery.",
+      "Start at Glen Doll car park in Glen Clova and get the steady climb underway without much mystery.",
       "Gain open ground and work onto the broader ridge.",
       "Take in Mayar first.",
       "Continue the ridge logic across to Driesh.",

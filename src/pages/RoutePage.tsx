@@ -82,7 +82,7 @@ const MAYAR_DRIESH_LOOKOUT_FOR = [
     body: 'give crest lines a wider berth if the snowpack looks uncertain.',
   },
   {
-    label: 'Busy Glenshee parking on decent forecasts',
+    label: 'Busy Glen Doll parking on decent forecasts',
     body: 'early start helps, and not blocking access keeps everyone happy.',
   },
 ]

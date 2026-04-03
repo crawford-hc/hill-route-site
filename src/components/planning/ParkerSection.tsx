@@ -10,7 +10,6 @@ export function ParkerSection({ route, waypoints }: Props) {
   const dest = getParkerDestination(route, waypoints)
   const note = route.parkingNote?.trim()
   const isMayarDriesh = route.slug === 'mayar-driesh'
-  const mayarNamedParker = 'Glenshee Ski Centre'
   const gridLine =
     dest?.gridRef?.trim() ||
     route.startGridRef?.trim() ||
@@ -18,16 +17,10 @@ export function ParkerSection({ route, waypoints }: Props) {
 
   if (!note && !dest && !isMayarDriesh) return null
 
-  const mapsUrl = dest
-    ? googleMapsDirectionsUrl(dest.lat, dest.lng)
-    : isMayarDriesh
-      ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mayarNamedParker)}`
-      : null
+  const mapsUrl = dest ? googleMapsDirectionsUrl(dest.lat, dest.lng) : null
   const aerialSrc = dest
     ? `https://www.google.com/maps?q=${dest.lat},${dest.lng}&t=k&z=15&output=embed`
-    : isMayarDriesh
-      ? `https://www.google.com/maps?q=${encodeURIComponent(mayarNamedParker)}&t=k&z=14&output=embed`
-      : null
+    : null
 
   return (
     <section className="planning-section planning-parker" aria-labelledby="parker-heading">
@@ -39,11 +32,6 @@ export function ParkerSection({ route, waypoints }: Props) {
         <p className="planning-parker-grid">
           <span className="planning-parker-grid-label">Parker:</span>{' '}
           <span className="planning-parker-grid-ref">{gridLine}</span>
-        </p>
-      ) : isMayarDriesh ? (
-        <p className="planning-parker-grid">
-          <span className="planning-parker-grid-label">Parker:</span>{' '}
-          <span className="planning-parker-grid-ref">{mayarNamedParker}</span>
         </p>
       ) : null}
       {mapsUrl ? (
