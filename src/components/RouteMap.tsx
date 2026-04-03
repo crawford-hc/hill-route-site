@@ -143,6 +143,7 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
       weight: 5,
       opacity: 0.92,
       lineJoin: 'round' as const,
+      smoothFactor: 0,
     }
 
     if (hasHandDrawnLine) {
@@ -194,6 +195,7 @@ function RouteMapOpenStreetMap({ route, waypoints, selectedOptionId }: Props) {
       opacity: 0.85,
       dashArray: '8 12',
       lineCap: 'round' as const,
+      smoothFactor: 0,
     }
 
     if (gpxAsPrimary && gpxUrl) {

@@ -1,25 +1,25 @@
 {
   "slug": "mayar-driesh",
   "parentAreaSlug": "glen-esk",
-  "title": "Mayar and Driesh from Glenshee",
+  "title": "Mayar and Driesh, Glen Clova",
   "area": "Angus",
   "country": "Scotland",
-  "listingBlurb": "Two Munros from the ski centre — big ridges, obvious shape, not a puzzle.",
-  "summary": "Two-Munro round from Glenshee: onto open ground, along the broad ridge to Mayar and Driesh, back. Straightforward in clear weather. No hand-drawn polyline — a pilot GPX file is attached for download; the map only draws a line from it when the track has enough points.",
-  "suggestedRouteBadge": "Hill day (pilot GPX file)",
-  "gpxFile": "mayar-driesh_glenshee_pilot_gpx-guide.gpx",
-  "mapCenter": { "lat": 56.8826, "lng": -3.421 },
+  "listingBlurb": "Two Munros from Glen Clova — big ridges, obvious shape, not a puzzle.",
+  "summary": "Two-Munro round via Glen Clova (Walkhighlands line in the attached GPX): onto open ground, along the broad ridge through Mayar and Driesh, back. Straightforward in clear weather. No hand-drawn polyline — wth-mayar-driesh-walkhighlands.gpx is a private-testing reference for download and map QA only; read the embedded Walkhighlands copyright in the file and replace or clear rights before any wide public release. The map still only draws a primary guide line when the track passes the sparse-vertex safeguard.",
+  "suggestedRouteBadge": "Hill day (private-testing reference GPX)",
+  "gpxFile": "wth-mayar-driesh-walkhighlands.gpx",
+  "mapCenter": { "lat": 56.86, "lng": -3.211 },
   "mapZoom": 12,
   "routeType": "Two Munros (ridge day)",
   "distanceKm": 17,
   "ascentM": 920,
   "estimatedHours": 6.5,
   "orderedTops": ["Mayar", "Driesh"],
-  "startGridRef": "NO 115 792",
-  "parkingNote": "Glenshee ski centre — mind charges, busy ski days, and where you’re allowed to park. Don’t block gates. Into open hill from there; any on-map GPX line needs a dense enough track — otherwise use the download and your own map.",
+  "startGridRef": "NO 284 761",
+  "parkingNote": "Glen Clova approach — mind estate/access rules, busy days, and where you’re allowed to park. Don’t block gates. Into open hill from there; any on-map GPX line still needs a dense enough track — otherwise use the download and your own map.",
   "disclaimerSection": {
     "title": "GPX on this page",
-    "body": "There’s a pilot GPX file (see its embedded description) and no hand-drawn polyline. The map draws from it only when the track has enough points to be meaningful; otherwise use the download in your own tools. You still need your map, the ground, and a proper mountain forecast."
+    "body": "The GPX here is personal testing only — a Walkhighlands-derived reference route (see embedded copyright and description in the file; do not republish their track on other sites). Replace or obtain suitable rights before any wide public release. There’s no hand-drawn polyline. The map draws a primary guide line from this GPX only when the track has enough points (sparse-GPX safeguard); otherwise use the download in your own tools. You still need your map, the ground, and a proper mountain forecast."
   },
   "weatherNote": {
     "title": "Before you go",
@@ -62,14 +62,14 @@
         "note": "Open slopes and ridges — wind and clag can turn an easy day into a slog."
       },
       {
-        "label": "Ski-centre start",
+        "label": "Glen Clova start",
         "impact": "positive",
-        "note": "Busy and a bit utilitarian, but the start’s obvious for most folk."
+        "note": "Classic approach side for this Walkhighlands line — still check access and parking signs on the day."
       },
       {
-        "label": "Pilot GPX file",
+        "label": "Reference GPX (testing)",
         "impact": "neutral",
-        "note": "Attached GPX is for testing the site; the map draws from it only when the track is dense enough — your line is still you and the map."
+        "note": "wth-mayar-driesh-walkhighlands.gpx is private testing / Walkhighlands reference only — respect their copyright; replace or clear rights before wide release. The map draws from it only when the track is dense enough (sparse safeguard) — your line is still you and the map."
       }
     ]
   },
@@ -103,16 +103,16 @@
   "anchorRefsTitle": "Rough grid anchors (not a route)",
   "anchorRefsIntro": "Labels for chat and map checks — not a sequence to march.",
   "anchorRefs": [
-    { "label": "Glenshee ski centre (parker zone)", "gridRef": "NO 115 792" },
+    { "label": "Glen Clova approach (near GPX start)", "gridRef": "NO 284 761" },
     { "label": "Mayar (summit area)", "gridRef": "NO 240 737" },
     { "label": "Driesh (summit area)", "gridRef": "NO 271 735" }
   ],
   "notes": [
     "Suits rough-but-readable weather, sensible late starts, ridge nav when you can see — not clag heroics.",
-    "Ski centre ops, events, and parking change — read the signs.",
+    "Estate access, events, and parking rules change — read the signs.",
     "Busy in good weather; go early or late if crowds annoy you.",
-    "Maps link uses the centre near the ski centre — check against your own map before you drive.",
-    "Pilot GPX on this page is for testing the site — read its embedded description; it’s sparse reference data, not a full recorded track."
+    "Maps link centres on the Glen Clova corridor for this GPX — check against your own map before you drive.",
+    "wth-mayar-driesh-walkhighlands.gpx — Walkhighlands route line; copyright Walkhighlands (see file). Bundled as wth for site map testing only — not for republishing elsewhere; replace or clear rights before wide public release."
   ],
   "planningFooterNote": "Glen Esk area guide. Planning blurb only — line, time, and turn-back are yours."
 }
