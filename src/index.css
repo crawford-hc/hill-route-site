@@ -372,9 +372,9 @@ a:hover {
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem 1rem;
+  gap: 0.65rem;
   margin: 0;
-  padding: 1rem;
+  padding: 0.65rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -388,20 +388,25 @@ a:hover {
 
 .stat {
   margin: 0;
+  padding: 0.7rem 0.8rem;
+  background: linear-gradient(180deg, #f7f9f7 0%, #f2f5f3 100%);
+  border: 1px solid #d7dfd9;
+  border-radius: 10px;
 }
 
 .stat-label {
   margin: 0 0 0.2rem;
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
   color: var(--muted);
 }
 
 .stat-value {
   margin: 0;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
+  color: #1f3325;
 }
 
 .map-note {
@@ -1493,6 +1498,47 @@ a.area-guide-card {
   margin: 0.4rem 0;
 }
 
+.planning-callouts--compact-grid {
+  list-style: none;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 760px) {
+  .planning-callouts--compact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.planning-callout-card {
+  margin: 0;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.planning-callout-card-label {
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.planning-callout-card-body {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
 .planning-honest-take {
   margin-bottom: 2rem;
   padding: 1.15rem 1.2rem;
@@ -1762,6 +1808,95 @@ a.area-guide-card {
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--muted);
+}
+
+.planning-summary-chips--dense {
+  margin-top: 0.75rem;
+  gap: 0.45rem;
+}
+
+.planning-summary-chips--dense li {
+  padding: 0.32rem 0.65rem;
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.planning-key-refs {
+  margin-bottom: 2rem;
+}
+
+.planning-key-refs-list {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .planning-key-refs-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.planning-key-refs-item {
+  margin: 0;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.planning-key-refs-label {
+  font-size: 0.86rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.planning-key-refs-grid {
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.planning-disclosure {
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: clip;
+}
+
+.planning-disclosure > summary {
+  cursor: pointer;
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.planning-disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.planning-disclosure > summary::before {
+  content: '▸';
+  margin-right: 0.4rem;
+  color: var(--muted);
+}
+
+.planning-disclosure[open] > summary::before {
+  content: '▾';
+}
+
+.planning-disclosure > .waypoint-section,
+.planning-disclosure > .gridrefs-section {
+  margin: 0;
+  padding: 0 0.9rem 0.9rem;
 }
 
 .planning-wildlife-grid {

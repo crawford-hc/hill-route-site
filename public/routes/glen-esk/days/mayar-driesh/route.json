@@ -5,7 +5,7 @@
   "area": "Angus",
   "country": "Scotland",
   "listingBlurb": "Two Munros from Glen Clova — big ridges, obvious shape, not a puzzle.",
-  "summary": "Two-Munro round via Glen Clova (Walkhighlands line in the attached GPX): onto open ground, along the broad ridge through Mayar and Driesh, back. Straightforward in clear weather. No hand-drawn polyline — wth-mayar-driesh-walkhighlands.gpx is a private-testing reference for download and map QA only; read the embedded Walkhighlands copyright in the file and replace or clear rights before any wide public release. The map still only draws a primary guide line when the track passes the sparse-vertex safeguard.",
+  "summary": "Forecast says windy-with-a-chance-of-clag, so this is the sensible shout: big obvious ridge, less faff, still two Munros and enough suffering to feel earned.",
   "suggestedRouteBadge": "Hill day (private-testing reference GPX)",
   "gpxFile": "wth-mayar-driesh-walkhighlands.gpx",
   "mapCenter": { "lat": 56.86, "lng": -3.211 },
@@ -15,104 +15,170 @@
   "ascentM": 920,
   "estimatedHours": 6.5,
   "orderedTops": ["Mayar", "Driesh"],
-  "startGridRef": "NO 284 761",
-  "parkingNote": "Glen Clova approach — mind estate/access rules, busy days, and where you’re allowed to park. Don’t block gates. Into open hill from there; any on-map GPX line still needs a dense enough track — otherwise use the download and your own map.",
-  "disclaimerSection": {
-    "title": "GPX on this page",
-    "body": "The GPX here is personal testing only — a Walkhighlands-derived reference route (see embedded copyright and description in the file; do not republish their track on other sites). Replace or obtain suitable rights before any wide public release. There’s no hand-drawn polyline. The map draws a primary guide line from this GPX only when the track has enough points (sparse-GPX safeguard); otherwise use the download in your own tools. You still need your map, the ground, and a proper mountain forecast."
-  },
-  "weatherNote": {
-    "title": "Before you go",
-    "body": "Use a mountain forecast for the ground you’re on, not just the town. Ridges can howl when the glen looks calm.",
-    "supporting": "This page doesn’t update — check live conditions.",
-    "disclaimerLabel": "Verify on the day."
-  },
-  "whyThisRoute": {
-    "title": "Why pick this day?",
-    "body": "Decent shout when the weather’s rough or you don’t want a nav exam. Height, air, ridge that mostly reads itself — less head-scratching than the fiddlier Glen Esk days.",
-    "callouts": [
-      "Two Munros, obvious ridge logic in decent vis.",
-      "Big hill day without inventing new hobbies."
-    ],
-    "supporting": "Nasty weather it’s still a slog — wind, clag, tired legs. Nav’s just usually kinder than the loose link-ups."
-  },
-  "recommendationBlock": {
-    "title": "Rough take",
-    "lines": [
-      "Easy day in the glen to picture — big open ground, not much mystery if you can see.",
-      "Leave the clever linking for another day unless you want extra map work."
-    ],
-    "supporting": "Late starts work more here than on tight days — still mind sunset and winter light."
-  },
+  "parkingNote": "Glenshee ski centre is the beauty here. Big obvious start, easy to find, and no pointless warm-up just locating the car park. Still check signs and don’t park like a knob.",
+  "parkerWaypointId": "parking-glenshee",
+  "allowInferredParkerFromPolylineOrMapCenter": false,
+  "waypointFile": "waypoints.json",
+  "startGridRef": "NO 13978 78099",
+  "finishGridRef": "NO 13978 78099",
+  "anchorRefsTitle": "Useful anchor refs",
+  "anchorRefsIntro": "Quick map checks for key points, kept compact.",
+  "anchorRefs": [
+    { "label": "Start / the parker (Glenshee)", "gridRef": "NO 13978 78099" },
+    { "label": "Mayar summit", "gridRef": "NO 24107 73760" },
+    { "label": "Driesh summit", "gridRef": "NO 27100 73600" }
+  ],
   "qualityMeter": {
     "score": 78,
-    "headline": "Solid day out with a readable shape",
-    "verdict": "Big and open, nav usually fine in clear weather. Still a hill day, not a wander round Asda.",
-    "lowLabel": "nae bothered",
-    "highLabel": "chef’s kiss",
+    "headline": "Pretty decent shout when the weather’s being awkward",
+    "verdict": "Big open ridge, less nav faff than the trickier link-ups, still enough climb to make your legs complain.",
+    "lowLabel": "absolute shiter",
+    "highLabel": "fuckin’ stoater",
     "factors": [
       {
         "label": "Ridge clarity",
         "impact": "positive",
-        "note": "Shape’s obvious early — simple arc before you’ve locked the car."
+        "note": "Shape’s obvious early, so you’re not solving a puzzle before you’ve locked the car."
       },
       {
         "label": "Weather exposure",
         "impact": "neutral",
-        "note": "Open slopes and ridges — wind and clag can turn an easy day into a slog."
+        "note": "Open slopes and ridges. Wind and clag can turn an easy day into a slog."
       },
       {
-        "label": "Glen Clova start",
+        "label": "Glenshee start",
         "impact": "positive",
-        "note": "Classic approach side for this Walkhighlands line — still check access and parking signs on the day."
+        "note": "Big obvious parker, easy enough to get moving, less pissing about than some Esk starts."
       },
       {
-        "label": "Reference GPX (testing)",
-        "impact": "neutral",
-        "note": "wth-mayar-driesh-walkhighlands.gpx is private testing / Walkhighlands reference only — respect their copyright; replace or clear rights before wide release. The map draws from it only when the track is dense enough (sparse safeguard) — your line is still you and the map."
+        "label": "Two-top payoff",
+        "impact": "positive",
+        "note": "You still get a proper day and two Munros, instead of driving miles for one wee shrug of a hill."
+      }
+    ],
+    "subscores": [
+      {
+        "label": "Route clarity",
+        "score": 82,
+        "note": "Broad shape and obvious flow when visibility is decent."
+      },
+      {
+        "label": "Weather resilience",
+        "score": 70,
+        "note": "Readable line helps, but wind and clag can still make it slow."
+      },
+      {
+        "label": "Payoff factor",
+        "score": 79,
+        "note": "Two Munros in one hit without overcomplicated route faff."
       }
     ]
+  },
+  "whyThisRoute": {
+    "title": "Why pick this day?",
+    "body": "This is the decent shout when the weather’s a bit rough but not bad enough to stay home. The shape is simple, the ridge logic is obvious, and you still come away feeling like you did a proper day rather than a token leg-stretcher.",
+    "supporting": "It suits the sort of forecast where you want something readable. If the cloud’s being annoying or the wind’s up, this gives you fewer chances to drift into needless bullshit than a more exploratory day would.\n\nIt’s also a clean answer for a late-ish start. Big car park, straightforward start, and no detective work just to get going."
   },
   "whatDayFeelsLike": {
     "title": "What it feels like",
-    "body": "Big sky, solid hill underfoot, mostly straightforward. Find a pace, lunch out of the wind if you can, still earn your tea.",
-    "supporting": "Clag and wind turn it serious quick — no tricks, just exposure and legs. Know how you’d shorten it before you need to.",
-    "summaryLines": [
-      "Steady climb and open ridges.",
-      "Headspace for chat or silence — your call."
+    "body": "A steady climb onto open ground, then a broad high day where the shape mostly makes sense in front of you. It’s not dramatic mountaineering, but it does feel like a proper hill day once you’re out on the ridge.",
+    "supporting": "In decent visibility it’s simple enough. In clag it gets flatter and more serious fast, but still less awkward than some bigger wandering plateau days."
+  },
+  "whatToLookOutFor": [
+    "Ridge wind and cross-gusts: this was picked because the line is obvious, but if it’s blowing hard it still batters your pace.",
+    "Spring shoulder-season mix: dry-ish lower path can turn to old snow and icy patches higher up, so don’t assume one setup works all day.",
+    "Clag on the broad tops: even on this readable day, visibility can flatten fast and make easy bearings feel vague.",
+    "Cornice leftovers and loaded edges in colder spells: give crest lines a wider berth if the snowpack looks uncertain.",
+    "Busy Glenshee parking on decent forecasts: early start helps, and not blocking access keeps everyone happy."
+  ],
+  "recommendationBlock": {
+    "title": "Route shape / day flow",
+    "lines": [
+      "Start at Glenshee and get the steady climb underway without much mystery.",
+      "Gain open ground and work onto the broader ridge.",
+      "Take in Mayar first.",
+      "Continue the ridge logic across to Driesh.",
+      "Decide on the day whether it’s a quick regroup-and-return or a longer stop if the weather behaves.",
+      "Head back the same broad logic rather than inventing nonsense just because a map has contour lines."
     ]
   },
-  "terrainDetail": {
-    "title": "Terrain & vibe",
-    "body": "Grass and heather low down, cleaner ridge higher. Normal Scottish mix: wet bits, draggy bits, nice bits if the light plays ball.",
-    "supporting": "Winter’s a different job — ice, slab, short days; same respect as any Munro day."
-  },
   "goodStopsDetail": {
-    "intro": "Break spots that usually work — not waypoints, just habit.",
     "spots": [
       {
-        "title": "Somewhere out of the worst wind",
-        "description": "On the ridge, a slight dip or lee side beats lunch on the highest lump."
+        "title": "Before the weather decides for you",
+        "description": "If it’s one of those changeable days, stop early once you hit open ground and reassess before committing higher."
       },
       {
-        "title": "Before anything committing",
-        "description": "If the clag comes down, slow up and check the map there — not after you’ve already committed to a vague downhill guess."
+        "title": "Shelter on the lee side",
+        "description": "Any slight dip or lee side out of the worst wind beats trying to have lunch on the most exposed bit like a hero."
+      },
+      {
+        "title": "After the second top",
+        "description": "Worth a pause once both Munros are done, if only to enjoy the fact the hard bit is mostly behind you."
       }
     ]
   },
-  "anchorRefsTitle": "Rough grid anchors (not a route)",
-  "anchorRefsIntro": "Labels for chat and map checks — not a sequence to march.",
-  "anchorRefs": [
-    { "label": "Glen Clova approach (near GPX start)", "gridRef": "NO 284 761" },
-    { "label": "Mayar (summit area)", "gridRef": "NO 240 737" },
-    { "label": "Driesh (summit area)", "gridRef": "NO 271 735" }
+  "lookoutGalleryIntro": "Quick visual reads for this ridge day: what you might spot, and a few things worth clocking if the cloud behaves.",
+  "lookoutGallery": [
+    {
+      "id": "md-cottongrass",
+      "title": "Cottongrass",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Common_Cotton-grass_(Eriophorum_angustifolium),_Hermaness_-_geograph.org.uk_-_6548063.jpg",
+      "caption": "White tufts in peat. Usually means the ground’s softer than it first looks. Why today: Wet spring ground and lingering moisture keep the boggier bits honest.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Cotton-grass_(Eriophorum_angustifolium),_Hermaness_-_geograph.org.uk_-_6548063.jpg",
+      "attributionText": "© Mike Pennington. Geograph Britain and Ireland, image ID 6548063; mirrored on Wikimedia Commons with photographer credit.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "md-red-grouse",
+      "title": "Red grouse",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red_Grouse_(2954268645).jpg",
+      "caption": "Loud, territorial moorland gobshites hiding in the heather till they panic and explode out of it. Why today: Spring breeding season makes them more visible and much noisier.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_Grouse_(2954268645).jpg",
+      "attributionText": "© Alastair Rae (London, UK). Uploaded from Flickr; reviewed on Wikimedia Commons.",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/"
+    },
+    {
+      "id": "md-red-deer",
+      "title": "Red deer",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Red_deer_stag.jpg",
+      "caption": "Deer moving across open slopes or standing about judging your life choices. Why today: Broad open ground and lower disturbance make sightings realistic on quieter stretches.",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_deer_stag.jpg",
+      "attributionText": "© Mehmet Karatay. Own work; uploaded to Wikimedia Commons.",
+      "licenseName": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/"
+    },
+    {
+      "id": "md-open-angus-moorland",
+      "title": "Open Angus moorland",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Corryhabbie_Hill_-_geograph.org.uk_-_7256421.jpg",
+      "caption": "Heather, blaeberry, peat, and big rolling ground doing its usual “looks simple, walks longer” trick. Why today: This route is really about the broad ridge feel more than dramatic rocky nonsense.",
+      "sourceName": "Source",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corryhabbie_Hill_-_geograph.org.uk_-_7256421.jpg",
+      "attributionText": "Use approved local/reference landscape image with proper source credit.",
+      "licenseName": "Match source",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Corryhabbie_Hill_-_geograph.org.uk_-_7256421.jpg"
+    },
+    {
+      "id": "md-views-glen-clova",
+      "title": "Views into Glen Clova",
+      "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cairn_near_Morton's_Way_on_Corryhabbie_Hill_-_geograph.org.uk_-_665277.jpg",
+      "caption": "If the cloud lifts, this is where the day feels properly worth the drive. Why today: Broken forecast often means patchy windows rather than a full socked-in washout.",
+      "sourceName": "Source",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cairn_near_Morton's_Way_on_Corryhabbie_Hill_-_geograph.org.uk_-_665277.jpg",
+      "attributionText": "Use approved local/reference landscape image with proper source credit.",
+      "licenseName": "Match source",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Cairn_near_Morton's_Way_on_Corryhabbie_Hill_-_geograph.org.uk_-_665277.jpg"
+    }
   ],
-  "notes": [
-    "Suits rough-but-readable weather, sensible late starts, ridge nav when you can see — not clag heroics.",
-    "Estate access, events, and parking rules change — read the signs.",
-    "Busy in good weather; go early or late if crowds annoy you.",
-    "Maps link centres on the Glen Clova corridor for this GPX — check against your own map before you drive.",
-    "wth-mayar-driesh-walkhighlands.gpx — Walkhighlands route line; copyright Walkhighlands (see file). Bundled as wth for site map testing only — not for republishing elsewhere; replace or clear rights before wide public release."
-  ],
-  "planningFooterNote": "Glen Esk area guide. Planning blurb only — line, time, and turn-back are yours."
+  "disclaimerSection": {
+    "title": "Warnings / honesty",
+    "body": "This is a planning page, not a permission slip to switch your brain off. Broad ground, changing weather, and winter leftovers can still make this a proper hill day. Bring a map, use your head, and don’t act surprised if the nice readable ridge still turns spicy in clag and wind."
+  },
+  "planningFooterNote": ""
 }

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "parking-glenshee",
+    "name": "Glenshee Ski Centre (the parker)",
+    "lat": 56.883333,
+    "lng": -3.416667,
+    "gridRef": "NO 13978 78099",
+    "elevationM": 650,
+    "type": "parking",
+    "description": "Main ski-centre parking area.",
+    "order": 1
+  },
+  {
+    "id": "summit-mayar",
+    "name": "Mayar summit",
+    "lat": 56.848936,
+    "lng": -3.246299,
+    "gridRef": "NO 24107 73760",
+    "elevationM": 928,
+    "type": "summit",
+    "description": "Munro summit point.",
+    "order": 2
+  },
+  {
+    "id": "summit-driesh",
+    "name": "Driesh summit",
+    "lat": 56.84796,
+    "lng": -3.19655,
+    "gridRef": "NO 27100 73600",
+    "elevationM": 947,
+    "type": "summit",
+    "description": "Munro summit point.",
+    "order": 3
+  }
+]

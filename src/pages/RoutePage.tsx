@@ -25,119 +25,93 @@ import { AreaGuideRoutePage } from '../components/AreaGuideRoutePage'
 import { useRouteBundle, type RouteBundleKey } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
 import { recommendationFromRoute } from '../lib/recommendationFromRoute'
-import type { AttributedImage, RouteJson, WaypointJson } from '../types/route'
+import type { RouteJson, WaypointJson } from '../types/route'
 
-interface SimpleCard {
-  title: string
-  description: string
-  whyToday?: string
-  imageSrc?: string
-  imageAlt?: string
-  source?: string
-  link?: string
-}
-
-function SimpleCardSection({ id, title, cards }: { id: string; title: string; cards: SimpleCard[] }) {
-  return (
-    <section className="planning-section" aria-labelledby={id}>
-      <h2 id={id} className="planning-section-title">
-        {title}
-      </h2>
-      <ul className="planning-wildlife-grid">
-        {cards.map((card, i) => (
-          <li key={i} className="planning-wildlife-card">
-            {card.imageSrc ? (
-              <div className="planning-figure-frame">
-                <img
-                  src={card.imageSrc}
-                  alt={card.imageAlt ?? card.title}
-                  className="planning-figure-img"
-                  loading="lazy"
-                />
-              </div>
-            ) : null}
-            <h3 className="planning-wildlife-title">{card.title}</h3>
-            <p className="planning-wildlife-body">{card.description}</p>
-            {card.whyToday ? <p className="planning-wildlife-why">Why today: {card.whyToday}</p> : null}
-            {card.source || card.link ? (
-              <p className="planning-wildlife-why">
-                Source: {card.source ?? 'External reference'}{' '}
-                {card.link ? (
-                  <>
-                    (
-                    <a href={card.link} target="_blank" rel="noopener noreferrer">
-                      read more
-                    </a>
-                    )
-                  </>
-                ) : null}
-              </p>
-            ) : null}
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
-
-const MAYAR_DRIESH_TERRAIN_CONDITION_CARDS: SimpleCard[] = [
-  { title: 'Wind exposure', description: "Big open ridge - if it's blowing, you're in it all day." },
-  { title: 'Mixed ground', description: 'Dry start, then peat and soft sections higher up.' },
+const MAYAR_DRIESH_TERRAIN_CONDITIONS = [
   {
-    title: 'Clag flattening the plateau',
-    description: 'Simple in clear weather, vague bearings in whiteout.',
+    label: 'Wind exposure',
+    body: "Big open ridge. If it’s blowing, you’re in it.",
   },
   {
-    title: 'Snow carryover',
-    description: 'Hollows and north-facing bits hold onto it longer than expected.',
+    label: 'Mixed ground',
+    body: 'Tracky start, then open hill, peatier bits, and whatever snow is still hanging on.',
   },
   {
-    title: 'Bog indicators',
-    description: 'Cottongrass usually means soft ground - pick your line.',
+    label: 'Clag flattening the tops',
+    body: 'Simple enough in clear weather. Much less charming when everything turns white-grey and featureless.',
+  },
+  {
+    label: 'Snow carryover',
+    body: 'North-facing and hollowed ground can still hold old snow longer than you’d think.',
+  },
+  {
+    label: 'Bog factor',
+    body: 'Usually not a total bog-fest, but soft patches still exist and will catch the lazy foot placement.',
   },
 ]
 
-const MAYAR_DRIESH_WHATS_AROUND_YOU_GALLERY: AttributedImage[] = [
+const MAYAR_DRIESH_GOOD_FOR = [
+  'Rough-but-readable weather',
+  'Late-ish start without making the whole day stupid',
+  'Two-Munro payoff with straightforward ridge logic',
+  'Winter kit days where you want broad ground, not circus tricks',
+]
+
+const MAYAR_DRIESH_NOT_IDEAL_FOR = [
+  'Anyone wanting a short easy local blast',
+  'Full whiteout if nobody fancies doing proper nav',
+  'Days where severe wind makes exposed ridge walking a pain in the arse',
+  'Folk wanting a quieter, weirder, more exploratory day',
+]
+
+const MAYAR_DRIESH_LOOKOUT_FOR = [
   {
-    id: 'md-cottongrass',
-    title: 'Cottongrass',
-    imageUrl: 'photos/cottongrass-hermaness.jpg',
-    caption:
-      'White tufts in peat usually means soft ground. Why today: wet conditions and early growth mean the bog is still holding water.',
-    sourceName: 'Wikimedia Commons',
-    sourceUrl:
-      'https://commons.wikimedia.org/wiki/File:Common_Cotton-grass_(Eriophorum_angustifolium),_Hermaness_-_geograph.org.uk_-_6548063.jpg',
-    attributionText:
-      '© Mike Pennington. Geograph Britain and Ireland, image ID 6548063; mirrored on Wikimedia Commons with photographer credit.',
-    licenseName: 'CC BY-SA 2.0',
-    licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    label: 'Ridge wind and cross-gusts',
+    body: 'this was picked because the line is obvious, but if it’s blowing hard it still batters your pace.',
   },
   {
-    id: 'md-red-grouse',
-    title: 'Red grouse',
-    imageUrl: 'photos/red-grouse-heather.jpg',
-    caption:
-      'Loud, territorial moorland bird. Why today: breeding season means they are usually more visible and vocal.',
-    sourceName: 'Wikimedia Commons',
-    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_Grouse_(2954268645).jpg',
-    attributionText:
-      '© Alastair Rae (London, UK). Uploaded from Flickr; reviewed on Wikimedia Commons.',
-    licenseName: 'CC BY-SA 2.0',
-    licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+    label: 'Spring shoulder-season mix',
+    body: 'dry-ish lower path can turn to old snow and icy patches higher up, so don’t assume one setup works all day.',
   },
   {
-    id: 'md-red-deer',
-    title: 'Deer',
-    imageUrl: 'photos/red-deer-stag.jpg',
-    caption:
-      'Red deer moving across open slopes. Why today: low disturbance and broad ground keep sightings realistic.',
-    sourceName: 'Wikimedia Commons',
-    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_deer_stag.jpg',
-    attributionText: '© Mehmet Karatay. Own work; uploaded to Wikimedia Commons.',
-    licenseName: 'CC BY-SA 3.0',
-    licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+    label: 'Clag on the broad tops',
+    body: 'even on this readable day, visibility can flatten fast and make easy bearings feel vague.',
+  },
+  {
+    label: 'Cornice leftovers and loaded edges in colder spells',
+    body: 'give crest lines a wider berth if the snowpack looks uncertain.',
+  },
+  {
+    label: 'Busy Glenshee parking on decent forecasts',
+    body: 'early start helps, and not blocking access keeps everyone happy.',
   },
 ]
+
+function importantGridRefs(route: RouteJson, waypoints: WaypointJson[]) {
+  const rows: Array<{ label: string; ref: string }> = []
+  const seen = new Set<string>()
+  const push = (label: string, ref?: string) => {
+    const tidyRef = ref?.trim()
+    if (!tidyRef) return
+    const key = `${label}:${tidyRef}`
+    if (seen.has(key)) return
+    seen.add(key)
+    rows.push({ label, ref: tidyRef })
+  }
+
+  push('The parker', route.startGridRef)
+  for (const a of route.anchorRefs ?? []) {
+    if (/summit|top|parker|parking|start|junction|bail|col|saddle/i.test(a.label)) {
+      push(a.label, a.gridRef)
+    }
+  }
+  for (const w of waypoints) {
+    if (w.type === 'summit' || w.type === 'parking' || w.type === 'junction') {
+      push(w.name, w.gridRef)
+    }
+  }
+  return rows.slice(0, 8)
+}
 
 function RoutePageLoaded({
   route,
@@ -164,6 +138,7 @@ function RoutePageLoaded({
   const routeOpts = route.routeOptions ?? []
   const rec = recommendationFromRoute(route)
   const isMayarDriesh = route.slug === 'mayar-driesh'
+  const keyRefs = importantGridRefs(route, waypoints)
 
   return (
     <article className="page-route page-route--planning">
@@ -179,14 +154,74 @@ function RoutePageLoaded({
 
       {route.qualityMeter ? <QualityHillDayMeter meter={route.qualityMeter} /> : null}
 
-      {route.whyThisRoute ? <WhyThisRouteSection content={route.whyThisRoute} /> : null}
+      {isMayarDriesh && route.whyThisRoute ? (
+        <section className="planning-section planning-section--why" aria-labelledby="why-this-route-heading">
+          <h2 id="why-this-route-heading" className="planning-section-title">
+            {route.whyThisRoute.title}
+          </h2>
+          <p className="planning-prose">{route.whyThisRoute.body}</p>
+          {route.whyThisRoute.supporting
+            ?.split('\n\n')
+            .map((paragraph, i) => <p key={i} className="planning-prose-support">{paragraph}</p>)}
+        </section>
+      ) : route.whyThisRoute ? (
+        <WhyThisRouteSection content={route.whyThisRoute} />
+      ) : null}
 
       {isMayarDriesh ? (
-        <SimpleCardSection
-          id="terrain-conditions-heading"
-          title="Terrain & conditions"
-          cards={MAYAR_DRIESH_TERRAIN_CONDITION_CARDS}
-        />
+        <>
+          <section className="planning-section" aria-labelledby="terrain-conditions-heading">
+            <h2 id="terrain-conditions-heading" className="planning-section-title">
+              Terrain &amp; conditions
+            </h2>
+            <ul className="planning-callouts planning-callouts--compact-grid">
+              {MAYAR_DRIESH_TERRAIN_CONDITIONS.map((item, i) => (
+                <li key={i} className="planning-callout-card">
+                  <strong className="planning-callout-card-label">{item.label}</strong>
+                  <span className="planning-callout-card-body">{item.body}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {route.whatDayFeelsLike ? <DayFeelsLikeSection content={route.whatDayFeelsLike} /> : null}
+
+          <section className="planning-section" aria-labelledby="good-for-heading">
+            <h2 id="good-for-heading" className="planning-section-title">
+              Good for
+            </h2>
+            <ul className="planning-summary-chips planning-summary-chips--dense">
+              {MAYAR_DRIESH_GOOD_FOR.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="planning-section" aria-labelledby="not-ideal-heading">
+            <h2 id="not-ideal-heading" className="planning-section-title">
+              Not ideal for
+            </h2>
+            <ul className="planning-summary-chips planning-summary-chips--dense">
+              {MAYAR_DRIESH_NOT_IDEAL_FOR.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="planning-section" aria-labelledby="look-out-day-heading">
+            <h2 id="look-out-day-heading" className="planning-section-title">
+              What to look out for on the day
+            </h2>
+            <ul className="planning-callouts planning-callouts--compact-grid">
+              {MAYAR_DRIESH_LOOKOUT_FOR.map((item, i) => (
+                <li key={i} className="planning-callout-card">
+                  <strong className="planning-callout-card-label">{item.label}</strong>
+                  <span className="planning-callout-card-body">{item.body}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
       ) : route.whatToLookOutFor?.length ? (
         <section className="planning-section" aria-labelledby="look-out-day-heading">
           <h2 id="look-out-day-heading" className="planning-section-title">
@@ -200,7 +235,7 @@ function RoutePageLoaded({
         </section>
       ) : null}
 
-      {route.disclaimerSection ? (
+      {!isMayarDriesh && route.disclaimerSection ? (
         <TitledProseSection
           id="disclaimer-section-heading"
           title={route.disclaimerSection.title ?? 'Suggested line only'}
@@ -210,13 +245,31 @@ function RoutePageLoaded({
         />
       ) : null}
 
-      {rec ? <HonestTakeBlock block={rec} /> : null}
+      {!isMayarDriesh && rec ? <HonestTakeBlock block={rec} /> : null}
 
       <RouteOptionsPlanning options={routeOpts} optionWaypoints={optionWaypoints} />
 
       <ParkerSection route={route} waypoints={waypoints} />
 
+      {isMayarDriesh && rec ? <HonestTakeBlock block={rec} /> : null}
+
       <RouteStats route={route} />
+
+      {isMayarDriesh && keyRefs.length > 0 ? (
+        <section className="planning-section planning-key-refs" aria-labelledby="important-grid-refs-heading">
+          <h2 id="important-grid-refs-heading" className="planning-section-title">
+            Important grid refs
+          </h2>
+          <ul className="planning-key-refs-list">
+            {keyRefs.map((item) => (
+              <li key={`${item.label}:${item.ref}`} className="planning-key-refs-item">
+                <span className="planning-key-refs-label">{item.label}</span>
+                <code className="planning-key-refs-grid">{item.ref}</code>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <AnchorRefsPanel
         title={route.anchorRefsTitle}
@@ -250,14 +303,33 @@ function RoutePageLoaded({
         <RouteMap route={route} waypoints={waypoints} selectedOptionId={mapLineId} />
       </div>
 
-      <WaypointTable waypoints={waypoints} />
+      {isMayarDriesh ? (
+        <details className="planning-disclosure">
+          <summary>Waypoints (full)</summary>
+          <WaypointTable waypoints={waypoints} />
+        </details>
+      ) : (
+        <WaypointTable waypoints={waypoints} />
+      )}
 
-      <GridRefsBlock
-        route={route}
-        waypoints={waypoints}
-        title="All grid refs (full list)"
-        hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
-      />
+      {isMayarDriesh ? (
+        <details className="planning-disclosure">
+          <summary>Grid refs (full)</summary>
+          <GridRefsBlock
+            route={route}
+            waypoints={waypoints}
+            title="All grid refs (full list)"
+            hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
+          />
+        </details>
+      ) : (
+        <GridRefsBlock
+          route={route}
+          waypoints={waypoints}
+          title="All grid refs (full list)"
+          hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
+        />
+      )}
 
       {route.goodStopsDetail ? <GoodStopsPlanning detail={route.goodStopsDetail} /> : null}
 
@@ -265,8 +337,8 @@ function RoutePageLoaded({
         <LookoutGallery
           route={route}
           title="What's around you"
-          items={MAYAR_DRIESH_WHATS_AROUND_YOU_GALLERY}
-          intro="Quick visual reads for this ridge day: what you might spot, and what the ground is telling you."
+          items={route.lookoutGallery ?? []}
+          intro={route.lookoutGalleryIntro}
         />
       ) : route.whatYouMightSee?.length ? (
         <section className="planning-section" aria-labelledby="flora-fauna-heading">
@@ -281,7 +353,17 @@ function RoutePageLoaded({
         </section>
       ) : null}
 
-      {route.whatDayFeelsLike ? (
+      {isMayarDriesh && route.disclaimerSection ? (
+        <TitledProseSection
+          id="disclaimer-section-heading"
+          title={route.disclaimerSection.title ?? 'Suggested line only'}
+          body={route.disclaimerSection.body}
+          supporting={route.disclaimerSection.supporting}
+          className="planning-section--disclaimer"
+        />
+      ) : null}
+
+      {route.whatDayFeelsLike && !isMayarDriesh ? (
         <DayFeelsLikeSection content={route.whatDayFeelsLike} />
       ) : null}
 
@@ -291,14 +373,16 @@ function RoutePageLoaded({
         wildlifeCards={route.wildlifeCards}
       />
 
-      <LookoutGallery
-        route={route}
-        items={route.lookoutGallery ?? []}
-        intro={
-          route.lookoutGalleryIntro ??
-          'Stuff you might actually see or step in — nothing curated for Instagram.'
-        }
-      />
+      {!isMayarDriesh ? (
+        <LookoutGallery
+          route={route}
+          items={route.lookoutGallery ?? []}
+          intro={
+            route.lookoutGalleryIntro ??
+            'Stuff you might actually see or step in — nothing curated for Instagram.'
+          }
+        />
+      ) : null}
 
       {showLegacyTops ? <OrderedTops tops={route.orderedTops ?? []} /> : null}
 
