@@ -185,8 +185,10 @@ export interface RouteJson {
   qualityMeter?: QualityMeter
   weatherNote?: WeatherNote
   whatDayFeelsLike?: DayFeelsLikeContent
+  whatToLookOutFor?: string[]
   goodStopSpots?: string[]
   goodStopsDetail?: GoodStopsDetail
+  whatYouMightSee?: string[]
   terrainVibe?: string
   terrainDetail?: TextBlock
   wildlifeTexture?: string

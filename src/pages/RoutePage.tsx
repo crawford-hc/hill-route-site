@@ -25,7 +25,119 @@ import { AreaGuideRoutePage } from '../components/AreaGuideRoutePage'
 import { useRouteBundle, type RouteBundleKey } from '../hooks/useRouteBundle'
 import { routePhotoUrl } from '../lib/loadRoutes'
 import { recommendationFromRoute } from '../lib/recommendationFromRoute'
-import type { RouteJson, WaypointJson } from '../types/route'
+import type { AttributedImage, RouteJson, WaypointJson } from '../types/route'
+
+interface SimpleCard {
+  title: string
+  description: string
+  whyToday?: string
+  imageSrc?: string
+  imageAlt?: string
+  source?: string
+  link?: string
+}
+
+function SimpleCardSection({ id, title, cards }: { id: string; title: string; cards: SimpleCard[] }) {
+  return (
+    <section className="planning-section" aria-labelledby={id}>
+      <h2 id={id} className="planning-section-title">
+        {title}
+      </h2>
+      <ul className="planning-wildlife-grid">
+        {cards.map((card, i) => (
+          <li key={i} className="planning-wildlife-card">
+            {card.imageSrc ? (
+              <div className="planning-figure-frame">
+                <img
+                  src={card.imageSrc}
+                  alt={card.imageAlt ?? card.title}
+                  className="planning-figure-img"
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
+            <h3 className="planning-wildlife-title">{card.title}</h3>
+            <p className="planning-wildlife-body">{card.description}</p>
+            {card.whyToday ? <p className="planning-wildlife-why">Why today: {card.whyToday}</p> : null}
+            {card.source || card.link ? (
+              <p className="planning-wildlife-why">
+                Source: {card.source ?? 'External reference'}{' '}
+                {card.link ? (
+                  <>
+                    (
+                    <a href={card.link} target="_blank" rel="noopener noreferrer">
+                      read more
+                    </a>
+                    )
+                  </>
+                ) : null}
+              </p>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+const MAYAR_DRIESH_TERRAIN_CONDITION_CARDS: SimpleCard[] = [
+  { title: 'Wind exposure', description: "Big open ridge - if it's blowing, you're in it all day." },
+  { title: 'Mixed ground', description: 'Dry start, then peat and soft sections higher up.' },
+  {
+    title: 'Clag flattening the plateau',
+    description: 'Simple in clear weather, vague bearings in whiteout.',
+  },
+  {
+    title: 'Snow carryover',
+    description: 'Hollows and north-facing bits hold onto it longer than expected.',
+  },
+  {
+    title: 'Bog indicators',
+    description: 'Cottongrass usually means soft ground - pick your line.',
+  },
+]
+
+const MAYAR_DRIESH_WHATS_AROUND_YOU_GALLERY: AttributedImage[] = [
+  {
+    id: 'md-cottongrass',
+    title: 'Cottongrass',
+    imageUrl: 'photos/cottongrass-hermaness.jpg',
+    caption:
+      'White tufts in peat usually means soft ground. Why today: wet conditions and early growth mean the bog is still holding water.',
+    sourceName: 'Wikimedia Commons',
+    sourceUrl:
+      'https://commons.wikimedia.org/wiki/File:Common_Cotton-grass_(Eriophorum_angustifolium),_Hermaness_-_geograph.org.uk_-_6548063.jpg',
+    attributionText:
+      '© Mike Pennington. Geograph Britain and Ireland, image ID 6548063; mirrored on Wikimedia Commons with photographer credit.',
+    licenseName: 'CC BY-SA 2.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+  },
+  {
+    id: 'md-red-grouse',
+    title: 'Red grouse',
+    imageUrl: 'photos/red-grouse-heather.jpg',
+    caption:
+      'Loud, territorial moorland bird. Why today: breeding season means they are usually more visible and vocal.',
+    sourceName: 'Wikimedia Commons',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_Grouse_(2954268645).jpg',
+    attributionText:
+      '© Alastair Rae (London, UK). Uploaded from Flickr; reviewed on Wikimedia Commons.',
+    licenseName: 'CC BY-SA 2.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/2.0/',
+  },
+  {
+    id: 'md-red-deer',
+    title: 'Deer',
+    imageUrl: 'photos/red-deer-stag.jpg',
+    caption:
+      'Red deer moving across open slopes. Why today: low disturbance and broad ground keep sightings realistic.',
+    sourceName: 'Wikimedia Commons',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_deer_stag.jpg',
+    attributionText: '© Mehmet Karatay. Own work; uploaded to Wikimedia Commons.',
+    licenseName: 'CC BY-SA 3.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/',
+  },
+]
 
 function RoutePageLoaded({
   route,
@@ -51,6 +163,7 @@ function RoutePageLoaded({
 
   const routeOpts = route.routeOptions ?? []
   const rec = recommendationFromRoute(route)
+  const isMayarDriesh = route.slug === 'mayar-driesh'
 
   return (
     <article className="page-route page-route--planning">
@@ -66,6 +179,27 @@ function RoutePageLoaded({
 
       {route.qualityMeter ? <QualityHillDayMeter meter={route.qualityMeter} /> : null}
 
+      {route.whyThisRoute ? <WhyThisRouteSection content={route.whyThisRoute} /> : null}
+
+      {isMayarDriesh ? (
+        <SimpleCardSection
+          id="terrain-conditions-heading"
+          title="Terrain & conditions"
+          cards={MAYAR_DRIESH_TERRAIN_CONDITION_CARDS}
+        />
+      ) : route.whatToLookOutFor?.length ? (
+        <section className="planning-section" aria-labelledby="look-out-day-heading">
+          <h2 id="look-out-day-heading" className="planning-section-title">
+            What to look out for on the day
+          </h2>
+          <ul className="planning-callouts">
+            {route.whatToLookOutFor.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {route.disclaimerSection ? (
         <TitledProseSection
           id="disclaimer-section-heading"
@@ -75,8 +209,6 @@ function RoutePageLoaded({
           className="planning-section--disclaimer"
         />
       ) : null}
-
-      {route.whyThisRoute ? <WhyThisRouteSection content={route.whyThisRoute} /> : null}
 
       {rec ? <HonestTakeBlock block={rec} /> : null}
 
@@ -128,6 +260,26 @@ function RoutePageLoaded({
       />
 
       {route.goodStopsDetail ? <GoodStopsPlanning detail={route.goodStopsDetail} /> : null}
+
+      {isMayarDriesh ? (
+        <LookoutGallery
+          route={route}
+          title="What's around you"
+          items={MAYAR_DRIESH_WHATS_AROUND_YOU_GALLERY}
+          intro="Quick visual reads for this ridge day: what you might spot, and what the ground is telling you."
+        />
+      ) : route.whatYouMightSee?.length ? (
+        <section className="planning-section" aria-labelledby="flora-fauna-heading">
+          <h2 id="flora-fauna-heading" className="planning-section-title">
+            What you might see (flora &amp; fauna)
+          </h2>
+          <ul className="planning-callouts">
+            {route.whatYouMightSee.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {route.whatDayFeelsLike ? (
         <DayFeelsLikeSection content={route.whatDayFeelsLike} />
