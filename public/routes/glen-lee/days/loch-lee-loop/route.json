@@ -4,8 +4,18 @@
   "title": "Glen Lee Circuit (Loch Lee + South Side Loop)",
   "area": "Glen Lee / Angus Glens",
   "country": "Scotland",
-  "listingBlurb": "Improving-but-still-rowdy day = long glen cruise, then a proper high moorland graft with just enough chaos to keep it interesting. Big mileage, low drama terrain, and a finish that'll feel earned.",
-  "summary": "Improving-but-still-rowdy day = long glen cruise, then a proper high moorland graft with just enough chaos to keep it interesting. Big mileage, low drama terrain, and a finish that'll feel earned.",
+  "listingBlurb": "Tomorrow: chilly start, showery middle, brighter tilt toward the finish — full Glen Lee loop for folk who don’t need perfect skies.",
+  "summary": "Tomorrow’s a cold start, a middling showery spell through the middle of the day, then a fair chance of brighter skies toward the finish — not a bluebird, not a washout. Still a decent shout for the full loop if you’d rather not spend half the day sulking in peat waiting for perfection.",
+  "heroWeatherStrip": {
+    "ariaLabel": "Tomorrow’s route weather snapshot",
+    "items": [
+      { "icon": "🥶", "label": "Cold start", "detail": "1–2°C early" },
+      { "icon": "☁️", "label": "Cloudy morning", "detail": "Mostly cloudy / mixed" },
+      { "icon": "🌦", "label": "Showery middle", "detail": "Midday – early afternoon" },
+      { "icon": "🌤", "label": "Better later", "detail": "Brighter spells later on" },
+      { "icon": "🌙", "label": "Cold finish", "detail": "Clearer, colder evening" }
+    ]
+  },
   "suggestedRouteBadge": "Custom route (your GPX)",
   "gpxFile": "LochLeeLoop.gpx",
   "bounds": {
@@ -27,8 +37,8 @@
   "waypointFile": "waypoints.json",
   "qualityMeter": {
     "score": 82,
-    "headline": "Proper graft, good shout if you want a full-value day",
-    "verdict": "Long approach, big open middle, and just enough weather to stop it being a walk in the park.",
+    "headline": "Proper graft — tomorrow’s messy middle, but the day still stacks up",
+    "verdict": "Chilly early, showers through the middle, brighter odds later. Enough rough edges to feel like a real hill day, not a town stroll.",
     "lowLabel": "absolute shiter",
     "highLabel": "fuckin' stoater",
     "factors": [
@@ -40,7 +50,7 @@
       {
         "label": "Flexible loop",
         "impact": "positive",
-        "note": "Plenty of options to trim if weather turns."
+        "note": "Options to trim or slow down if the middle’s being awkward."
       },
       {
         "label": "Exposure window",
@@ -50,19 +60,19 @@
       {
         "label": "Middle section drag",
         "impact": "negative",
-        "note": "That south-side plateau will test your patience more than your fitness."
+        "note": "That south-side plateau drags more when it’s damp and showery — patience, not panic."
       }
     ]
   },
   "whyThisRoute": {
     "title": "Why pick this day",
-    "body": "This is a great shout for a day that's improving but still a bit wild. You're using the glen for shelter early, then stepping up onto the higher ground once things start behaving a bit better.",
-    "supporting": "It's also ideal if you want a proper long day without technical nonsense. The terrain asks for effort and awareness, not ropework or heroics.\n\nAnd importantly, it gives you control. You decide how big this day becomes."
+    "body": "Tomorrow suits this loop if you’re fine with a nippy start and a damp, showery middle — you’re not banking on sunshine, you’re banking on the shape of the day. There’s a fair chance the back half brightens, which is a nicer way to earn the miles than the other way round.",
+    "supporting": "It’s still a full proper day: big track miles early, then open moorland that asks for graft without silly technical faff. You’re not squeezing in a token lap — you’re committing to the whole arc.\n\nAnd you keep control: how hard you push through the soggy middle is yours."
   },
   "whatDayFeelsLike": {
     "title": "What it feels like",
-    "body": "Starts like a gentle warm-up along the glen, almost too easy. Then you peel away from the track and it becomes a different day — quieter, rougher, and a bit more honest.",
-    "supporting": "The middle section is classic rolling Angus ground. Nothing dramatic, but it just keeps going, and you feel every bit of it.\n\nFinish is satisfying rather than spectacular — the kind of day where you look back and go \"aye, that was a shift.\""
+    "body": "Crisp and a bit stingy first thing along the glen — easy miles, but you’ll feel the cold until you’re properly warm. Once you leave the track the day turns quieter and rougher, and the middle can feel a bit grim when the showers line up.",
+    "supporting": "Classic rolling Angus ground: nothing flashy, it just keeps asking. If the afternoon delivers brighter spells, the same hills suddenly feel less petty — small morale win, worth noticing.\n\nFinish leans satisfying: clearer air often means a colder sting again, and you’ll still mutter “aye, that was a shift” in the car."
   },
   "recommendationBlock": {
     "title": "Route shape / day flow",
@@ -89,11 +99,11 @@
       },
       {
         "title": "Lee-side dip on the high ground",
-        "description": "Any little shelter out of the wind will feel like luxury."
+        "description": "Handy if the middle’s throwing showers — any scrap of shelter beats standing about getting philosophical in the rain."
       },
       {
         "title": "Late-loop morale stop",
-        "description": "Once the hard work is mostly behind you, take the win."
+        "description": "If the afternoon’s brightened, pause and take the win before the evening cool-down bites."
       }
     ]
   },
