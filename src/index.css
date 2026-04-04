@@ -2040,6 +2040,64 @@ a.area-guide-card {
   font-weight: 600;
 }
 
+/* Loch Lee — stats directly under map: compact block */
+.page-route--loch-lee-loop .route-stats {
+  margin: 0 0 1.25rem;
+}
+
+.page-route--loch-lee-loop .stats-grid {
+  gap: 0.55rem;
+  padding: 0.6rem;
+}
+
+.page-route--loch-lee-loop .stat {
+  padding: 0.6rem 0.65rem;
+}
+
+/* Loch Lee — tighter “What’s around you” cards */
+.page-route--loch-lee-loop .planning-lookout {
+  margin-bottom: 1.75rem;
+}
+
+.page-route--loch-lee-loop .planning-lookout-intro {
+  margin-bottom: 0.65rem;
+}
+
+.page-route--loch-lee-loop .planning-lookout-grid {
+  gap: 0.75rem;
+}
+
+@media (min-width: 720px) {
+  .page-route--loch-lee-loop .planning-lookout-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.page-route--loch-lee-loop .planning-figure-frame {
+  aspect-ratio: 5 / 3;
+  max-height: 10.5rem;
+}
+
+.page-route--loch-lee-loop .planning-figure-cap {
+  padding: 0.55rem 0.7rem 0.65rem;
+}
+
+.page-route--loch-lee-loop .planning-figure-title {
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem;
+}
+
+.page-route--loch-lee-loop .planning-figure-caption {
+  margin: 0 0 0.4rem;
+  font-size: 0.82rem;
+  line-height: 1.38;
+}
+
+.page-route--loch-lee-loop .planning-figure-credit {
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
 .page-route--mayar-driesh .route-stats {
   margin-bottom: 1.5rem;
 }

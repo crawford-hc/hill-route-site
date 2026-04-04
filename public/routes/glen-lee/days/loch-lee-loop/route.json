@@ -17,8 +17,12 @@
   "mapCenter": { "lat": 56.91122, "lng": -2.91045 },
   "mapZoom": 11,
   "routeType": "Full day-detail route page",
+  "distanceKm": 28.1,
+  "ascentM": 858,
+  "estimatedHours": 7,
   "startName": "Invermark / Kirkton (Glen Lee access)",
   "startGridRef": "NO 44677 80418",
+  "finishGridRef": "NO 44677 80418",
   "parkingNote": "Big easy start, minimal faff. Straight onto a quality track and into the glen without wasting energy on nonsense.\n\nThis is one of the better starts for a big day — easy to find, easy to get moving, and no pointless warm-up confusion.",
   "waypointFile": "waypoints.json",
   "qualityMeter": {

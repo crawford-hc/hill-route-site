@@ -274,6 +274,7 @@ function RoutePageLoaded({
               waypointMarkers="terminals"
             />
           </div>
+          <RouteStats route={route} />
           <ParkerSection route={route} waypoints={waypoints} />
         </>
       ) : null}
@@ -477,7 +478,7 @@ function RoutePageLoaded({
 
       {isMayarDriesh && rec ? <HonestTakeBlock block={rec} /> : null}
 
-      <RouteStats route={route} />
+      {!isLochLeeLoop ? <RouteStats route={route} /> : null}
 
       {!isMayarDriesh ? (
         <AnchorRefsPanel

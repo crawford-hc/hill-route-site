@@ -7,6 +7,497 @@
     "gridRef": "NO 44677 80418",
     "elevationM": 259,
     "type": "parking",
-    "order": 0
+    "order": 0,
+    "description": "Start / the parker (matches GPX route start)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-02",
+    "name": "GPX route point 2 of 51",
+    "lat": 56.91155,
+    "lng": -2.9148,
+    "gridRef": "NO 44394 80397",
+    "type": "anchor",
+    "order": 1,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-03",
+    "name": "GPX route point 3 of 51",
+    "lat": 56.90904,
+    "lng": -2.93633,
+    "gridRef": "NO 43079 80135",
+    "type": "anchor",
+    "order": 2,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-04",
+    "name": "GPX route point 4 of 51",
+    "lat": 56.90668,
+    "lng": -2.94829,
+    "gridRef": "NO 42347 79883",
+    "type": "anchor",
+    "order": 3,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-05",
+    "name": "GPX route point 5 of 51",
+    "lat": 56.90125,
+    "lng": -2.96853,
+    "gridRef": "NO 41106 79295",
+    "type": "anchor",
+    "order": 4,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-06",
+    "name": "GPX route point 6 of 51",
+    "lat": 56.89854,
+    "lng": -2.9742,
+    "gridRef": "NO 40756 78999",
+    "type": "anchor",
+    "order": 5,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-07",
+    "name": "GPX route point 7 of 51",
+    "lat": 56.8902,
+    "lng": -3.00233,
+    "gridRef": "NO 39029 78095",
+    "type": "anchor",
+    "order": 6,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-08",
+    "name": "GPX route point 8 of 51",
+    "lat": 56.89269,
+    "lng": -3.02093,
+    "gridRef": "NO 37900 78389",
+    "type": "anchor",
+    "order": 7,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-09",
+    "name": "GPX route point 9 of 51",
+    "lat": 56.89353,
+    "lng": -3.02149,
+    "gridRef": "NO 37867 78483",
+    "type": "anchor",
+    "order": 8,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-10",
+    "name": "GPX route point 10 of 51",
+    "lat": 56.89443,
+    "lng": -3.02297,
+    "gridRef": "NO 37779 78585",
+    "type": "anchor",
+    "order": 9,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-11",
+    "name": "GPX route point 11 of 51",
+    "lat": 56.8956,
+    "lng": -3.02384,
+    "gridRef": "NO 37728 78716",
+    "type": "anchor",
+    "order": 10,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-12",
+    "name": "GPX route point 12 of 51",
+    "lat": 56.8962,
+    "lng": -3.02584,
+    "gridRef": "NO 37607 78784",
+    "type": "anchor",
+    "order": 11,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-13",
+    "name": "GPX route point 13 of 51",
+    "lat": 56.89751,
+    "lng": -3.02694,
+    "gridRef": "NO 37542 78931",
+    "type": "anchor",
+    "order": 12,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-14",
+    "name": "GPX route point 14 of 51",
+    "lat": 56.89785,
+    "lng": -3.02917,
+    "gridRef": "NO 37407 78971",
+    "type": "anchor",
+    "order": 13,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-15",
+    "name": "GPX route point 15 of 51",
+    "lat": 56.89845,
+    "lng": -3.03145,
+    "gridRef": "NO 37269 79040",
+    "type": "anchor",
+    "order": 14,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-16",
+    "name": "GPX route point 16 of 51",
+    "lat": 56.89887,
+    "lng": -3.03247,
+    "gridRef": "NO 37207 79087",
+    "type": "anchor",
+    "order": 15,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-17",
+    "name": "GPX route point 17 of 51",
+    "lat": 56.89972,
+    "lng": -3.033,
+    "gridRef": "NO 37177 79183",
+    "type": "anchor",
+    "order": 16,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-18",
+    "name": "GPX route point 18 of 51",
+    "lat": 56.90088,
+    "lng": -3.03503,
+    "gridRef": "NO 37055 79314",
+    "type": "anchor",
+    "order": 17,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-19",
+    "name": "GPX route point 19 of 51",
+    "lat": 56.90149,
+    "lng": -3.03576,
+    "gridRef": "NO 37011 79382",
+    "type": "anchor",
+    "order": 18,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-20",
+    "name": "GPX route point 20 of 51",
+    "lat": 56.90153,
+    "lng": -3.03646,
+    "gridRef": "NO 36969 79387",
+    "type": "anchor",
+    "order": 19,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-21",
+    "name": "GPX route point 21 of 51",
+    "lat": 56.90182,
+    "lng": -3.03703,
+    "gridRef": "NO 36935 79420",
+    "type": "anchor",
+    "order": 20,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-22",
+    "name": "GPX route point 22 of 51",
+    "lat": 56.90242,
+    "lng": -3.0393,
+    "gridRef": "NO 36797 79489",
+    "type": "anchor",
+    "order": 21,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-23",
+    "name": "GPX route point 23 of 51",
+    "lat": 56.90372,
+    "lng": -3.04179,
+    "gridRef": "NO 36648 79636",
+    "type": "anchor",
+    "order": 22,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-24",
+    "name": "GPX route point 24 of 51",
+    "lat": 56.90538,
+    "lng": -3.04617,
+    "gridRef": "NO 36384 79825",
+    "type": "anchor",
+    "order": 23,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-25",
+    "name": "GPX route point 25 of 51",
+    "lat": 56.9083,
+    "lng": -3.05211,
+    "gridRef": "NO 36027 80155",
+    "type": "anchor",
+    "order": 24,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-26",
+    "name": "GPX route point 26 of 51",
+    "lat": 56.90894,
+    "lng": -3.0539,
+    "gridRef": "NO 35919 80228",
+    "type": "anchor",
+    "order": 25,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-27",
+    "name": "GPX route point 27 of 51",
+    "lat": 56.91022,
+    "lng": -3.05618,
+    "gridRef": "NO 35783 80373",
+    "type": "anchor",
+    "order": 26,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-28",
+    "name": "GPX route point 28 of 51",
+    "lat": 56.91123,
+    "lng": -3.06266,
+    "gridRef": "NO 35390 80491",
+    "type": "anchor",
+    "order": 27,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-29",
+    "name": "GPX route point 29 of 51",
+    "lat": 56.91125,
+    "lng": -3.06449,
+    "gridRef": "NO 35279 80495",
+    "type": "anchor",
+    "order": 28,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-30",
+    "name": "GPX route point 30 of 51",
+    "lat": 56.91028,
+    "lng": -3.06848,
+    "gridRef": "NO 35034 80391",
+    "type": "anchor",
+    "order": 29,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-31",
+    "name": "GPX route point 31 of 51",
+    "lat": 56.9096,
+    "lng": -3.07059,
+    "gridRef": "NO 34904 80318",
+    "type": "anchor",
+    "order": 30,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-32",
+    "name": "GPX route point 32 of 51",
+    "lat": 56.90783,
+    "lng": -3.07224,
+    "gridRef": "NO 34801 80122",
+    "type": "anchor",
+    "order": 31,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-33",
+    "name": "GPX route point 33 of 51",
+    "lat": 56.90721,
+    "lng": -3.07508,
+    "gridRef": "NO 34627 80056",
+    "type": "anchor",
+    "order": 32,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-34",
+    "name": "GPX route point 34 of 51",
+    "lat": 56.90715,
+    "lng": -3.07727,
+    "gridRef": "NO 34493 80051",
+    "type": "anchor",
+    "order": 33,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-35",
+    "name": "GPX route point 35 of 51",
+    "lat": 56.90752,
+    "lng": -3.07867,
+    "gridRef": "NO 34409 80094",
+    "type": "anchor",
+    "order": 34,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-36",
+    "name": "GPX route point 36 of 51",
+    "lat": 56.91962,
+    "lng": -3.07722,
+    "gridRef": "NO 34518 81439",
+    "type": "anchor",
+    "order": 35,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-37",
+    "name": "GPX route point 37 of 51",
+    "lat": 56.9234,
+    "lng": -3.06789,
+    "gridRef": "NO 35093 81851",
+    "type": "anchor",
+    "order": 36,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-38",
+    "name": "GPX route point 38 of 51",
+    "lat": 56.92859,
+    "lng": -3.06266,
+    "gridRef": "NO 35420 82424",
+    "type": "anchor",
+    "order": 37,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-39",
+    "name": "GPX route point 39 of 51",
+    "lat": 56.92957,
+    "lng": -3.06381,
+    "gridRef": "NO 35352 82534",
+    "type": "anchor",
+    "order": 38,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-40",
+    "name": "GPX route point 40 of 51",
+    "lat": 56.92706,
+    "lng": -3.061,
+    "gridRef": "NO 35518 82252",
+    "type": "anchor",
+    "order": 39,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-41",
+    "name": "GPX route point 41 of 51",
+    "lat": 56.92697,
+    "lng": -3.05887,
+    "gridRef": "NO 35648 82240",
+    "type": "anchor",
+    "order": 40,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-42",
+    "name": "GPX route point 42 of 51",
+    "lat": 56.92106,
+    "lng": -3.04224,
+    "gridRef": "NO 36650 81566",
+    "type": "anchor",
+    "order": 41,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-43",
+    "name": "GPX route point 43 of 51",
+    "lat": 56.9203,
+    "lng": -3.03175,
+    "gridRef": "NO 37287 81472",
+    "type": "anchor",
+    "order": 42,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-44",
+    "name": "GPX route point 44 of 51",
+    "lat": 56.92319,
+    "lng": -3.01759,
+    "gridRef": "NO 38154 81781",
+    "type": "anchor",
+    "order": 43,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-45",
+    "name": "GPX route point 45 of 51",
+    "lat": 56.92182,
+    "lng": -3.00818,
+    "gridRef": "NO 38725 81620",
+    "type": "anchor",
+    "order": 44,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-46",
+    "name": "GPX route point 46 of 51",
+    "lat": 56.92155,
+    "lng": -2.99877,
+    "gridRef": "NO 39297 81582",
+    "type": "anchor",
+    "order": 45,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-47",
+    "name": "GPX route point 47 of 51",
+    "lat": 56.91901,
+    "lng": -2.99324,
+    "gridRef": "NO 39630 81294",
+    "type": "anchor",
+    "order": 46,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-48",
+    "name": "GPX route point 48 of 51",
+    "lat": 56.91101,
+    "lng": -2.99396,
+    "gridRef": "NO 39573 80404",
+    "type": "anchor",
+    "order": 47,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-49",
+    "name": "GPX route point 49 of 51",
+    "lat": 56.90763,
+    "lng": -2.98824,
+    "gridRef": "NO 39916 80023",
+    "type": "anchor",
+    "order": 48,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
+  },
+  {
+    "id": "loch-lee-gpx-wpt-50",
+    "name": "GPX route point 50 of 51",
+    "lat": 56.90383,
+    "lng": -2.96793,
+    "gridRef": "NO 41146 79582",
+    "type": "anchor",
+    "order": 49,
+    "description": "Coordinate from LochLeeLoop.gpx <wpt> sequence (unnamed OS Maps export)."
   }
 ]
