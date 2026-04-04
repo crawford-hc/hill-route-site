@@ -235,7 +235,16 @@ export function RouteMap27700({
       circle.addTo(layers)
     }
 
-    fitAll()
+    if (gpxAsPrimary) {
+      const rbInitial = boundsFromRoute(route)
+      if (latLngBoundsHasUsefulSpan(rbInitial)) {
+        map.fitBounds(rbInitial.pad(0.12))
+      } else {
+        fitAll()
+      }
+    } else {
+      fitAll()
+    }
 
     const refitFromLayers = () => {
       const bb = layers.getBounds()
