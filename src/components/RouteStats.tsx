@@ -3,6 +3,8 @@ import type { RouteJson } from '../types/route'
 
 interface Props {
   route: RouteJson
+  /** Omit start/finish grid refs when they’re covered elsewhere (e.g. Parker section). */
+  omitParkerFinish?: boolean
 }
 
 function Stat({ label, value }: { label: string; value: ReactNode }) {
@@ -14,13 +16,12 @@ function Stat({ label, value }: { label: string; value: ReactNode }) {
   )
 }
 
-export function RouteStats({ route }: Props) {
+export function RouteStats({ route, omitParkerFinish }: Props) {
   const hasAny =
     route.distanceKm != null ||
     route.ascentM != null ||
     route.estimatedHours != null ||
-    route.startGridRef ||
-    route.finishGridRef
+    (!omitParkerFinish && (route.startGridRef || route.finishGridRef))
 
   if (!hasAny) return null
 
@@ -42,10 +43,10 @@ export function RouteStats({ route }: Props) {
             value={`~${route.estimatedHours} h`}
           />
         ) : null}
-        {route.startGridRef ? (
+        {!omitParkerFinish && route.startGridRef ? (
           <Stat label="Parker" value={route.startGridRef} />
         ) : null}
-        {route.finishGridRef ? (
+        {!omitParkerFinish && route.finishGridRef ? (
           <Stat label="Finish" value={route.finishGridRef} />
         ) : null}
       </dl>

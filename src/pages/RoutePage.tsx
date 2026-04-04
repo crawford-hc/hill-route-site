@@ -274,7 +274,7 @@ function RoutePageLoaded({
               waypointMarkers="terminals"
             />
           </div>
-          <RouteStats route={route} />
+          <RouteStats route={route} omitParkerFinish />
           <ParkerSection route={route} waypoints={waypoints} />
         </>
       ) : null}

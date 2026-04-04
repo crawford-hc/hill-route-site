@@ -12,6 +12,7 @@ import {
   GPX_MIN_VERTICES_FOR_LINE,
   GPX_TOO_SPARSE_FOR_MAP_LINE,
 } from '../lib/gpxLineVertexCount'
+import { latLngBoundsHasUsefulSpan } from '../lib/latLngBoundsSpan'
 import { routeGpxUrl } from '../lib/loadRoutes'
 import { RouteMap27700 } from './RouteMap27700'
 
@@ -145,16 +146,17 @@ function RouteMapOpenStreetMap({
       for (const w of waypointsForMap) pts.push(L.latLng(w.lat, w.lng))
 
       const bb = boundsFromLatLngs(pts)
-      if (bb?.isValid()) {
+      if (latLngBoundsHasUsefulSpan(bb)) {
         map.fitBounds(bb.pad(0.1))
         return
       }
       const wb = boundsFromWaypoints(waypointsForMap)
-      if (wb?.isValid()) map.fitBounds(wb.pad(0.12))
-      else {
-        const rb = boundsFromRoute(route)
-        if (rb?.isValid()) map.fitBounds(rb.pad(0.05))
+      if (latLngBoundsHasUsefulSpan(wb)) {
+        map.fitBounds(wb.pad(0.12))
+        return
       }
+      const rb = boundsFromRoute(route)
+      if (latLngBoundsHasUsefulSpan(rb)) map.fitBounds(rb.pad(0.12))
     }
 
     const primaryLineStyle = {
@@ -205,7 +207,7 @@ function RouteMapOpenStreetMap({
 
     const refitFromLayers = () => {
       const bb = layers.getBounds()
-      if (bb?.isValid()) map.fitBounds(bb.pad(0.1))
+      if (latLngBoundsHasUsefulSpan(bb)) map.fitBounds(bb.pad(0.12))
     }
 
     const overlayLineStyle = {
