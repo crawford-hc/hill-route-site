@@ -1,8 +1,12 @@
 import { gpx } from '@tmcw/togeojson'
 import L from 'leaflet'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { FeatureCollection } from 'geojson'
 import type { AnchorRef, LatLng, RouteJson, RouteOption, WaypointJson } from '../types/route'
+import {
+  featureCollectionLineFeaturesOnly,
+  terminalWaypointsForMap,
+} from '../lib/geoJsonLineFeaturesOnly'
 import {
   countLineVerticesInFeatureCollection,
   GPX_MIN_VERTICES_FOR_LINE,
@@ -55,6 +59,8 @@ interface Props {
   waypoints: WaypointJson[]
   /** Which option’s `suggestedPolyline` to draw; `null` = none */
   selectedOptionId: string | null
+  gpxLineOnly?: boolean
+  waypointMarkers?: 'all' | 'terminals'
 }
 
 const WP_COLORS: Record<string, string> = {
@@ -105,11 +111,22 @@ function selectedOption(
 }
 
 /** OS Leisure_27700 (EPSG:27700) basemap; caller should only mount when `VITE_OS_MAPS_API_KEY` is set. */
-export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
+export function RouteMap27700({
+  route,
+  waypoints,
+  selectedOptionId,
+  gpxLineOnly = false,
+  waypointMarkers = 'all',
+}: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [gpxOverlay, setGpxOverlay] = useState(false)
   const [gpxNote, setGpxNote] = useState<string | null>(null)
   const gpxUrl = routeGpxUrl(route)
+
+  const waypointsForMap = useMemo(() => {
+    if (waypointMarkers === 'terminals') return terminalWaypointsForMap(waypoints)
+    return waypoints
+  }, [waypoints, waypointMarkers])
 
   const opt = selectedOption(route.routeOptions, selectedOptionId)
   const polyline: LatLng[] = opt?.suggestedPolyline ?? NO_LINE
@@ -157,14 +174,14 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
       const pts: L.LatLngExpression[] = [...extra]
       for (const p of polyline) pts.push(L.latLng(p.lat, p.lng))
       pts.push(...anchorMarkers(route.anchorRefs))
-      for (const w of waypoints) pts.push(L.latLng(w.lat, w.lng))
+      for (const w of waypointsForMap) pts.push(L.latLng(w.lat, w.lng))
 
       const bb = boundsFromLatLngs(pts)
       if (bb?.isValid()) {
         map.fitBounds(bb.pad(0.1))
         return
       }
-      const wb = boundsFromWaypoints(waypoints)
+      const wb = boundsFromWaypoints(waypointsForMap)
       if (wb?.isValid()) map.fitBounds(wb.pad(0.12))
       else {
         const rb = boundsFromRoute(route)
@@ -199,7 +216,7 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
       c.addTo(layers)
     }
 
-    for (const w of waypoints) {
+    for (const w of waypointsForMap) {
       const circle = L.circleMarker([w.lat, w.lng], {
         radius: 8,
         color: '#0f172a',
@@ -253,7 +270,8 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
             setGpxNote(GPX_TOO_SPARSE_FOR_MAP_LINE)
             return
           }
-          L.geoJSON(fc, { style: primaryLineStyle }).addTo(layers)
+          const fcForMap = gpxLineOnly ? featureCollectionLineFeaturesOnly(fc) : fc
+          L.geoJSON(fcForMap, { style: primaryLineStyle }).addTo(layers)
           refitFromLayers()
         })
         .catch(() => {
@@ -283,7 +301,8 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
               setGpxNote(GPX_TOO_SPARSE_FOR_MAP_LINE)
               return
             }
-            const gj = L.geoJSON(fc, {
+            const fcForMap = gpxLineOnly ? featureCollectionLineFeaturesOnly(fc) : fc
+            const gj = L.geoJSON(fcForMap, {
               style: overlayLineStyle,
             })
             gj.addTo(layers)
@@ -303,12 +322,15 @@ export function RouteMap27700({ route, waypoints, selectedOptionId }: Props) {
   }, [
     route,
     waypoints,
+    waypointsForMap,
     polyline,
     hasHandDrawnLine,
     gpxUrl,
     gpxOverlay,
     gpxAsPrimary,
     selectedOptionId,
+    gpxLineOnly,
+    waypointMarkers,
   ])
 
   const hasOptions = (route.routeOptions?.length ?? 0) > 0

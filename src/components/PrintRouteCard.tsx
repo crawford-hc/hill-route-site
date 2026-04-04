@@ -387,14 +387,29 @@ export function PrintRouteCard({ route, waypoints, optionWaypoints }: Props) {
             <p className="print-prose">{route.lookoutGalleryIntro}</p>
           ) : null}
           <ul className="print-ul">
-            {(route.lookoutGallery ?? []).map((item) => (
-              <li key={item.id}>
-                <strong>{item.title}:</strong> {item.caption}{' '}
-                <span className="print-small">
-                  ({item.attributionText}; {item.licenseName}; {item.sourceName})
-                </span>
-              </li>
-            ))}
+            {(route.lookoutGallery ?? []).map((item) => {
+              const cap = [
+                item.description,
+                item.whyToday,
+                item.interestingBit,
+                item.caption,
+              ]
+                .map((s) => s?.trim())
+                .filter(Boolean)
+                .join(' ')
+              const credit = [item.attributionText, item.licenseName, item.sourceName]
+                .map((s) => s?.trim())
+                .filter(Boolean)
+                .join('; ')
+              return (
+                <li key={item.id}>
+                  <strong>{item.title}:</strong> {cap || '—'}{' '}
+                  {credit ? (
+                    <span className="print-small">({credit})</span>
+                  ) : null}
+                </li>
+              )
+            })}
           </ul>
         </section>
       ) : null}

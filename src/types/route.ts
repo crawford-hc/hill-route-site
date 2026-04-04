@@ -33,11 +33,18 @@ export interface AttributedImage {
   title: string
   /** Relative to route folder, absolute URL, or omit for placeholder */
   imageUrl?: string
-  caption: string
-  sourceName: string
+  /** Legacy single body under the title; optional when using structured fields. */
+  caption?: string
+  /** Short scene text (structured “What’s around you” cards). */
+  description?: string
+  whyToday?: string
+  interestingBit?: string
+  /** `<img>` alt text; defaults to `title`. */
+  imageAlt?: string
+  sourceName?: string
   sourceUrl?: string
-  attributionText: string
-  licenseName: string
+  attributionText?: string
+  licenseName?: string
   licenseUrl?: string
 }
 
@@ -57,6 +64,32 @@ export interface WildlifeCard {
   title: string
   body: string
   whyItMatters: string
+}
+
+export type ContextualCardCategory =
+  | 'terrain'
+  | 'ground'
+  | 'wildlife'
+  | 'seasonal'
+
+export interface ContextualCard {
+  id: string
+  title: string
+  description: string
+  whyToday?: string
+  category: ContextualCardCategory
+  tags: string[]
+  image: string
+  alt: string
+  credit: string
+  link?: string
+}
+
+export interface RouteContext {
+  terrain: string[]
+  ground: string[]
+  season: string[]
+  conditions: string[]
 }
 
 export interface TextBlock {
@@ -171,6 +204,8 @@ export interface RouteJson {
   ascentM?: number
   estimatedHours?: number
   orderedTops?: string[]
+  /** Display label for the parker line (e.g. access name); optional when grid ref is enough. */
+  startName?: string
   startGridRef?: string
   finishGridRef?: string
   anchorRefs?: AnchorRef[]
@@ -195,6 +230,8 @@ export interface RouteJson {
   /** Intro paragraph above wildlife cards */
   wildlifeIntro?: string
   wildlifeCards?: WildlifeCard[]
+  routeContext?: RouteContext
+  contextualCards?: ContextualCard[]
   lookoutGallery?: AttributedImage[]
   lookoutGalleryIntro?: string
   planningFooterNote?: string

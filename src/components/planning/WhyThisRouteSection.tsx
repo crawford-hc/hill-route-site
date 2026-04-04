@@ -21,9 +21,17 @@ export function WhyThisRouteSection({ content }: Props) {
           ))}
         </ul>
       ) : null}
-      {content.supporting ? (
-        <p className="planning-prose-support">{content.supporting}</p>
-      ) : null}
+      {content.supporting
+        ? content.supporting
+            .split(/\n\n+/)
+            .map((p) => p.trim())
+            .filter(Boolean)
+            .map((p, i) => (
+              <p key={i} className="planning-prose-support">
+                {p}
+              </p>
+            ))
+        : null}
     </section>
   )
 }

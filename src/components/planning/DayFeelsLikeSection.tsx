@@ -14,9 +14,17 @@ export function DayFeelsLikeSection({ content }: Props) {
         {title}
       </h2>
       <p className="planning-prose">{content.body}</p>
-      {content.supporting ? (
-        <p className="planning-prose-support">{content.supporting}</p>
-      ) : null}
+      {content.supporting
+        ? content.supporting
+            .split(/\n\n+/)
+            .map((p) => p.trim())
+            .filter(Boolean)
+            .map((p, i) => (
+              <p key={i} className="planning-prose-support">
+                {p}
+              </p>
+            ))
+        : null}
       {content.summaryLines?.length ? (
         <ul className="planning-summary-chips">
           {content.summaryLines.map((line, i) => (

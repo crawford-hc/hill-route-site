@@ -1,0 +1,12 @@
+[
+  {
+    "id": "parking-invermark-glen-lee",
+    "name": "Invermark / Kirkton (Glen Lee access)",
+    "lat": 56.91122,
+    "lng": -2.91045,
+    "gridRef": "NO 44677 80418",
+    "elevationM": 259,
+    "type": "parking",
+    "order": 0
+  }
+]

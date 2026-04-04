@@ -1,0 +1,21 @@
+{
+  "slug": "glen-lee",
+  "title": "Glen Lee",
+  "area": "Glen Lee / Angus Glens",
+  "country": "Scotland",
+  "listingBlurb": "Long glen cruise, Falls of Unich, then a proper high moorland loop with a flexible finish.",
+  "summary": "Long glen cruise, Falls of Unich, then a proper high moorland loop with a flexible finish.",
+  "suggestedRouteBadge": "Area guide",
+  "gpxFile": null,
+  "dayCards": [
+    {
+      "id": "loch-lee-loop",
+      "name": "Glen Lee Circuit (Loch Lee + South Side Loop)",
+      "subtitle": "Loch, falls, plateau loop",
+      "parker": "Invermark / Kirkton (Glen Lee access)",
+      "description": "Long glen cruise, Falls of Unich, then a proper high moorland loop with a flexible finish.",
+      "vibe": "Big miles, low drama terrain, earned finish",
+      "goodFor": ["improving weather", "long day", "flexible loop"]
+    }
+  ]
+}

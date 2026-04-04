@@ -1,0 +1,170 @@
+{
+  "slug": "loch-lee-loop",
+  "parentAreaSlug": "glen-lee",
+  "title": "Glen Lee Circuit (Loch Lee + South Side Loop)",
+  "area": "Glen Lee / Angus Glens",
+  "country": "Scotland",
+  "listingBlurb": "Improving-but-still-rowdy day = long glen cruise, then a proper high moorland graft with just enough chaos to keep it interesting. Big mileage, low drama terrain, and a finish that'll feel earned.",
+  "summary": "Improving-but-still-rowdy day = long glen cruise, then a proper high moorland graft with just enough chaos to keep it interesting. Big mileage, low drama terrain, and a finish that'll feel earned.",
+  "suggestedRouteBadge": "Custom route (your GPX)",
+  "gpxFile": "LochLeeLoop.gpx",
+  "bounds": {
+    "south": 56.8902,
+    "west": -3.07932,
+    "north": 56.92957,
+    "east": -2.91045
+  },
+  "mapCenter": { "lat": 56.91122, "lng": -2.91045 },
+  "mapZoom": 11,
+  "routeType": "Full day-detail route page",
+  "startName": "Invermark / Kirkton (Glen Lee access)",
+  "startGridRef": "NO 44677 80418",
+  "parkingNote": "Big easy start, minimal faff. Straight onto a quality track and into the glen without wasting energy on nonsense.\n\nThis is one of the better starts for a big day — easy to find, easy to get moving, and no pointless warm-up confusion.",
+  "waypointFile": "waypoints.json",
+  "qualityMeter": {
+    "score": 82,
+    "headline": "Proper graft, good shout if you want a full-value day",
+    "verdict": "Long approach, big open middle, and just enough weather to stop it being a walk in the park.",
+    "lowLabel": "absolute shiter",
+    "highLabel": "fuckin' stoater",
+    "factors": [
+      {
+        "label": "Track access",
+        "impact": "positive",
+        "note": "You get miles banked early without burning matches."
+      },
+      {
+        "label": "Flexible loop",
+        "impact": "positive",
+        "note": "Plenty of options to trim if weather turns."
+      },
+      {
+        "label": "Exposure window",
+        "impact": "neutral",
+        "note": "Only really committed when you choose to go high."
+      },
+      {
+        "label": "Middle section drag",
+        "impact": "negative",
+        "note": "That south-side plateau will test your patience more than your fitness."
+      }
+    ]
+  },
+  "whyThisRoute": {
+    "title": "Why pick this day",
+    "body": "This is a great shout for a day that's improving but still a bit wild. You're using the glen for shelter early, then stepping up onto the higher ground once things start behaving a bit better.",
+    "supporting": "It's also ideal if you want a proper long day without technical nonsense. The terrain asks for effort and awareness, not ropework or heroics.\n\nAnd importantly, it gives you control. You decide how big this day becomes."
+  },
+  "whatDayFeelsLike": {
+    "title": "What it feels like",
+    "body": "Starts like a gentle warm-up along the glen, almost too easy. Then you peel away from the track and it becomes a different day — quieter, rougher, and a bit more honest.",
+    "supporting": "The middle section is classic rolling Angus ground. Nothing dramatic, but it just keeps going, and you feel every bit of it.\n\nFinish is satisfying rather than spectacular — the kind of day where you look back and go \"aye, that was a shift.\""
+  },
+  "recommendationBlock": {
+    "title": "Route shape / day flow",
+    "lines": [
+      "Set off along the Loch Lee track and settle into a rhythm",
+      "Pass the loch and continue toward Falls of Unich / Damff",
+      "Leave the track and commit to the south-side climb",
+      "Gain height onto the higher moorland ground",
+      "Traverse the broad middle section",
+      "Arc back north toward the glen",
+      "Descend and rejoin lower ground / tracks",
+      "Cruise the final miles back out"
+    ]
+  },
+  "goodStopsDetail": {
+    "spots": [
+      {
+        "title": "Before heading high",
+        "description": "Last decent sheltered decision point before the route gets more open."
+      },
+      {
+        "title": "Lochside / dam area",
+        "description": "Easy regroup point before committing to the bigger loop."
+      },
+      {
+        "title": "Lee-side dip on the high ground",
+        "description": "Any little shelter out of the wind will feel like luxury."
+      },
+      {
+        "title": "Late-loop morale stop",
+        "description": "Once the hard work is mostly behind you, take the win."
+      }
+    ]
+  },
+  "lookoutGalleryIntro": "Classic Angus moorland details — the quiet stuff that makes this place feel like itself.",
+  "lookoutGallery": [
+    {
+      "id": "gll-around-cottongrass",
+      "title": "Cottongrass",
+      "description": "White, fluffy seed heads sitting on top of boggy ground.",
+      "whyToday": "Spring conditions keep the ground wet and the plants fully out — this is peak cottongrass season.",
+      "interestingBit": "Those tufts are basically wind-driven seed dispersal — whole hillsides end up colonised because this stuff just spreads itself everywhere the conditions suit it.",
+      "imageUrl": "images/lookout-cottongrass.jpg",
+      "imageAlt": "Cottongrass growing on wet moorland",
+      "attributionText": "Ghislain118",
+      "licenseName": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eriophorum_angustifolium_3.jpg"
+    },
+    {
+      "id": "gll-around-peat",
+      "title": "Peat / moss ground",
+      "description": "Deep layers of decomposed plant matter forming soft, dark ground.",
+      "whyToday": "Recent wet and low temperatures mean it's holding moisture instead of drying out.",
+      "interestingBit": "Peat builds incredibly slowly — a few millimetres a year. Some of what you're walking over started forming long before anything resembling modern Scotland existed.",
+      "imageUrl": "images/lookout-peat-moss.jpg",
+      "imageAlt": "Peat and moss ground in upland Scotland",
+      "attributionText": "david glass / Geograph Britain and Ireland",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Blanket_Bog_on_the_Moine_-_geograph.org.uk_-_907437.jpg"
+    },
+    {
+      "id": "gll-around-deer",
+      "title": "Red deer",
+      "description": "Red deer moving across the open hillside.",
+      "whyToday": "Quieter ground and shifting weather tends to push them into more visible positions.",
+      "interestingBit": "These deer aren't just \"wild\" in the simple sense — their numbers and movement are heavily shaped by estate management, which quietly influences how the whole landscape behaves.",
+      "imageUrl": "images/lookout-red-deer.jpg",
+      "imageAlt": "Red deer on hillside in Scotland",
+      "attributionText": "Charles J. Sharp / Sharp Photography",
+      "licenseName": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Red_deer_(Cervus_elaphus)_hind.jpg"
+    },
+    {
+      "id": "gll-around-ridges",
+      "title": "Rolling moorland ridges",
+      "description": "Broad, rounded ridges with very few sharp features.",
+      "whyToday": "Cloud and shifting light flatten everything out, making the landscape feel bigger and more uniform.",
+      "interestingBit": "This shape isn't accidental — it's the result of long-term erosion smoothing everything down over time, rather than the sharper, more dramatic profiles you get in harder rock areas.",
+      "imageUrl": "images/lookout-moorland-ridges.jpg",
+      "imageAlt": "Rolling moorland ridge in Scotland",
+      "attributionText": "Pip Rolls / Geograph Britain and Ireland",
+      "licenseName": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rannoch_Moor.jpg"
+    },
+    {
+      "id": "gll-around-unich",
+      "title": "Falls of Unich / Damff",
+      "description": "Water dropping through a narrow rocky gorge just above the loch.",
+      "whyToday": "Recent rain and snowmelt keep the flow strong — this is when it actually looks like something.",
+      "interestingBit": "These falls are cutting down through the landscape over time — slow, constant erosion shaping the glen much more than any single dramatic event.",
+      "imageUrl": "images/lookout-loch-lee-glen.jpg",
+      "imageAlt": "Waterfall above Loch Lee in Glen Lee",
+      "attributionText": "AndyMontrose (near Loch Lee, Glen Esk — representative of the glen)",
+      "licenseName": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "sourceName": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Near_Loch_Lee,_winter,_Scotland.jpg"
+    }
+  ],
+  "planningFooterNote": ""
+}

@@ -1899,6 +1899,164 @@ a.area-guide-card {
   padding: 0 0.9rem 0.9rem;
 }
 
+.page-route--mayar-driesh .planning-section--tight {
+  margin-bottom: 1.4rem;
+}
+
+.page-route--mayar-driesh .planning-section--tight .planning-section-title {
+  margin-bottom: 0.5rem;
+}
+
+.page-route--mayar-driesh .planning-callouts--compact-grid {
+  margin-top: 0.55rem;
+  gap: 0.4rem;
+}
+
+.page-route--mayar-driesh .planning-callout-card {
+  padding: 0.5rem 0.6rem;
+  border-radius: 4px;
+  gap: 0.1rem;
+  background: #fbfcfa;
+}
+
+.page-route--mayar-driesh .planning-callout-card-label {
+  font-size: 0.86rem;
+}
+
+.page-route--mayar-driesh .planning-callout-card-body {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.page-route--mayar-driesh .planning-summary-chips--dense {
+  margin-top: 0.55rem;
+  gap: 0.35rem;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 760px) {
+  .page-route--mayar-driesh .planning-summary-chips--dense {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.page-route--mayar-driesh .planning-summary-chips--dense li {
+  border-radius: 4px;
+  padding: 0.42rem 0.6rem;
+  font-size: 0.84rem;
+  line-height: 1.35;
+}
+
+.planning-tools-split {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 980px) {
+  .planning-tools-split {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.planning-disclosure--tool {
+  margin-bottom: 0;
+  border-radius: 6px;
+  background: #f7f9f6;
+}
+
+.planning-disclosure--tool > summary {
+  padding: 0.65rem 0.85rem;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .section-title {
+  display: none;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .table-scroll {
+  border-radius: 6px;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .waypoint-table th,
+.page-route--disclosure-tools .planning-disclosure--tool .waypoint-table td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid #e2e8e1;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .waypoint-table thead th {
+  background: #f2f6f2;
+  font-size: 0.75rem;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .gridrefs-hint {
+  margin: 0 0 0.45rem;
+  font-size: 0.88rem;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .gridrefs-pre {
+  padding: 0.7rem 0.75rem;
+  border-radius: 6px;
+  background: #fcfdfb;
+}
+
+.page-route--disclosure-tools .planning-disclosure--tool .gridrefs-copy {
+  align-self: flex-start;
+}
+
+/* Glen Lee loch-lee-loop — practical “day intel” rows, not pill cards */
+.page-route--loch-lee-loop .planning-callouts--lookout-intel {
+  margin-top: 0.5rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  gap: 0.4rem;
+}
+
+.page-route--loch-lee-loop .planning-lookout-intel-item {
+  margin: 0;
+  padding: 0.45rem 0.55rem 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  border-left: 3px solid #3d6b4a;
+  display: grid;
+  gap: 0.12rem;
+  align-content: start;
+}
+
+.page-route--loch-lee-loop .planning-lookout-intel-label {
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.page-route--loch-lee-loop .planning-lookout-intel-body {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.page-route--mayar-driesh .route-stats {
+  margin-bottom: 1.5rem;
+}
+
+.page-route--mayar-driesh .stats-grid {
+  gap: 0.55rem;
+  padding: 0.6rem;
+}
+
+.page-route--mayar-driesh .stat {
+  padding: 0.65rem 0.7rem;
+}
+
+.page-route--mayar-driesh .stat-label {
+  color: #3e4f42;
+}
+
 .planning-wildlife-grid {
   list-style: none;
   margin: 1rem 0 0;

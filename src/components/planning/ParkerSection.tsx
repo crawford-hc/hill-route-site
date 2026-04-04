@@ -10,7 +10,10 @@ export function ParkerSection({ route, waypoints }: Props) {
   const dest = getParkerDestination(route, waypoints)
   const note = route.parkingNote?.trim()
   const isMayarDriesh = route.slug === 'mayar-driesh'
+  const isMountKeen = route.slug === 'mount-keen'
+  const isLochLeeLoop = route.slug === 'loch-lee-loop'
   const gridLine =
+    route.startName?.trim() ||
     dest?.gridRef?.trim() ||
     route.startGridRef?.trim() ||
     (dest ? `${dest.lat.toFixed(5)}, ${dest.lng.toFixed(5)}` : '')
@@ -25,9 +28,19 @@ export function ParkerSection({ route, waypoints }: Props) {
   return (
     <section className="planning-section planning-parker" aria-labelledby="parker-heading">
       <h2 id="parker-heading" className="planning-section-title">
-        {isMayarDriesh ? 'The parker' : 'Parker & start'}
+        {isMayarDriesh || isMountKeen || isLochLeeLoop ? 'The parker' : 'Parker & start'}
       </h2>
-      {note ? <p className="planning-prose">{note}</p> : null}
+      {note
+        ? note
+            .split(/\n\n+/)
+            .map((para) => para.trim())
+            .filter(Boolean)
+            .map((para, i) => (
+              <p key={i} className="planning-prose">
+                {para}
+              </p>
+            ))
+        : null}
       {gridLine ? (
         <p className="planning-parker-grid">
           <span className="planning-parker-grid-label">Parker:</span>{' '}

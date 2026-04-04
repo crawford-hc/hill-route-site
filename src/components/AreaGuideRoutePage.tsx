@@ -11,11 +11,15 @@ const GLEN_ESK_DAY_PICKS = [
   { label: 'Happy winging it?', cardId: 'explorer' },
 ] as const
 
-/** Day IDs that have a `routes/glen-esk/days/{id}/` detail page (expand as you add JSON). */
-const GLEN_ESK_DAY_DETAIL_IDS = new Set<string>(['mayar-driesh', 'mount-keen'])
+/** Area slug → day IDs with `routes/{area}/days/{id}/route.json` detail pages. */
+const AREA_DAY_DETAIL_IDS: Record<string, Set<string>> = {
+  'glen-esk': new Set(['mayar-driesh', 'mount-keen']),
+  'glen-lee': new Set(['loch-lee-loop']),
+}
 
-function glenEskDayDetailHref(cardId: string): string | null {
-  return GLEN_ESK_DAY_DETAIL_IDS.has(cardId) ? `/routes/glen-esk/${cardId}` : null
+function areaDayDetailHref(areaSlug: string, cardId: string): string | null {
+  const set = AREA_DAY_DETAIL_IDS[areaSlug]
+  return set?.has(cardId) ? `/routes/${areaSlug}/${cardId}` : null
 }
 
 interface Props {
@@ -69,7 +73,7 @@ export function AreaGuideRoutePage({ route }: Props) {
                 const exists = cards.some((c) => c.id === cardId)
                 if (!exists) return null
                 const isOn = selectedId === cardId
-                const detailHref = glenEskDayDetailHref(cardId)
+                const detailHref = areaDayDetailHref(route.slug, cardId)
                 if (detailHref) {
                   return (
                     <Link
@@ -99,8 +103,7 @@ export function AreaGuideRoutePage({ route }: Props) {
         <div className="area-guide-cards">
           {cards.map((card) => {
             const isOn = selectedId === card.id
-            const detailHref =
-              route.slug === 'glen-esk' ? glenEskDayDetailHref(card.id) : null
+            const detailHref = areaDayDetailHref(route.slug, card.id)
             const className = `area-guide-card ${isOn ? 'is-selected' : ''}`
             const body = (
               <>

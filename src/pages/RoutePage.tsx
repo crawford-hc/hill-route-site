@@ -87,31 +87,95 @@ const MAYAR_DRIESH_LOOKOUT_FOR = [
   },
 ]
 
-function importantGridRefs(route: RouteJson, waypoints: WaypointJson[]) {
-  const rows: Array<{ label: string; ref: string }> = []
-  const seen = new Set<string>()
-  const push = (label: string, ref?: string) => {
-    const tidyRef = ref?.trim()
-    if (!tidyRef) return
-    const key = `${label}:${tidyRef}`
-    if (seen.has(key)) return
-    seen.add(key)
-    rows.push({ label, ref: tidyRef })
-  }
+const MOUNT_KEEN_TERRAIN_CONDITIONS = [
+  {
+    label: 'Long estate-track start',
+    body: 'You cover a lot of ground before the hill really starts to bite.',
+  },
+  {
+    label: 'Broad upper hill',
+    body: 'Open summit ground with a bigger weather feel once you’re up there.',
+  },
+  {
+    label: 'Mixed underfoot',
+    body: 'Easy going lower down, rougher and more open higher up.',
+  },
+  {
+    label: 'Wind exposure',
+    body: 'The upper ground is where the day gets properly honest.',
+  },
+  {
+    label: 'Winter carryover',
+    body: 'Snow and old frozen patches can linger higher up longer than the glen suggests.',
+  },
+]
 
-  push('The parker', route.startGridRef)
-  for (const a of route.anchorRefs ?? []) {
-    if (/summit|top|parker|parking|start|junction|bail|col|saddle/i.test(a.label)) {
-      push(a.label, a.gridRef)
-    }
-  }
-  for (const w of waypoints) {
-    if (w.type === 'summit' || w.type === 'parking' || w.type === 'junction') {
-      push(w.name, w.gridRef)
-    }
-  }
-  return rows.slice(0, 8)
-}
+const MOUNT_KEEN_GOOD_FOR = [
+  'Big steady day without fiddly route choices',
+  'Headspace walks where you’re happy just grinding it out',
+  'Decent weather windows with enough visibility to enjoy the big upper ground',
+  'Winter days where you want broad terrain, not awkward scrambling nonsense',
+]
+
+const MOUNT_KEEN_NOT_IDEAL_FOR = [
+  'Anyone wanting quick payoff',
+  'Days where the wind is brutal on exposed upper ground',
+  'People already tired before they’ve started',
+  'Anyone pretending a long out-and-back feels the same as a playful multi-top ridge day',
+]
+
+const MOUNT_KEEN_LOOKOUT_FOR = [
+  {
+    label: 'Long approach complacency',
+    body: 'it starts tame enough, which is exactly how folk end up underestimating the upper hill.',
+  },
+  {
+    label: 'Wind on the broad summit ground',
+    body: 'once you’re properly up there, there’s not much shielding and the hill can feel a lot bigger.',
+  },
+  {
+    label: 'Cloud flattening the top',
+    body: 'the shape is straightforward overall, but murk still strips the atmosphere and the views that make this one worth it.',
+  },
+  {
+    label: 'Energy management',
+    body: 'this is more of a diesel day than a sprint, so don’t burn the legs early because the summit takes its sweet time arriving.',
+  },
+  {
+    label: 'Changeable underfoot mix',
+    body: 'estate track and easier glen travel below, then rougher open hill higher up where it stops feeling like a warm-up.',
+  },
+]
+
+const LOCH_LEE_GOOD_FOR = [
+  'Big mileage days without technical terrain',
+  'Mixed conditions where you want flexibility',
+  'Steady graft rather than short sharp hits',
+  'Testing legs without testing luck',
+]
+
+const LOCH_LEE_NOT_IDEAL_FOR = [
+  'Anyone wanting a quick win',
+  'Proper whiteout conditions with no nav confidence',
+  'People who hate bog / soft ground',
+  'Days where high wind makes open ground miserable',
+]
+
+const LOCH_LEE_LOOKOUT_FOR = [
+  { label: 'Wind on the high ground', body: '' },
+  { label: 'Patchy snow / mixed ground', body: '' },
+  { label: 'Clag drifting in and out', body: '' },
+  { label: 'Energy management over the full loop', body: '' },
+  { label: 'River / burn levels after recent weather', body: '' },
+]
+
+const LOCH_LEE_TERRAIN_CONDITIONS = [
+  { label: 'Long approach track', body: '' },
+  { label: 'Peat + moss ground', body: '' },
+  { label: 'Rolling plateau feel', body: '' },
+  { label: 'Gradual climbs', body: '' },
+  { label: 'Exposure band around the higher section', body: '' },
+]
 
 function RoutePageLoaded({
   route,
@@ -138,10 +202,34 @@ function RoutePageLoaded({
   const routeOpts = route.routeOptions ?? []
   const rec = recommendationFromRoute(route)
   const isMayarDriesh = route.slug === 'mayar-driesh'
-  const keyRefs = importantGridRefs(route, waypoints)
+  const isMountKeen = route.slug === 'mount-keen'
+  const isLochLeeLoop = route.slug === 'loch-lee-loop'
+  const mkStyleDay = isMountKeen || isLochLeeLoop
+  const goodForList = isMountKeen
+    ? MOUNT_KEEN_GOOD_FOR
+    : isLochLeeLoop
+      ? LOCH_LEE_GOOD_FOR
+      : null
+  const notIdealList = isMountKeen
+    ? MOUNT_KEEN_NOT_IDEAL_FOR
+    : isLochLeeLoop
+      ? LOCH_LEE_NOT_IDEAL_FOR
+      : null
+  const lookoutList = isMountKeen
+    ? MOUNT_KEEN_LOOKOUT_FOR
+    : isLochLeeLoop
+      ? LOCH_LEE_LOOKOUT_FOR
+      : null
+  const terrainList = isMountKeen
+    ? MOUNT_KEEN_TERRAIN_CONDITIONS
+    : isLochLeeLoop
+      ? LOCH_LEE_TERRAIN_CONDITIONS
+      : null
 
   return (
-    <article className="page-route page-route--planning">
+    <article
+      className={`page-route page-route--planning${isMayarDriesh ? ' page-route--mayar-driesh' : ''}${isLochLeeLoop ? ' page-route--loch-lee-loop' : ''}${isMayarDriesh || isLochLeeLoop ? ' page-route--disclosure-tools' : ''}`}
+    >
       <RoutePlanningHero
         route={route}
         weather={route.weatherNote}
@@ -153,6 +241,42 @@ function RoutePageLoaded({
       <DownloadButtons route={route} />
 
       {route.qualityMeter ? <QualityHillDayMeter meter={route.qualityMeter} /> : null}
+
+      {isLochLeeLoop ? (
+        <>
+          {routeOpts.length > 0 ? (
+            <div className="planning-map-toolbar">
+              <div className="map-line-picker" role="group" aria-label="Which line on the map">
+                <span id="map-line-label-loch" className="map-line-picker-label">
+                  Map line
+                </span>
+                <div className="map-line-picker-buttons" aria-labelledby="map-line-label-loch">
+                  {routeOpts.map((o) => (
+                    <button
+                      key={o.id}
+                      type="button"
+                      className={`map-line-btn ${mapLineId === o.id ? 'is-active' : ''}`}
+                      onClick={() => setPickedLineId(o.id)}
+                    >
+                      {o.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
+          <div className="planning-map-wrap">
+            <RouteMap
+              route={route}
+              waypoints={waypoints}
+              selectedOptionId={mapLineId}
+              gpxLineOnly
+              waypointMarkers="terminals"
+            />
+          </div>
+          <ParkerSection route={route} waypoints={waypoints} />
+        </>
+      ) : null}
 
       {isMayarDriesh && route.whyThisRoute ? (
         <section className="planning-section planning-section--why" aria-labelledby="why-this-route-heading">
@@ -168,9 +292,92 @@ function RoutePageLoaded({
         <WhyThisRouteSection content={route.whyThisRoute} />
       ) : null}
 
+      {mkStyleDay && route.whatDayFeelsLike ? (
+        <DayFeelsLikeSection content={route.whatDayFeelsLike} />
+      ) : null}
+
+      {mkStyleDay && goodForList ? (
+        <section className="planning-section planning-section--tight" aria-labelledby="good-for-heading">
+          <h2 id="good-for-heading" className="planning-section-title">
+            Good for
+          </h2>
+          <ul className="planning-summary-chips planning-summary-chips--dense">
+            {goodForList.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {mkStyleDay && notIdealList ? (
+        <section className="planning-section planning-section--tight" aria-labelledby="not-ideal-heading">
+          <h2 id="not-ideal-heading" className="planning-section-title">
+            Not ideal for
+          </h2>
+          <ul className="planning-summary-chips planning-summary-chips--dense">
+            {notIdealList.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {mkStyleDay && lookoutList ? (
+        <section className="planning-section planning-section--tight" aria-labelledby="look-out-day-heading">
+          <h2 id="look-out-day-heading" className="planning-section-title">
+            What to look out for on the day
+          </h2>
+          <ul
+            className={`planning-callouts planning-callouts--compact-grid${isLochLeeLoop ? ' planning-callouts--lookout-intel' : ''}`}
+          >
+            {lookoutList.map((item, i) => (
+              <li
+                key={i}
+                className={isLochLeeLoop ? 'planning-lookout-intel-item' : 'planning-callout-card'}
+              >
+                <strong
+                  className={
+                    isLochLeeLoop ? 'planning-lookout-intel-label' : 'planning-callout-card-label'
+                  }
+                >
+                  {item.label}
+                </strong>
+                {item.body ? (
+                  <span
+                    className={
+                      isLochLeeLoop ? 'planning-lookout-intel-body' : 'planning-callout-card-body'
+                    }
+                  >
+                    {item.body}
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {mkStyleDay && terrainList ? (
+        <section className="planning-section planning-section--tight" aria-labelledby="terrain-conditions-heading">
+          <h2 id="terrain-conditions-heading" className="planning-section-title">
+            Terrain &amp; conditions
+          </h2>
+          <ul className="planning-callouts planning-callouts--compact-grid">
+            {terrainList.map((item, i) => (
+              <li key={i} className="planning-callout-card">
+                <strong className="planning-callout-card-label">{item.label}</strong>
+                {item.body ? (
+                  <span className="planning-callout-card-body">{item.body}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {isMayarDriesh ? (
         <>
-          <section className="planning-section" aria-labelledby="terrain-conditions-heading">
+          <section className="planning-section planning-section--tight" aria-labelledby="terrain-conditions-heading">
             <h2 id="terrain-conditions-heading" className="planning-section-title">
               Terrain &amp; conditions
             </h2>
@@ -186,7 +393,7 @@ function RoutePageLoaded({
 
           {route.whatDayFeelsLike ? <DayFeelsLikeSection content={route.whatDayFeelsLike} /> : null}
 
-          <section className="planning-section" aria-labelledby="good-for-heading">
+          <section className="planning-section planning-section--tight" aria-labelledby="good-for-heading">
             <h2 id="good-for-heading" className="planning-section-title">
               Good for
             </h2>
@@ -197,7 +404,7 @@ function RoutePageLoaded({
             </ul>
           </section>
 
-          <section className="planning-section" aria-labelledby="not-ideal-heading">
+          <section className="planning-section planning-section--tight" aria-labelledby="not-ideal-heading">
             <h2 id="not-ideal-heading" className="planning-section-title">
               Not ideal for
             </h2>
@@ -208,7 +415,7 @@ function RoutePageLoaded({
             </ul>
           </section>
 
-          <section className="planning-section" aria-labelledby="look-out-day-heading">
+          <section className="planning-section planning-section--tight" aria-labelledby="look-out-day-heading">
             <h2 id="look-out-day-heading" className="planning-section-title">
               What to look out for on the day
             </h2>
@@ -222,7 +429,7 @@ function RoutePageLoaded({
             </ul>
           </section>
         </>
-      ) : route.whatToLookOutFor?.length ? (
+      ) : !isMountKeen && !isLochLeeLoop && route.whatToLookOutFor?.length ? (
         <section className="planning-section" aria-labelledby="look-out-day-heading">
           <h2 id="look-out-day-heading" className="planning-section-title">
             What to look out for on the day
@@ -235,7 +442,7 @@ function RoutePageLoaded({
         </section>
       ) : null}
 
-      {!isMayarDriesh && route.disclaimerSection ? (
+      {!isMayarDriesh && !isMountKeen && !isLochLeeLoop && route.disclaimerSection ? (
         <TitledProseSection
           id="disclaimer-section-heading"
           title={route.disclaimerSection.title ?? 'Suggested line only'}
@@ -245,39 +452,42 @@ function RoutePageLoaded({
         />
       ) : null}
 
-      {!isMayarDriesh && rec ? <HonestTakeBlock block={rec} /> : null}
+      {!isMayarDriesh && !isMountKeen && !isLochLeeLoop && rec ? (
+        <HonestTakeBlock block={rec} />
+      ) : null}
 
       <RouteOptionsPlanning options={routeOpts} optionWaypoints={optionWaypoints} />
 
-      <ParkerSection route={route} waypoints={waypoints} />
+      {!isLochLeeLoop ? <ParkerSection route={route} waypoints={waypoints} /> : null}
+
+      {(isMountKeen || isLochLeeLoop) && rec ? <HonestTakeBlock block={rec} /> : null}
+
+      {(isMountKeen || isLochLeeLoop) && route.goodStopsDetail ? (
+        <GoodStopsPlanning detail={route.goodStopsDetail} />
+      ) : null}
+
+      {isMountKeen || isLochLeeLoop ? (
+        <LookoutGallery
+          route={route}
+          title="What's around you"
+          items={route.lookoutGallery ?? []}
+          intro={route.lookoutGalleryIntro}
+        />
+      ) : null}
 
       {isMayarDriesh && rec ? <HonestTakeBlock block={rec} /> : null}
 
       <RouteStats route={route} />
 
-      {isMayarDriesh && keyRefs.length > 0 ? (
-        <section className="planning-section planning-key-refs" aria-labelledby="important-grid-refs-heading">
-          <h2 id="important-grid-refs-heading" className="planning-section-title">
-            Important grid refs
-          </h2>
-          <ul className="planning-key-refs-list">
-            {keyRefs.map((item) => (
-              <li key={`${item.label}:${item.ref}`} className="planning-key-refs-item">
-                <span className="planning-key-refs-label">{item.label}</span>
-                <code className="planning-key-refs-grid">{item.ref}</code>
-              </li>
-            ))}
-          </ul>
-        </section>
+      {!isMayarDriesh ? (
+        <AnchorRefsPanel
+          title={route.anchorRefsTitle}
+          intro={route.anchorRefsIntro}
+          anchors={route.anchorRefs ?? []}
+        />
       ) : null}
 
-      <AnchorRefsPanel
-        title={route.anchorRefsTitle}
-        intro={route.anchorRefsIntro}
-        anchors={route.anchorRefs ?? []}
-      />
-
-      {routeOpts.length > 0 ? (
+      {routeOpts.length > 0 && !isLochLeeLoop ? (
         <div className="planning-map-toolbar">
           <div className="map-line-picker" role="group" aria-label="Which line on the map">
             <span id="map-line-label" className="map-line-picker-label">
@@ -299,39 +509,42 @@ function RoutePageLoaded({
         </div>
       ) : null}
 
-      <div className="planning-map-wrap">
-        <RouteMap route={route} waypoints={waypoints} selectedOptionId={mapLineId} />
-      </div>
+      {!isLochLeeLoop ? (
+        <div className="planning-map-wrap">
+          <RouteMap route={route} waypoints={waypoints} selectedOptionId={mapLineId} />
+        </div>
+      ) : null}
 
-      {isMayarDriesh ? (
-        <details className="planning-disclosure">
-          <summary>Waypoints (full)</summary>
-          <WaypointTable waypoints={waypoints} />
-        </details>
+      {isMayarDriesh || isLochLeeLoop ? (
+        <div className="planning-tools-split">
+          <details className="planning-disclosure planning-disclosure--tool">
+            <summary>Waypoints (full)</summary>
+            <WaypointTable waypoints={waypoints} />
+          </details>
+          <details className="planning-disclosure planning-disclosure--tool">
+            <summary>
+              {isMayarDriesh ? 'Navigation data' : 'All grid refs (full list)'}
+            </summary>
+            <GridRefsBlock
+              route={route}
+              waypoints={waypoints}
+              title="All grid refs (full list)"
+              hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
+            />
+          </details>
+        </div>
       ) : (
         <WaypointTable waypoints={waypoints} />
       )}
 
-      {isMayarDriesh ? (
-        <details className="planning-disclosure">
-          <summary>Grid refs (full)</summary>
-          <GridRefsBlock
-            route={route}
-            waypoints={waypoints}
-            title="All grid refs (full list)"
-            hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
-          />
-        </details>
-      ) : (
+      {!isMayarDriesh && !isLochLeeLoop ? (
         <GridRefsBlock
           route={route}
           waypoints={waypoints}
           title="All grid refs (full list)"
           hint="Start, finish, anchors, waypoints — paste into your app or scribble on the map."
         />
-      )}
-
-      {route.goodStopsDetail ? <GoodStopsPlanning detail={route.goodStopsDetail} /> : null}
+      ) : null}
 
       {isMayarDriesh ? (
         <LookoutGallery
@@ -340,7 +553,13 @@ function RoutePageLoaded({
           items={route.lookoutGallery ?? []}
           intro={route.lookoutGalleryIntro}
         />
-      ) : route.whatYouMightSee?.length ? (
+      ) : null}
+
+      {!isMountKeen && !isLochLeeLoop && route.goodStopsDetail ? (
+        <GoodStopsPlanning detail={route.goodStopsDetail} />
+      ) : null}
+
+      {!isMayarDriesh && route.whatYouMightSee?.length ? (
         <section className="planning-section" aria-labelledby="flora-fauna-heading">
           <h2 id="flora-fauna-heading" className="planning-section-title">
             What you might see (flora &amp; fauna)
@@ -363,17 +582,19 @@ function RoutePageLoaded({
         />
       ) : null}
 
-      {route.whatDayFeelsLike && !isMayarDriesh ? (
+      {route.whatDayFeelsLike && !isMayarDriesh && !isMountKeen && !isLochLeeLoop ? (
         <DayFeelsLikeSection content={route.whatDayFeelsLike} />
       ) : null}
 
-      <TerrainWildlifePlanning
-        terrain={route.terrainDetail}
-        wildlifeIntro={route.wildlifeIntro}
-        wildlifeCards={route.wildlifeCards}
-      />
+      {!isMountKeen && !isLochLeeLoop ? (
+        <TerrainWildlifePlanning
+          terrain={route.terrainDetail}
+          wildlifeIntro={route.wildlifeIntro}
+          wildlifeCards={route.wildlifeCards}
+        />
+      ) : null}
 
-      {!isMayarDriesh ? (
+      {!isMayarDriesh && !isMountKeen && !isLochLeeLoop ? (
         <LookoutGallery
           route={route}
           items={route.lookoutGallery ?? []}
